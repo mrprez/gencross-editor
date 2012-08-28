@@ -1,0 +1,3 @@
+Faire un onglet de warning
+Dans cet onglet faire la liste des historyItem qui ont une phase non référencée dans la liste des phases.
+Contrôle qu'une propriété n'existe pas quand on l'ajoute à une liste (même controle si on change son nom)

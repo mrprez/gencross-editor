@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="PersonnageServiceService" targetNamespace="http://service.web.gencross.mrprez.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://service.web.gencross.mrprez.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.web.gencross.mrprez.com/" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://service.web.gencross.mrprez.com/">
+<xs:element name="getAvailablePersonnageList" type="tns:getAvailablePersonnageList"/>
+<xs:element name="getAvailablePersonnageListResponse" type="tns:getAvailablePersonnageListResponse"/>
+<xs:element name="getPersonnage" type="tns:getPersonnage"/>
+<xs:element name="getPersonnageList" type="tns:getPersonnageList"/>
+<xs:element name="getPersonnageListResponse" type="tns:getPersonnageListResponse"/>
+<xs:element name="getPersonnageResponse" type="tns:getPersonnageResponse"/>
+<xs:complexType name="getPersonnageList">
+<xs:sequence>
+<xs:element minOccurs="0" name="type" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPersonnageListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:personnageDescription"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="personnageDescription">
+<xs:sequence>
+<xs:element minOccurs="0" name="gmName" type="xs:string"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element minOccurs="0" name="playerName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getAvailablePersonnageList">
+<xs:sequence/>
+</xs:complexType>
+<xs:complexType name="getAvailablePersonnageListResponse">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:pluginDescription"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="pluginDescription">
+<xs:sequence>
+<xs:element minOccurs="0" name="name" type="xs:string"/>
+<xs:element minOccurs="0" name="version" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPersonnage">
+<xs:sequence>
+<xs:element minOccurs="0" name="id" type="xs:int"/>
+<xs:element minOccurs="0" name="arg1" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getPersonnageResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:base64Binary"/>
+</xs:sequence>
+</xs:complexType>
+<xs:element name="Exception" type="tns:Exception"/>
+<xs:complexType name="Exception">
+<xs:sequence>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getPersonnageResponse">
+    <wsdl:part name="parameters" element="tns:getPersonnageResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPersonnageListResponse">
+    <wsdl:part name="parameters" element="tns:getPersonnageListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPersonnageList">
+    <wsdl:part name="parameters" element="tns:getPersonnageList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPersonnage">
+    <wsdl:part name="parameters" element="tns:getPersonnage">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailablePersonnageListResponse">
+    <wsdl:part name="parameters" element="tns:getAvailablePersonnageListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Exception">
+    <wsdl:part name="Exception" element="tns:Exception">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAvailablePersonnageList">
+    <wsdl:part name="parameters" element="tns:getAvailablePersonnageList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PersonnageService">
+    <wsdl:operation name="getPersonnageList">
+      <wsdl:input name="getPersonnageList" message="tns:getPersonnageList">
+    </wsdl:input>
+      <wsdl:output name="getPersonnageListResponse" message="tns:getPersonnageListResponse">
+    </wsdl:output>
+      <wsdl:fault name="Exception" message="tns:Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAvailablePersonnageList">
+      <wsdl:input name="getAvailablePersonnageList" message="tns:getAvailablePersonnageList">
+    </wsdl:input>
+      <wsdl:output name="getAvailablePersonnageListResponse" message="tns:getAvailablePersonnageListResponse">
+    </wsdl:output>
+      <wsdl:fault name="Exception" message="tns:Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPersonnage">
+      <wsdl:input name="getPersonnage" message="tns:getPersonnage">
+    </wsdl:input>
+      <wsdl:output name="getPersonnageResponse" message="tns:getPersonnageResponse">
+    </wsdl:output>
+      <wsdl:fault name="Exception" message="tns:Exception">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PersonnageServiceServiceSoapBinding" type="tns:PersonnageService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAvailablePersonnageList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAvailablePersonnageList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAvailablePersonnageListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPersonnageList">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPersonnageList">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPersonnageListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPersonnage">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getPersonnage">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPersonnageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Exception">
+        <soap:fault name="Exception" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PersonnageServiceService">
+    <wsdl:port name="PersonnageServicePort" binding="tns:PersonnageServiceServiceSoapBinding">
+      <soap:address location="http://localhost:9090/PersonnageServicePort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
