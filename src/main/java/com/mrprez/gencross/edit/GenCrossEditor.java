@@ -10,6 +10,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -21,6 +22,8 @@ import javax.swing.JTabbedPane;
 
 import com.mrprez.gencross.Personnage;
 import com.mrprez.gencross.disk.PersonnageFactory;
+import com.mrprez.gencross.disk.PluginDescriptor;
+import com.mrprez.gencross.disk.RepositoryManager;
 import com.mrprez.gencross.edit.error.ErrorFrame;
 import com.mrprez.gencross.edit.framework.Treatment;
 import com.mrprez.gencross.edit.listeners.ListenerPanel;
@@ -36,12 +39,14 @@ public class GenCrossEditor extends JFrame {
 	
 	private JFileChooser fileChooser = new JFileChooser();
 	
-	private Personnage personnage = new Personnage();
+	private Personnage personnage;
+	private RepositoryManager repositoryManager;
+	private PersonnageFactory personnageFactory;
 	
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu fileMenu = new JMenu("Fichier");
 	private JMenuItem openItem = new JMenuItem("Ouvrir");
-	private JMenuItem openDistantItem = new JMenuItem("Ouvrir à distance");
+	private JMenuItem openDistantItem = new JMenuItem("Ouvrir Ã  distance");
 	private JMenuItem saveAsItem = new JMenuItem("Sauvegarder sous");
 	
 	private JTabbedPane tabbedPane = new JTabbedPane();
@@ -54,8 +59,6 @@ public class GenCrossEditor extends JFrame {
 	
 	public static void main(String[] args) throws Exception {
 		try {
-			File personnageRepository = new File(getExecutionDirectory().getParentFile(),PERSONNAGE_REPOSITORY_NAME);
-			PersonnageFactory.initInstance(personnageRepository);
 			instance = new GenCrossEditor();
 			instance.init();
 			instance.setTitle("GenCrossEditor");
@@ -74,6 +77,11 @@ public class GenCrossEditor extends JFrame {
 	
 	
 	public void init() throws Exception{
+		personnage = new Personnage();
+		personnage.setPluginDescriptor(new PluginDescriptor(new Properties()));
+		repositoryManager = new RepositoryManager(new File(getExecutionDirectory(), PERSONNAGE_REPOSITORY_NAME));
+		personnageFactory = new PersonnageFactory(repositoryManager.getRepositoryClassLoader());
+		
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		Rectangle desktop = ge.getMaximumWindowBounds();
 		setPreferredSize(new Dimension(desktop.width/2, desktop.height));
@@ -158,11 +166,15 @@ public class GenCrossEditor extends JFrame {
 	public JFileChooser getFileChooser(){
 		return fileChooser;
 	}
-	
-	
-	
-	
-	
-	
 
+	public RepositoryManager getRepositoryManager() {
+		return repositoryManager;
+	}
+
+	public PersonnageFactory getPersonnageFactory() {
+		return personnageFactory;
+	}
+	
+	
+	
 }

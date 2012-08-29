@@ -37,11 +37,11 @@ public class ListenerPanel extends GenCrossEditorPanel {
 	public ListenerPanel(Personnage personnage) throws Exception {
 		super();
 		beforeAddPanel.setBorder(BorderFactory.createTitledBorder("Listener avant ajout"));
-		afterAddPanel.setBorder(BorderFactory.createTitledBorder("Listener après ajout"));
+		afterAddPanel.setBorder(BorderFactory.createTitledBorder("Listener aprÃ©s ajout"));
 		beforeChangePanel.setBorder(BorderFactory.createTitledBorder("Listener avant changement"));
-		afterChangePanel.setBorder(BorderFactory.createTitledBorder("Listener après changement"));
+		afterChangePanel.setBorder(BorderFactory.createTitledBorder("Listener aprÃ©s changement"));
 		beforeRemovePanel.setBorder(BorderFactory.createTitledBorder("Listener avant suppression"));
-		afterRemovePanel.setBorder(BorderFactory.createTitledBorder("Listener après suppression"));
+		afterRemovePanel.setBorder(BorderFactory.createTitledBorder("Listener aprÃ©s suppression"));
 		phasePanel.setBorder(BorderFactory.createTitledBorder("Listener de phase"));
 		formulaPanel.setBorder(BorderFactory.createTitledBorder("Formules"));
 		

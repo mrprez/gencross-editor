@@ -24,7 +24,6 @@ import javax.swing.table.DefaultTableModel;
 import org.dom4j.Element;
 import org.dom4j.tree.DefaultElement;
 
-import com.mrprez.gencross.disk.PersonnageFactory;
 import com.mrprez.gencross.edit.GenCrossEditor;
 import com.mrprez.gencross.edit.framework.EditDialog;
 import com.mrprez.gencross.edit.framework.SimpleEDTAction;
@@ -39,7 +38,7 @@ public class HistoryItemEditor extends EditDialog<HistoryItem> {
 	
 	private JLabel classLabel = new JLabel("Classe");
 	private JTextField classField = new JTextField();
-	private DefaultTableModel argsModel = new DefaultTableModel(new Object[]{"Clé", "Valeur"}, 0);
+	private DefaultTableModel argsModel = new DefaultTableModel(new Object[]{"Clï¿½", "Valeur"}, 0);
 	private JTable argsTable = new JTable(argsModel);
 	private JScrollPane argsPane = new JScrollPane(argsTable);
 	private JLabel pointPoolLabel = new JLabel("Pool de points");
@@ -50,13 +49,13 @@ public class HistoryItemEditor extends EditDialog<HistoryItem> {
 	private JLabel absoluteNameLabel = new JLabel("Nom absolue");
 	private JTextField absoluteNameField = new JTextField();
 	private JLabel oldValueLabel = new JLabel("Ancienne valeur");
-	private JComboBox oldValueTypeComboBox = new JComboBox(new String[]{"Aucune", "Texte", "Entier", "Décimal"});
+	private JComboBox oldValueTypeComboBox = new JComboBox(new String[]{"Aucune", "Texte", "Entier", "Dï¿½cimal"});
 	private JTextField oldValueField = new JTextField();
 	private JLabel newValueLabel = new JLabel("Nouvelle valeur");
-	private JComboBox newValueTypeComboBox = new JComboBox(new String[]{"Aucune", "Texte", "Entier", "Décimal"});
+	private JComboBox newValueTypeComboBox = new JComboBox(new String[]{"Aucune", "Texte", "Entier", "Dï¿½cimal"});
 	private JTextField newValueField = new JTextField();
 	private JLabel actionLabel = new JLabel("type d'action");
-	private JComboBox actionComboBox = new JComboBox(new String[]{"Défaut","Création","Modification","Suppression"});
+	private JComboBox actionComboBox = new JComboBox(new String[]{"Dï¿½faut","Crï¿½ation","Modification","Suppression"});
 	private JLabel dateLabel = new JLabel("Date");
 	private JTextField yearField = new JTextField(4);
 	private JLabel dateSeparator1 = new JLabel("/");
@@ -79,7 +78,7 @@ public class HistoryItemEditor extends EditDialog<HistoryItem> {
 	public HistoryItemEditor(Dialog dialog, HistoryItem historyItem) {
 		super(dialog);
 		this.historyItem = historyItem;
-		setTitle("Elément d'Historique");
+		setTitle("Elï¿½ment d'Historique");
 	}
 
 	@Override
@@ -275,7 +274,7 @@ public class HistoryItemEditor extends EditDialog<HistoryItem> {
 	public String findError(){
 		// Class
 		try {
-			PersonnageFactory.getInstance().loadClass(classField.getText());
+			GenCrossEditor.getInstance().getRepositoryManager().getRepositoryClassLoader().loadClass(classField.getText());
 		} catch (ClassNotFoundException e) {
 			return "La classe \""+classField.getText()+"\" est introuvable";
 		}
@@ -287,7 +286,7 @@ public class HistoryItemEditor extends EditDialog<HistoryItem> {
 		}
 		if(oldValueTypeComboBox.getSelectedIndex()==3){
 			if(!oldValueField.getText().matches("[-]?[0-9]+([.][0-9]+)?")){
-				return "L'ancienne valeur n'est pas un décimal";
+				return "L'ancienne valeur n'est pas un dï¿½cimal";
 			}
 		}
 		//New Value
@@ -298,7 +297,7 @@ public class HistoryItemEditor extends EditDialog<HistoryItem> {
 		}
 		if(newValueTypeComboBox.getSelectedIndex()==3){
 			if(!newValueField.getText().matches("[-]?[0-9]+([.][0-9]+)?")){
-				return "La nouvelle valeur n'est pas un décimal";
+				return "La nouvelle valeur n'est pas un dï¿½cimal";
 			}
 		}
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
@@ -383,7 +382,7 @@ public class HistoryItemEditor extends EditDialog<HistoryItem> {
 			argElement.setText(value);
 		}
 		
-		this.historyItem = HistoryItem.createHistoryItem(historyElement, PersonnageFactory.getInstance());
+		this.historyItem = HistoryItem.createHistoryItem(historyElement, GenCrossEditor.getInstance().getRepositoryManager().getRepositoryClassLoader());
 		
 		validateData();
 	}

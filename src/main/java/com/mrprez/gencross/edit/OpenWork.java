@@ -8,11 +8,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import com.mrprez.gencross.Personnage;
-import com.mrprez.gencross.disk.PersonnageFactory;
 import com.mrprez.gencross.edit.error.ErrorFrame;
 import com.mrprez.gencross.edit.framework.BackgroundWork;
 import com.mrprez.gencross.edit.framework.OptionPane;
 import com.mrprez.gencross.edit.framework.Work;
+import com.mrprez.gencross.edit.util.DecryptInputStream;
 
 public class OpenWork implements BackgroundWork{
 	
@@ -23,7 +23,7 @@ public class OpenWork implements BackgroundWork{
 	
 	
 	public String readXmlSource(File gcrFile) throws Exception{
-		InputStream is = PersonnageFactory.getInstance().getInputStreamFromGcr(gcrFile);
+		InputStream is = DecryptInputStream.buildDecryptInputStream(gcrFile);
 		InputStreamReader reader = new InputStreamReader(is, "UTF-8");
 		StringBuilder sb = new StringBuilder();
 		try{
@@ -48,7 +48,7 @@ public class OpenWork implements BackgroundWork{
 			try{
 				title = "GenCrossEditor - "+fileChooser.getSelectedFile().getName();
 				xmlSource = readXmlSource(fileChooser.getSelectedFile());
-				personnage = PersonnageFactory.getInstance().createPersonnageFromGcr(fileChooser.getSelectedFile());
+				personnage = GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnageFromGcr(fileChooser.getSelectedFile());
 				newPersonnageEdtWork = new NewPersonnageEdtWork(title, personnage, xmlSource);
 			}catch(Throwable e){
 				ErrorFrame.displayError(e);

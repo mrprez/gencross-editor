@@ -18,7 +18,6 @@ import javax.swing.LayoutStyle;
 import javax.swing.ListCellRenderer;
 
 import com.mrprez.gencross.Personnage;
-import com.mrprez.gencross.disk.PersonnageFactory;
 import com.mrprez.gencross.edit.GenCrossEditor;
 import com.mrprez.gencross.edit.framework.EditDialog;
 import com.mrprez.gencross.edit.framework.OptionPane;
@@ -205,12 +204,12 @@ public class DistantDialog extends EditDialog<Personnage> {
 	
 	public void loadPersonnage() throws UnsupportedEncodingException, Exception {
 		if(personnageComboBox.getItemCount()==0 || personnageComboBox.getSelectedItem()==null){
-			OptionPane.showMessageDialog(this, "Aucun personnage de sélectionné.", "Action impossible", JOptionPane.ERROR_MESSAGE);
+			OptionPane.showMessageDialog(this, "Aucun personnage de sï¿½lectionnï¿½.", "Action impossible", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		PersonnageDescription pd = (PersonnageDescription)personnageComboBox.getSelectedItem();
 		byte xml[] = personnageService.getPersonnage(pd.getId(), CURRENT_VERSION);
-		personnage = PersonnageFactory.getInstance().createPersonnage(new ByteArrayInputStream(xml));
+		personnage = GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(new ByteArrayInputStream(xml));
 		
 		//super.validateData();
 	}

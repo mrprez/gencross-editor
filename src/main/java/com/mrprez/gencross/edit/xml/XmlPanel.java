@@ -14,7 +14,6 @@ import javax.swing.JTextArea;
 import javax.swing.LayoutStyle;
 
 import com.mrprez.gencross.Personnage;
-import com.mrprez.gencross.disk.PersonnageFactory;
 import com.mrprez.gencross.disk.PersonnageSaver;
 import com.mrprez.gencross.edit.GenCrossEditor;
 import com.mrprez.gencross.edit.GenCrossEditorPanel;
@@ -79,7 +78,7 @@ public class XmlPanel extends GenCrossEditorPanel {
 	@Override
 	public Personnage impact() throws Exception {
 		ByteArrayInputStream is = new ByteArrayInputStream(xmlArea.getText().getBytes(Charset.forName("UTF-8")));
-		return PersonnageFactory.getInstance().createPersonnage(is);
+		return GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(is);
 	}
 
 	@Override
@@ -93,7 +92,7 @@ public class XmlPanel extends GenCrossEditorPanel {
 	public boolean isDataValid() {
 		ByteArrayInputStream is = new ByteArrayInputStream(xmlArea.getText().getBytes(Charset.forName("UTF-8")));
 		try {
-			PersonnageFactory.getInstance().createPersonnage(is);
+			GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(is);
 		} catch (Exception e) {
 			ErrorFrame.displayError(e);
 			return false;

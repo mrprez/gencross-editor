@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
 import com.mrprez.gencross.Property;
-import com.mrprez.gencross.disk.PersonnageFactory;
+import com.mrprez.gencross.edit.GenCrossEditor;
 import com.mrprez.gencross.edit.framework.EditDialog;
 import com.mrprez.gencross.edit.framework.SimpleEDTAction;
 import com.mrprez.gencross.edit.framework.Treatment;
@@ -37,7 +37,7 @@ public class PropertyEditor extends EditDialog<Property> {
 	
 	private JLabel nameLabel = new JLabel("Nom");
 	private JTextField nameField = new JTextField(20);
-	private JLabel specificationLabel = new JLabel("Spécification");
+	private JLabel specificationLabel = new JLabel("Spï¿½cification");
 	private JCheckBox specificationCheckBox = new JCheckBox();
 	private JTextField specificationField = new JTextField();
 	private JLabel editableLabel = new JLabel("Editable");
@@ -45,7 +45,7 @@ public class PropertyEditor extends EditDialog<Property> {
 	private JLabel canBeRemovedLabel = new JLabel("Supprimable");
 	private JCheckBox canBeRemovedCheckBox = new JCheckBox();
 	private JLabel valueTypeLabel = new JLabel("Type de valeur");
-	private JComboBox valueTypeCombo = new JComboBox(new String[]{"Aucune", "Texte", "Entier", "Décimal"});
+	private JComboBox valueTypeCombo = new JComboBox(new String[]{"Aucune", "Texte", "Entier", "Dï¿½cimal"});
 	private JLabel valueLabel = new JLabel("Valeur");
 	private JTextField valueField = new JTextField(20);
 	private JLabel offsetLabel = new JLabel("Offset");
@@ -54,7 +54,7 @@ public class PropertyEditor extends EditDialog<Property> {
 	private JTextField  maxField = new JTextField(20);
 	private JLabel minLabel = new JLabel("Min");
 	private JTextField minField = new JTextField(20);
-	private JLabel defaultHistoryLabel = new JLabel("Historique par défaut");
+	private JLabel defaultHistoryLabel = new JLabel("Historique par dï¿½faut");
 	private JCheckBox defaultHistoryCheckBox = new JCheckBox();
 	private JButton addRemoveDefaultHistoryButton = new JButton("Ajouter");
 	private JButton editDefaultHistoryButton = new JButton("Editer");
@@ -70,7 +70,7 @@ public class PropertyEditor extends EditDialog<Property> {
 	private JLabel commentLabel = new JLabel("Commentaire");
 	private JTextArea commentTextArea = new JTextArea(5,20);
 	private JScrollPane commentScrollPane = new JScrollPane(commentTextArea);
-	private JLabel subPropertieslabel = new JLabel("Liste de sous-propriétés");
+	private JLabel subPropertieslabel = new JLabel("Liste de sous-propriï¿½tï¿½s");
 	private JCheckBox subPropertiesCheckBox = new JCheckBox();
 	private JButton addRemoveSubPropertiesButton = new JButton();
 	private JButton editSubPropertiesButton = new JButton("Editer");
@@ -90,7 +90,7 @@ public class PropertyEditor extends EditDialog<Property> {
 	
 	
 	public void init() throws SecurityException, NoSuchMethodException {
-		// Création des listeners
+		// Crï¿½ation des listeners
 		valueTypeCombo.addActionListener(new SimpleEDTAction(this,"fieldEnability"));
 		choiceCheckBox.addActionListener(new SimpleEDTAction(this,"fieldEnability"));
 		
@@ -381,7 +381,7 @@ public class PropertyEditor extends EditDialog<Property> {
 	
 	private String findError(){
 		if(nameField.getText().isEmpty()){
-			return "Le nom ne doit pas être vide";
+			return "Le nom ne doit pas ï¿½tre vide";
 		}
 		if(valueTypeCombo.getSelectedIndex()==2){
 			if(!valueField.getText().matches("[-]?[0-9]+")){
@@ -399,21 +399,21 @@ public class PropertyEditor extends EditDialog<Property> {
 		}
 		if(valueTypeCombo.getSelectedIndex()==3){
 			if(!valueField.getText().matches("[-]?[0-9]+([.][0-9]+)?")){
-				return "La valeur n'est pas un décimal";
+				return "La valeur n'est pas un dï¿½cimal";
 			}
 			if(!offsetField.getText().isEmpty() && !offsetField.getText().matches("[-]?[0-9]+([.][0-9]+)?")){
-				return "L'offset n'est pas un décimal";
+				return "L'offset n'est pas un dï¿½cimal";
 			}
 			if(!maxField.getText().isEmpty() && !maxField.getText().matches("[-]?[0-9]+([.][0-9]+)?")){
-				return "Le maximum n'est pas un décimal";
+				return "Le maximum n'est pas un dï¿½cimal";
 			}
 			if(!minField.getText().isEmpty() && !minField.getText().matches("[-]?[0-9]+([.][0-9]+)?")){
-				return "Le minimum n'est pas un décimal";
+				return "Le minimum n'est pas un dï¿½cimal";
 			}
 		}
 		if(!rendererField.getText().isEmpty()){
 			try {
-				property.setRenderer((Renderer) PersonnageFactory.getInstance().loadClass(rendererField.getText()).newInstance());
+				property.setRenderer((Renderer) GenCrossEditor.getInstance().getRepositoryManager().getRepositoryClassLoader().loadClass(rendererField.getText()).newInstance());
 			} catch (InstantiationException e) {
 				return "Impossible de charger la class de rendu: "+e.getMessage();
 			} catch (IllegalAccessException e) {
@@ -430,7 +430,7 @@ public class PropertyEditor extends EditDialog<Property> {
 					}
 				}else if(valueTypeCombo.getSelectedIndex()==3){
 					if(!choiceListModel.getElementAt(i).toString().matches("[-]?[0-9]+[.]?[0-9]+")){
-						return "L'option "+choiceListModel.getElementAt(i)+" n'est pas un décimal";
+						return "L'option "+choiceListModel.getElementAt(i)+" n'est pas un dï¿½cimal";
 					}
 				}
 			}
@@ -441,7 +441,7 @@ public class PropertyEditor extends EditDialog<Property> {
 	public void submit() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		String error = findError();
 		if(error!=null){
-			JOptionPane.showMessageDialog(this, error, "Propriété invalide", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, error, "Propriï¿½tï¿½ invalide", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		
@@ -491,7 +491,7 @@ public class PropertyEditor extends EditDialog<Property> {
 		property.setMin(min);
 		property.setMax(max);
 		if(!rendererField.getText().isEmpty()){
-			property.setRenderer((Renderer) PersonnageFactory.getInstance().loadClass(rendererField.getText()).newInstance());
+			property.setRenderer((Renderer) GenCrossEditor.getInstance().getRepositoryManager().getRepositoryClassLoader().loadClass(rendererField.getText()).newInstance());
 		}else{
 			property.setRenderer(null);
 		}

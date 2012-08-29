@@ -46,7 +46,7 @@ public class AddRemoveHistoryWork implements BackgroundWork {
 	
 	private void removeHistory() throws Exception {
 		Property property = propertyEditor.getProperty();
-		int confirm = OptionPane.showConfirmDialog(propertyEditor, "Etes-vous sûr de vouloir supprimer la liste de sous propriétés?", "Confirmation", JOptionPane.YES_NO_OPTION);
+		int confirm = OptionPane.showConfirmDialog(propertyEditor, "Etes-vous sÃ»r de vouloir supprimer la liste de sous propriÃ©tÃ©s?", "Confirmation", JOptionPane.YES_NO_OPTION);
 		if(confirm==JOptionPane.YES_OPTION){
 			property.removeSubProperties();
 			GenCrossEditor.getInstance().getTreePanel().setChanged(true);

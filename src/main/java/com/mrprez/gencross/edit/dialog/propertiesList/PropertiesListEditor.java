@@ -29,13 +29,13 @@ public class PropertiesListEditor extends EditDialog<PropertiesList> {
 	private JCheckBox fixeCheckBox = new JCheckBox();
 	private JLabel openLabel = new JLabel("Ouverte");
 	private JCheckBox openCheckBox = new JCheckBox();
-	private JLabel canRemoveElementLabel = new JLabel("Sous-éléments supprimables");
+	private JLabel canRemoveElementLabel = new JLabel("Sous-Ã©ments supprimables");
 	private JComboBox canRemoveElementList = new JComboBox(new String[]{"DEFAUT","OUI", "NON"});
-	private JLabel defaultPropertyLabel = new JLabel("Propriété par défaut");
+	private JLabel defaultPropertyLabel = new JLabel("PropriÃ©tÃ© par dÃ©faut");
 	private JCheckBox defaultPropertyCheckBox = new JCheckBox();
 	private JButton addRemoveDefaultPropertyButton = new JButton("Ajouer");
 	private JButton editDefaultPropertyButton = new JButton("Editer");
-	private JLabel propertiesLabel = new JLabel("Propriétés");
+	private JLabel propertiesLabel = new JLabel("PropriÃ©tÃ©s");
 	private DefaultListModel propertiesModel = new DefaultListModel();
 	private JList propertiesJList = new JList(propertiesModel);
 	private JScrollPane propertiesScroller = new JScrollPane(propertiesJList);
@@ -212,7 +212,7 @@ public class PropertiesListEditor extends EditDialog<PropertiesList> {
 	
 	public String findError(){
 		if(openCheckBox.isSelected() && !defaultPropertyCheckBox.isSelected()){
-			return "Si la liste est ouverte,il faut une propriété par défaut";
+			return "Si la liste est ouverte,il faut une propriï¿½tï¿½ par dï¿½faut";
 		}
 		
 		return null;
@@ -221,7 +221,7 @@ public class PropertiesListEditor extends EditDialog<PropertiesList> {
 	public void submit(){
 		String error = findError();
 		if(findError()!=null){
-			JOptionPane.showMessageDialog(this, error, "Liste de propriétés invalide", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, error, "Liste de propriï¿½tï¿½s invalide", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		

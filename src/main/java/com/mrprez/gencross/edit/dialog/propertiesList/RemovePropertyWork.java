@@ -19,7 +19,7 @@ public class RemovePropertyWork implements BackgroundWork {
 
 	@Override
 	public void doInBackground() throws Exception {
-		int confirm = OptionPane.showConfirmDialog(propertiesListEditor, "Etes-vous sûr de vouloir supprimer ces propriétés?", "Confirmation", JOptionPane.YES_NO_OPTION);
+		int confirm = OptionPane.showConfirmDialog(propertiesListEditor, "Etes-vous sÃ»r de vouloir supprimer ces propriÃ©tÃ©s?", "Confirmation", JOptionPane.YES_NO_OPTION);
 		if(confirm==JOptionPane.YES_OPTION){
 			Object propertiesName[] = propertiesListEditor.getSelectedPropertiesName();
 			PropertiesList propertiesList = propertiesListEditor.getPropertiesList();

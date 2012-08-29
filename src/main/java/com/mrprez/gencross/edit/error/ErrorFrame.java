@@ -22,8 +22,8 @@ import com.mrprez.gencross.edit.framework.SimpleEDTAction;
 public class ErrorFrame extends JDialog implements Runnable {
 	private static final long serialVersionUID = 1L;
 	private Throwable exception;
-	private JLabel message = new JLabel("L'application a rencontré un problème. Contactez votre administrateur.");
-	private JButton detailButton = new JButton("Détails");
+	private JLabel message = new JLabel("L'application a rencontrï¿½ un problï¿½me. Contactez votre administrateur.");
+	private JButton detailButton = new JButton("Dï¿½tails");
 	private JPanel errorPanel = new JPanel();
 	private JScrollPane scrollPane = new JScrollPane(errorPanel);
 	private JSeparator emptyPanel = new JSeparator();
@@ -86,10 +86,14 @@ public class ErrorFrame extends JDialog implements Runnable {
 				constraint.gridy = constraint.gridy+1;
 				errorPanel.add(new JLabel("  "+stackTrace[i].toString()),constraint);
 			}
-			currentException = currentException.getCause();
-			if(currentException!=null){
-				constraint.gridy = constraint.gridy+1;
-				errorPanel.add(new JLabel("Caused by: "+currentException.getClass().getName()+" : "+currentException.getMessage()),constraint);
+			if(currentException.getCause() != null && currentException.getCause() != currentException){
+				currentException = currentException.getCause();
+				if(currentException!=null){
+					constraint.gridy = constraint.gridy+1;
+					errorPanel.add(new JLabel("Caused by: "+currentException.getClass().getName()+" : "+currentException.getMessage()),constraint);
+				}
+			}else{
+				currentException = null;
 			}
 		}while(currentException!=null);
 		

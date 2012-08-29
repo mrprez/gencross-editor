@@ -104,7 +104,7 @@ public class PointPoolEditor extends EditDialog<PoolPoint> {
 	
 	public String findError(){
 		if(nameField.getText().trim().isEmpty()){
-			return "Nom du pool de point non-renseigné";
+			return "Nom du pool de point non-renseignÃ©";
 		}
 		if(!remainingField.getText().matches("[-]?[0-9]+")){
 			return "Nombre de points restant invalide";

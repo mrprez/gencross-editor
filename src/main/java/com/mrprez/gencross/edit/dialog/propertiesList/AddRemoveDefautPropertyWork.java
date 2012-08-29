@@ -42,7 +42,7 @@ public class AddRemoveDefautPropertyWork implements BackgroundWork {
 	}
 	
 	private void removeDefaultProperty(){
-		int confirm = OptionPane.showConfirmDialog(propertiesListEditor, "Etes-vous sûr de vouloir supprimer la propriété par défaut?", "Confirmation", JOptionPane.YES_NO_OPTION);
+		int confirm = OptionPane.showConfirmDialog(propertiesListEditor, "Etes-vous sÃ»r de vouloir supprimer la propriÃ©tÃ© par dÃ©faut?", "Confirmation", JOptionPane.YES_NO_OPTION);
 		if(confirm==JOptionPane.YES_OPTION){
 			PropertiesList propertiesList = propertiesListEditor.getPropertiesList();
 			propertiesList.setDefaultProperty(null);
