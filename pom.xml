@@ -14,14 +14,14 @@
 	<parent>
 		<artifactId>gencross-parent</artifactId>
 		<groupId>com.mrprez.gencross</groupId>
-		<version>1.1-SNAPSHOT</version>
+		<version>1.1</version>
 	</parent>
 	
 	<dependencies>
 		<dependency>
 			<artifactId>gencross</artifactId>
 			<groupId>com.mrprez.gencross</groupId>
-			<version>1.6-SNAPSHOT</version>
+			<version>${gencross.version}</version>
 		</dependency>
 		
 
@@ -45,7 +45,7 @@
 								<artifactItem>
 									<artifactId>plugin-repository</artifactId>
 									<groupId>com.mrprez.gencross.plugins</groupId>
-									<version>1.1-SNAPSHOT</version>
+									<version>${plugins.version}</version>
 									<classifier>pluginRepository</classifier>
 									<type>zip</type>
 									<overWrite>true</overWrite>
