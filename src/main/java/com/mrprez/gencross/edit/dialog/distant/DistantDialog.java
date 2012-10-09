@@ -33,7 +33,7 @@ import com.mrprez.gencross.edit.webservice.PluginDescription;
 
 public class DistantDialog extends EditDialog<Personnage> {
 	private static final long serialVersionUID = 1L;
-	private static String DEFAULT_ADRESS_SERVER = "http://localhost:8080/GenCrossWeb/services/PersonnageService";
+	private static String DEFAULT_ADRESS_SERVER = "http://localhost:8181/gencross-web/services/PersonnageService";
 	private static String VALID_VERSION = "validVersion";
 	private static String CURRENT_VERSION = "currentVersion";
 	
@@ -204,7 +204,7 @@ public class DistantDialog extends EditDialog<Personnage> {
 	
 	public void loadPersonnage() throws UnsupportedEncodingException, Exception {
 		if(personnageComboBox.getItemCount()==0 || personnageComboBox.getSelectedItem()==null){
-			OptionPane.showMessageDialog(this, "Aucun personnage de s�lectionn�.", "Action impossible", JOptionPane.ERROR_MESSAGE);
+			OptionPane.showMessageDialog(this, "Aucun personnage de sélectionné.", "Action impossible", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		PersonnageDescription pd = (PersonnageDescription)personnageComboBox.getSelectedItem();

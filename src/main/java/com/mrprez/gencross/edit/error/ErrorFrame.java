@@ -22,8 +22,8 @@ import com.mrprez.gencross.edit.framework.SimpleEDTAction;
 public class ErrorFrame extends JDialog implements Runnable {
 	private static final long serialVersionUID = 1L;
 	private Throwable exception;
-	private JLabel message = new JLabel("L'application a rencontr� un probl�me. Contactez votre administrateur.");
-	private JButton detailButton = new JButton("D�tails");
+	private JLabel message = new JLabel("L'application a rencontré un problème. Contactez votre administrateur.");
+	private JButton detailButton = new JButton("Détails");
 	private JPanel errorPanel = new JPanel();
 	private JScrollPane scrollPane = new JScrollPane(errorPanel);
 	private JSeparator emptyPanel = new JSeparator();
