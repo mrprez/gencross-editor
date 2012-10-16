@@ -59,39 +59,28 @@
 			
 			<plugin>
 				<groupId>org.apache.cxf</groupId>
-				<artifactId>cxf-java2ws-plugin</artifactId>
+				<artifactId>cxf-codegen-plugin</artifactId>
 				<version>${cxf.version}</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-frontend-jaxws</artifactId>
-						<version>${cxf.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.cxf</groupId>
-						<artifactId>cxf-rt-frontend-simple</artifactId>
-						<version>${cxf.version}</version>
-					</dependency>
-					<dependency>
-						<artifactId>gencross</artifactId>
-						<groupId>com.mrprez.gencross</groupId>
-						<version>${gencross.version}</version>
-					</dependency>
-				</dependencies>
 				<executions>
 					<execution>
-						<id>process-classes</id>
-						<phase>process-classes</phase>
+						<id>generate-sources</id>
+						<phase>generate-sources</phase>
 						<configuration>
-							<outputFile>${basedir}/PersonnageService.wsdl</outputFile>
-							<className>com.mrprez.gencross.web.service.PersonnageService</className>
-							<genWsdl>true</genWsdl>
-							<verbose>true</verbose>
-							<genServer>true</genServer>
-							<argline>-s ${basedir}/src/main/java</argline>
+							<sourceRoot>${basedir}/src/main/java</sourceRoot>
+							<wsdlOptions>
+								<wsdlOption>
+									<wsdl>${basedir}/../gencross-web/PersonnageService.wsdl</wsdl>
+									<extraargs>
+					                    <extraarg>-client</extraarg>
+					                    <extraarg>-verbose</extraarg>
+					                    <extraarg>-p</extraarg>
+					                    <extraarg>com.mrprez.gencross.edit.webservice.generated</extraarg>
+					                </extraargs>
+								</wsdlOption>
+							</wsdlOptions>
 						</configuration>
 						<goals>
-							<goal>java2ws</goal>
+							<goal>wsdl2java</goal>
 						</goals>
 					</execution>
 				</executions>
