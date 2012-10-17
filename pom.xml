@@ -75,6 +75,7 @@
 					                    <extraarg>-verbose</extraarg>
 					                    <extraarg>-p</extraarg>
 					                    <extraarg>com.mrprez.gencross.edit.webservice.generated</extraarg>
+					                    <extraarg>-allowElementReferences</extraarg>
 					                </extraargs>
 								</wsdlOption>
 							</wsdlOptions>

@@ -18,6 +18,7 @@ import javax.swing.LayoutStyle;
 import javax.swing.ListCellRenderer;
 
 import com.mrprez.gencross.Personnage;
+import com.mrprez.gencross.disk.PluginDescriptor;
 import com.mrprez.gencross.edit.GenCrossEditor;
 import com.mrprez.gencross.edit.framework.EditDialog;
 import com.mrprez.gencross.edit.framework.OptionPane;
@@ -25,11 +26,8 @@ import com.mrprez.gencross.edit.framework.ReflectivBackgroundWork;
 import com.mrprez.gencross.edit.framework.ReflectivEdtWork;
 import com.mrprez.gencross.edit.framework.Treatment;
 import com.mrprez.gencross.edit.framework.Work;
-import com.mrprez.gencross.edit.webservice.Exception_Exception;
-import com.mrprez.gencross.edit.webservice.PersonnageDescription;
-import com.mrprez.gencross.edit.webservice.PersonnageService;
-import com.mrprez.gencross.edit.webservice.PersonnageServiceFactory;
-import com.mrprez.gencross.edit.webservice.PluginDescription;
+import com.mrprez.gencross.edit.webservice.generated.PersonnageDescription;
+import com.mrprez.gencross.edit.webservice.generated.PersonnageService;
 
 public class DistantDialog extends EditDialog<Personnage> {
 	private static final long serialVersionUID = 1L;
@@ -40,7 +38,7 @@ public class DistantDialog extends EditDialog<Personnage> {
 	private static DistantDialog instance;
 	
 	private PersonnageService personnageService;
-	private List<PluginDescription> pluginList;
+	private List<PluginDescriptor> pluginList;
 	private List<PersonnageDescription> personnageList;
 	private Personnage personnage;
 	
@@ -73,11 +71,11 @@ public class DistantDialog extends EditDialog<Personnage> {
 		pluginComboBox.setRenderer(new ListCellRenderer() {
 			@Override
 			public Component getListCellRendererComponent(JList arg0, Object arg1, int arg2, boolean arg3, boolean arg4) {
-				PluginDescription pg = (PluginDescription) arg1;
-				if(pg==null){
+				PluginDescriptor pd = (PluginDescriptor) arg1;
+				if(pd==null){
 					return new JLabel(" - ");
 				}
-				return new JLabel(pg.getName()+" (v "+pg.getVersion()+")");
+				return new JLabel(pd.getName()+" (v "+pd.getVersion()+")");
 			}
 		});
 		Work loadPersoWork = new ReflectivBackgroundWork(this, "loadPersonnageList", new ReflectivEdtWork(this, "refreshPersonnageComboBox"));
