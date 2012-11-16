@@ -2,9 +2,10 @@ package com.mrprez.gencross.edit.dialog.distant;
 
 import java.awt.Component;
 import java.awt.Frame;
-import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.GroupLayout;
@@ -16,6 +17,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.ListCellRenderer;
+import javax.xml.namespace.QName;
+import javax.xml.rpc.ServiceException;
+
+import org.apache.axis.client.Call;
+import org.apache.axis.client.Service;
 
 import com.mrprez.gencross.Personnage;
 import com.mrprez.gencross.disk.PluginDescriptor;
@@ -26,18 +32,16 @@ import com.mrprez.gencross.edit.framework.ReflectivBackgroundWork;
 import com.mrprez.gencross.edit.framework.ReflectivEdtWork;
 import com.mrprez.gencross.edit.framework.Treatment;
 import com.mrprez.gencross.edit.framework.Work;
-import com.mrprez.gencross.edit.webservice.generated.PersonnageDescription;
-import com.mrprez.gencross.edit.webservice.generated.PersonnageService;
 
 public class DistantDialog extends EditDialog<Personnage> {
 	private static final long serialVersionUID = 1L;
-	private static String DEFAULT_ADRESS_SERVER = "http://localhost:8181/gencross-web/services/PersonnageService";
+	private static String DEFAULT_ADRESS_SERVER = "http://localhost:8181/gencross-web/axis/PersonnageService";
 	private static String VALID_VERSION = "validVersion";
 	private static String CURRENT_VERSION = "currentVersion";
 	
 	private static DistantDialog instance;
 	
-	private PersonnageService personnageService;
+	private WebServiceClient webServiceClient;
 	private List<PluginDescriptor> pluginList;
 	private List<PersonnageDescription> personnageList;
 	private Personnage personnage;
@@ -161,11 +165,12 @@ public class DistantDialog extends EditDialog<Personnage> {
 		return instance;
 	}
 	
-	public void loadPluginList() throws MalformedURLException, Exception_Exception {
+	public void loadPluginList() throws ServiceException, MalformedURLException, RemoteException {
 		pluginList = null;
 		personnageList = null;
-		personnageService = PersonnageServiceFactory.buildService(serverAdressField.getText());
-		pluginList = personnageService.getAvailablePersonnageList();
+		webServiceClient = new WebServiceClient(serverAdressField.getText().trim());
+		pluginList = new ArrayList<PluginDescriptor>(webServiceClient.loadPluginList());
+		refreshPluginComboBox();
 	}
 	public void refreshPluginComboBox(){
 		pluginComboBox.removeAllItems();
@@ -175,16 +180,17 @@ public class DistantDialog extends EditDialog<Personnage> {
 		}else{
 			pluginButton.setEnabled(true);
 			pluginComboBox.setEnabled(true);
-			for(PluginDescription plugin : pluginList){
+			for(PluginDescriptor plugin : pluginList){
 				pluginComboBox.addItem(plugin);
 			}
 		}
 		refreshPersonnageComboBox();
 	}
 	
-	public void loadPersonnageList() throws Exception_Exception{
-		PluginDescription pluginDescription = (PluginDescription) pluginComboBox.getSelectedItem();
+	public void loadPersonnageList() {
+		/*PluginDescription pluginDescription = (PluginDescription) pluginComboBox.getSelectedItem();
 		personnageList = personnageService.getPersonnageList(pluginDescription.getName());
+		*/
 	}
 	public void refreshPersonnageComboBox(){
 		personnageComboBox.removeAllItems();
@@ -206,8 +212,8 @@ public class DistantDialog extends EditDialog<Personnage> {
 			return;
 		}
 		PersonnageDescription pd = (PersonnageDescription)personnageComboBox.getSelectedItem();
-		byte xml[] = personnageService.getPersonnage(pd.getId(), CURRENT_VERSION);
-		personnage = GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(new ByteArrayInputStream(xml));
+		//byte xml[] = personnageService.getPersonnage(pd.getId(), CURRENT_VERSION);
+		//personnage = GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(new ByteArrayInputStream(xml));
 		
 		//super.validateData();
 	}
