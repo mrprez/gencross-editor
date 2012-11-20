@@ -2,11 +2,13 @@ package com.mrprez.gencross.edit.dialog.distant;
 
 import java.awt.Component;
 import java.awt.Frame;
+import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -17,11 +19,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.ListCellRenderer;
-import javax.xml.namespace.QName;
 import javax.xml.rpc.ServiceException;
-
-import org.apache.axis.client.Call;
-import org.apache.axis.client.Service;
 
 import com.mrprez.gencross.Personnage;
 import com.mrprez.gencross.disk.PluginDescriptor;
@@ -43,7 +41,7 @@ public class DistantDialog extends EditDialog<Personnage> {
 	
 	private WebServiceClient webServiceClient;
 	private List<PluginDescriptor> pluginList;
-	private List<PersonnageDescription> personnageList;
+	private Map<String, Integer> personnageMap;
 	private Personnage personnage;
 	
 	private JLabel serverAdressLabel = new JLabel("Adresse du serveur");
@@ -85,24 +83,6 @@ public class DistantDialog extends EditDialog<Personnage> {
 		Work loadPersoWork = new ReflectivBackgroundWork(this, "loadPersonnageList", new ReflectivEdtWork(this, "refreshPersonnageComboBox"));
 		pluginButton.addActionListener(new Treatment(loadPersoWork, true, this));
 		
-		personnageComboBox.setRenderer(new ListCellRenderer() {
-			@Override
-			public Component getListCellRendererComponent(JList arg0, Object arg1, int arg2, boolean arg3, boolean arg4) {
-				PersonnageDescription pd = (PersonnageDescription) arg1;
-				if(pd==null){
-					return new JLabel(" - ");
-				}
-				if(pd.getGmName()!=null && pd.getPlayerName()!=null){
-					return new JLabel(pd.getName()+" (MJ:"+pd.getGmName()+", PJ:"+pd.getPlayerName()+")");
-				} else if(pd.getGmName()!=null && pd.getPlayerName()==null){
-					return new JLabel(pd.getName()+" (MJ:"+pd.getPlayerName()+")");
-				}if(pd.getGmName()==null && pd.getPlayerName()!=null){
-					return new JLabel(pd.getName()+" (PJ:"+pd.getPlayerName()+")");
-				}else{
-					return new JLabel(pd.getName());
-				}
-			}
-		});
 		personnageButton.addActionListener(new Treatment(new ReflectivBackgroundWork(this, "loadPersonnage", new ReflectivEdtWork(this, "validateData"))));
 		
 		refreshPluginComboBox();
@@ -167,7 +147,7 @@ public class DistantDialog extends EditDialog<Personnage> {
 	
 	public void loadPluginList() throws ServiceException, MalformedURLException, RemoteException {
 		pluginList = null;
-		personnageList = null;
+		personnageMap = null;
 		webServiceClient = new WebServiceClient(serverAdressField.getText().trim());
 		pluginList = new ArrayList<PluginDescriptor>(webServiceClient.loadPluginList());
 		refreshPluginComboBox();
@@ -187,20 +167,20 @@ public class DistantDialog extends EditDialog<Personnage> {
 		refreshPersonnageComboBox();
 	}
 	
-	public void loadPersonnageList() {
-		/*PluginDescription pluginDescription = (PluginDescription) pluginComboBox.getSelectedItem();
-		personnageList = personnageService.getPersonnageList(pluginDescription.getName());
-		*/
+	public void loadPersonnageList() throws ServiceException, RemoteException {
+		PluginDescriptor pluginDescriptor = (PluginDescriptor) pluginComboBox.getSelectedItem();
+		personnageMap = webServiceClient.findPersonnageList(pluginDescriptor);
+		
 	}
 	public void refreshPersonnageComboBox(){
 		personnageComboBox.removeAllItems();
-		if(personnageList==null || personnageList.isEmpty()){
+		if(personnageMap==null || personnageMap.isEmpty()){
 			personnageButton.setEnabled(false);
 			personnageComboBox.setEnabled(false);
 		}else{
 			personnageButton.setEnabled(true);
 			personnageComboBox.setEnabled(true);
-			for(PersonnageDescription persoDesc : personnageList){
+			for(String persoDesc : personnageMap.keySet()){
 				personnageComboBox.addItem(persoDesc);
 			}
 		}
@@ -211,11 +191,12 @@ public class DistantDialog extends EditDialog<Personnage> {
 			OptionPane.showMessageDialog(this, "Aucun personnage de sélectionné.", "Action impossible", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		PersonnageDescription pd = (PersonnageDescription)personnageComboBox.getSelectedItem();
-		//byte xml[] = personnageService.getPersonnage(pd.getId(), CURRENT_VERSION);
-		//personnage = GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(new ByteArrayInputStream(xml));
+		String personnageDescriptor = (String) personnageComboBox.getSelectedItem();
+		Integer personnageId = personnageMap.get(personnageDescriptor);
+		byte xml[] = webServiceClient.loadPersonnage(personnageId.intValue());
+		personnage = GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(new ByteArrayInputStream(xml));
 		
-		//super.validateData();
+		super.validateData();
 	}
 
 }

@@ -5,6 +5,7 @@ import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import javax.xml.namespace.QName;
 import javax.xml.rpc.ServiceException;
@@ -20,6 +21,8 @@ import com.mrprez.gencross.disk.PluginDescriptor;
 public class WebServiceClient {
 	private static String NAMESPACE_URI = "http://soapinterop.org/";
 	private static String GET_PLUGIN_LIST = "getPluginList";
+	private static String FIND_PERSONNAGE_LIST = "findPersonnageList";
+	private static String LOAD_PERSONNAGE = "loadPersonnage";
 	
 	private Service service = new Service();
 	
@@ -35,10 +38,10 @@ public class WebServiceClient {
 		Call call = (Call) service.createCall();
 		call.setTargetEndpointAddress(targetEndpointUrl);
 		call.setOperationName(new QName(NAMESPACE_URI, GET_PLUGIN_LIST));
-		QName pluginDescriptorXmlType = new QName("urn:PluginDescriptor", "local");
+		QName pluginDescriptorXmlType = new QName("local", "PluginDescriptor");
 		call.registerTypeMapping(PluginDescriptor.class, pluginDescriptorXmlType, new BeanSerializerFactory(PluginDescriptor.class, pluginDescriptorXmlType), new BeanDeserializerFactory(PluginDescriptor.class, pluginDescriptorXmlType));
-		QName versionXmlType = new QName("urn:Version", "local");
-		call.registerTypeMapping(PluginDescriptor.class, versionXmlType, new BeanSerializerFactory(Version.class, versionXmlType), new BeanDeserializerFactory(Version.class, versionXmlType));
+		QName versionXmlType = new QName("local", "Version");
+		call.registerTypeMapping(Version.class, versionXmlType, new BeanSerializerFactory(Version.class, versionXmlType), new BeanDeserializerFactory(Version.class, versionXmlType));
 		
 		Object pluginDescriptorTab[] = (Object[]) call.invoke(new Object[0]);
 		
@@ -50,5 +53,27 @@ public class WebServiceClient {
 		return pluginList;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public Map<String, Integer> findPersonnageList(PluginDescriptor pluginDescriptor) throws ServiceException, RemoteException{
+		Call call = (Call) service.createCall();
+		call.setTargetEndpointAddress(targetEndpointUrl);
+		call.setOperationName(new QName(NAMESPACE_URI, FIND_PERSONNAGE_LIST));
+		
+		QName versionXmlType = new QName("local", "Version");
+		call.registerTypeMapping(Version.class, versionXmlType, new BeanSerializerFactory(Version.class, versionXmlType), new BeanDeserializerFactory(Version.class, versionXmlType));
+		QName pluginDescriptorXmlType = new QName("local", "PluginDescriptor");
+		call.registerTypeMapping(PluginDescriptor.class, pluginDescriptorXmlType, new BeanSerializerFactory(PluginDescriptor.class, pluginDescriptorXmlType), new BeanDeserializerFactory(PluginDescriptor.class, pluginDescriptorXmlType));
+		
+		return (Map<String, Integer>) call.invoke(new Object[]{pluginDescriptor});
+	}
+	
+	
+	public byte[] loadPersonnage(Integer personnageId) throws ServiceException, RemoteException{
+		Call call = (Call) service.createCall();
+		call.setTargetEndpointAddress(targetEndpointUrl);
+		call.setOperationName(new QName(NAMESPACE_URI, LOAD_PERSONNAGE));
+		
+		return (byte[]) call.invoke(new Object[]{personnageId});
+	}
 
 }
