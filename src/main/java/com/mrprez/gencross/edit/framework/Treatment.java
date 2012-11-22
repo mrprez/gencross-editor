@@ -13,7 +13,8 @@ import com.mrprez.gencross.edit.GenCrossEditor;
 import com.mrprez.gencross.edit.error.ErrorFrame;
 
 public class Treatment implements Runnable, ActionListener, KeyListener {
-	private Work work;
+	private Work firstWork;
+	private Work currentWork;
 	private static Boolean runningTreatment = Boolean.FALSE;
 	private boolean busy = false;
 	private Component component;
@@ -21,12 +22,12 @@ public class Treatment implements Runnable, ActionListener, KeyListener {
 	
 	public Treatment(Work work) {
 		super();
-		this.work = work;
+		this.firstWork = work;
 	}
 	
 	public Treatment(Work work, boolean busy, Component component) {
 		super();
-		this.work = work;
+		this.firstWork = work;
 		this.busy = busy;
 		this.component = component;
 	}
@@ -36,24 +37,22 @@ public class Treatment implements Runnable, ActionListener, KeyListener {
 	@Override
 	public void run() {
 		try{
-			if(work instanceof EdtWork){
-				EdtWork edtWork = (EdtWork)work;
+			if(currentWork instanceof EdtWork){
+				EdtWork edtWork = (EdtWork)currentWork;
 				edtWork.doInEdt();
 				Work nextWork = edtWork.getNextWork();
 				if(nextWork!=null){
-					Treatment nextAction = new Treatment(nextWork, busy, component);
-					nextAction.execute();
+					execute(nextWork);
 				}
-			}else if(work instanceof BackgroundWork){
-				BackgroundWork backgroundWork = (BackgroundWork)work;
+			}else if(currentWork instanceof BackgroundWork){
+				BackgroundWork backgroundWork = (BackgroundWork)currentWork;
 				backgroundWork.doInBackground();
 				Work nextWork = backgroundWork.getNextWork();
 				if(nextWork!=null){
-					Treatment nextAction = new Treatment(nextWork, busy, component);
-					nextAction.execute();
+					execute(nextWork);
 				}
 			}
-			if(work.getNextWork()==null && busy){
+			if(currentWork.getNextWork()==null && busy){
 				synchronized (runningTreatment) {
 					runningTreatment = Boolean.FALSE;
 					CursorUtilities.setDefaultCursor(component);
@@ -70,7 +69,8 @@ public class Treatment implements Runnable, ActionListener, KeyListener {
 		}
 	}
 	
-	private void execute(){
+	private void execute(Work work){
+		currentWork = work;
 		if(work instanceof EdtWork){
 			SwingUtilities.invokeLater(this);
 		}else if(work instanceof BackgroundWork){
@@ -94,7 +94,7 @@ public class Treatment implements Runnable, ActionListener, KeyListener {
 				CursorUtilities.setWaitCursor(component);
 			}
 		}
-		execute();
+		execute(firstWork);
 	}
 	
 

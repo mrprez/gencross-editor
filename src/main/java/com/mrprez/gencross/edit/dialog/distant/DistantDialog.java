@@ -80,10 +80,11 @@ public class DistantDialog extends EditDialog<Personnage> {
 				return new JLabel(pd.getName()+" (v "+pd.getVersion()+")");
 			}
 		});
-		Work loadPersoWork = new ReflectivBackgroundWork(this, "loadPersonnageList", new ReflectivEdtWork(this, "refreshPersonnageComboBox"));
-		pluginButton.addActionListener(new Treatment(loadPersoWork, true, this));
+		Work loadPersoListWork = new ReflectivBackgroundWork(this, "loadPersonnageList", new ReflectivEdtWork(this, "refreshPersonnageComboBox"));
+		pluginButton.addActionListener(new Treatment(loadPersoListWork, true, this));
 		
-		personnageButton.addActionListener(new Treatment(new ReflectivBackgroundWork(this, "loadPersonnage", new ReflectivEdtWork(this, "validateData"))));
+		Work loadPersoWork = new ReflectivBackgroundWork(this, "loadPersonnage", new ReflectivEdtWork(this, "validateData"));
+		personnageButton.addActionListener(new Treatment(loadPersoWork, true, this));
 		
 		refreshPluginComboBox();
 		
