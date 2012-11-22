@@ -1,16 +1,15 @@
 package com.mrprez.gencross.edit.framework;
 
-import java.awt.Window;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 public class CloseEditDialogListener implements WindowListener {
-	private Window window;
+	private EditDialog<?> editDialog;
 	
 	
-	public CloseEditDialogListener(Window window) {
+	public CloseEditDialogListener(EditDialog<?> editDialog) {
 		super();
-		this.window = window;
+		this.editDialog = editDialog;
 	}
 
 
@@ -30,8 +29,9 @@ public class CloseEditDialogListener implements WindowListener {
 
 	@Override
 	public void windowClosing(WindowEvent e) {
-		synchronized(window){
-			window.notify();
+		synchronized(editDialog){
+			editDialog.result = null;
+			editDialog.notify();
 		}
 	}
 

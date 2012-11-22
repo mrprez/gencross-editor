@@ -15,8 +15,9 @@ public class DistantPersonnageWork implements BackgroundWork {
 	@Override
 	public void doInBackground() throws Exception {
 		Personnage personnage = DistantDialog.getInstance().edit();
-		
-		
+		if(personnage != null){
+			GenCrossEditor.getInstance().setPersonnage(personnage);
+		}
 		
 		/*PluginDescription pluginDescription = choosePlugin();
 		if(pluginDescription==null){

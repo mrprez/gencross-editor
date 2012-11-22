@@ -13,7 +13,7 @@ import com.mrprez.gencross.edit.error.ErrorFrame;
 public abstract class EditDialog<T> extends JDialog implements Runnable {
 	private static final long serialVersionUID = 1L;
 	
-	private T result;
+	T result;
 	
 	
 	public EditDialog(Dialog arg0) {
@@ -39,8 +39,9 @@ public abstract class EditDialog<T> extends JDialog implements Runnable {
 	}
 	
 	public synchronized void validateData(){
-		dispose();
+		super.setVisible(false);
 		result = getResult();
+		notify();
 	}
 	
 	public abstract T getResult();
