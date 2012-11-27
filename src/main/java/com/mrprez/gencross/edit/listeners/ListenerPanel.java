@@ -131,4 +131,9 @@ public class ListenerPanel extends GenCrossEditorPanel {
 		
 	}
 
+	@Override
+	public boolean isDataValid() {
+		return true;
+	}
+
 }

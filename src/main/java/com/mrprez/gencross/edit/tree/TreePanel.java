@@ -139,14 +139,14 @@ public class TreePanel extends GenCrossEditorPanel {
 	public PropertyTree getPropertyTree() {
 		return propertyTree;
 	}
+
+	@Override
+	public boolean isDataValid() {
+		return true;
+	}
 	
 	
 
-	
-
-	
-
-	
 	
 	
 

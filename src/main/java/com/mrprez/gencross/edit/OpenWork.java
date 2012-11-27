@@ -18,8 +18,8 @@ public class OpenWork implements BackgroundWork{
 	
 	private Personnage personnage;
 	private String xmlSource;
-	private String title;
-	private NewPersonnageEdtWork newPersonnageEdtWork;
+	private String personnageName;
+	private Work nextWork;
 	
 	
 	public String readXmlSource(File gcrFile) throws Exception{
@@ -43,18 +43,18 @@ public class OpenWork implements BackgroundWork{
 		int returnCode = fileChooser.showOpenDialog(GenCrossEditor.getInstance());
 		xmlSource = null;
 		personnage = null;
-		newPersonnageEdtWork = null;
+		nextWork = null;
 		if(returnCode == JFileChooser.APPROVE_OPTION) {
 			try{
-				title = "GenCrossEditor - "+fileChooser.getSelectedFile().getName();
+				personnageName = "GenCrossEditor - "+fileChooser.getSelectedFile().getName();
 				xmlSource = readXmlSource(fileChooser.getSelectedFile());
 				personnage = GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnageFromGcr(fileChooser.getSelectedFile());
-				newPersonnageEdtWork = new NewPersonnageEdtWork(title, personnage, xmlSource);
+				nextWork = new SetPersonnageEdtWork(personnageName, personnage);
 			}catch(Throwable e){
 				ErrorFrame.displayError(e);
 				returnCode = OptionPane.showConfirmDialog(GenCrossEditor.getInstance(), "Voulez-vous charger l'XML source?", "Impossible de charger ce personnage", JOptionPane.YES_NO_OPTION);
 				if(returnCode == JOptionPane.YES_OPTION){
-					newPersonnageEdtWork = new NewPersonnageEdtWork(title, xmlSource);
+					nextWork = new SetInvalidXmlEdtWork(personnageName, xmlSource);
 				}
 			}
 		}
@@ -63,7 +63,7 @@ public class OpenWork implements BackgroundWork{
 
 	@Override
 	public Work getNextWork() {
-		return newPersonnageEdtWork;
+		return nextWork;
 	}
 
 	

@@ -13,17 +13,14 @@ public abstract class GenCrossEditorPanel extends JPanel {
 	
 	public abstract Personnage impact() throws Exception;
 	
+	public abstract boolean isDataValid();
+	
 	public boolean isChanged() {
 		return changed;
 	}
 	public void setChanged(boolean changed) {
 		this.changed = changed;
 	}
-	public boolean isDataValid(){
-		return true;
-	}
-	
-	
 	
 
 

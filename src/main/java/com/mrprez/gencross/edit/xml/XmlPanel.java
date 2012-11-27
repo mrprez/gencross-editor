@@ -27,6 +27,8 @@ public class XmlPanel extends GenCrossEditorPanel {
 	private JScrollPane xmlScrollPane = new JScrollPane(xmlArea);
 	private JButton xmlValidationButton = new JButton("Valider");
 	
+	private Exception xmlException;
+	
 	
 	
 
@@ -68,6 +70,8 @@ public class XmlPanel extends GenCrossEditorPanel {
 			for(int i=0; i<tabbedPane.getTabCount(); i++){
 				tabbedPane.setEnabledAt(i, true);
 			}
+		}else{
+			ErrorFrame.displayError(xmlException);
 		}
 	}
 	
@@ -94,9 +98,10 @@ public class XmlPanel extends GenCrossEditorPanel {
 		try {
 			GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(is);
 		} catch (Exception e) {
-			ErrorFrame.displayError(e);
+			xmlException = e;
 			return false;
 		}
+		xmlException = null;
 		return true;
 	}
 	

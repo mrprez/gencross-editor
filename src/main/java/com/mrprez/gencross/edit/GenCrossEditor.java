@@ -34,6 +34,8 @@ public class GenCrossEditor extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	public final static String PERSONNAGE_REPOSITORY_NAME = "repository";
+	private final static String SIMPLE_TITLE = "GenCrossEditor";
+	private final static String TITLE_SEPARATOR = " - ";
 	
 	private static GenCrossEditor instance;
 	
@@ -61,10 +63,9 @@ public class GenCrossEditor extends JFrame {
 		try {
 			instance = new GenCrossEditor();
 			instance.init();
-			instance.setTitle("GenCrossEditor");
+			instance.setTitle(SIMPLE_TITLE);
 			instance.setIconImage(ImageIO.read(ClassLoader.getSystemResourceAsStream("img/icone_GenCrossEditor.jpg")));
 			instance.setVisible(true);
-			
 		} catch (HeadlessException e) {
 			ErrorFrame.displayError(e);
 		} catch (IOException e) {
@@ -72,7 +73,6 @@ public class GenCrossEditor extends JFrame {
 		} catch (URISyntaxException e) {
 			ErrorFrame.displayError(e);
 		}
-		
 	}
 	
 	
@@ -142,7 +142,16 @@ public class GenCrossEditor extends JFrame {
 	public boolean getTabbedPaneEnability(int index){
 		return tabbedPane.isEnabledAt(index);
 	}
-
+	
+	
+	public void setPersonnageName(String personnageName) {
+		if(personnageName != null) {
+			setTitle(SIMPLE_TITLE + TITLE_SEPARATOR + personnageName);
+		} else {
+			setTitle(SIMPLE_TITLE);
+		}
+	}
+	
 	public void setPersonnage(Personnage personnage) throws Exception {
 		this.personnage = personnage;
 		for(GenCrossEditorPanel editorPanel : panelList){
@@ -150,17 +159,15 @@ public class GenCrossEditor extends JFrame {
 		}
 	}
 	
-	public void setXmlSource(String xmlText){
-		xmlPanel.setText(xmlText);
-	}
-
-
 	public JTabbedPane getTabbedPane() {
 		return tabbedPane;
 	}
 	
 	public TreePanel getTreePanel(){
 		return treePanel;
+	}
+	public XmlPanel getXmlPanel(){
+		return xmlPanel;
 	}
 	
 	public JFileChooser getFileChooser(){
