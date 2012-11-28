@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.io.IOException;
+import java.util.Collection;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -140,13 +141,11 @@ public class TreePanel extends GenCrossEditorPanel {
 		return propertyTree;
 	}
 
+	
 	@Override
-	public boolean isDataValid() {
-		return true;
+	public Collection<String> getDataErrors() {
+		return null;
 	}
-	
-	
-
 	
 	
 

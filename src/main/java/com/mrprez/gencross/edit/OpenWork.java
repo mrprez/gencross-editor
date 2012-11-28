@@ -54,7 +54,7 @@ public class OpenWork implements BackgroundWork{
 				ErrorFrame.displayError(e);
 				returnCode = OptionPane.showConfirmDialog(GenCrossEditor.getInstance(), "Voulez-vous charger l'XML source?", "Impossible de charger ce personnage", JOptionPane.YES_NO_OPTION);
 				if(returnCode == JOptionPane.YES_OPTION){
-					nextWork = new SetInvalidXmlEdtWork(personnageName, xmlSource);
+					nextWork = new SetInvalidXmlEdtWork(xmlSource, personnageName);
 				}
 			}
 		}

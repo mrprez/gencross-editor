@@ -1,5 +1,7 @@
 package com.mrprez.gencross.edit;
 
+import java.util.Collection;
+
 import javax.swing.JPanel;
 
 import com.mrprez.gencross.Personnage;
@@ -13,7 +15,12 @@ public abstract class GenCrossEditorPanel extends JPanel {
 	
 	public abstract Personnage impact() throws Exception;
 	
-	public abstract boolean isDataValid();
+	public abstract Collection<String> getDataErrors();
+	
+	public boolean isDataValid(){
+		Collection<String> errors = getDataErrors();
+		return errors == null || errors.isEmpty();
+	}
 	
 	public boolean isChanged() {
 		return changed;

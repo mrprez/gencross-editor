@@ -139,6 +139,20 @@ public class GenCrossEditor extends JFrame {
 		}
 	}
 	
+	public void stopTabbedPaneNavigation(){
+		for(int i=0; i<tabbedPane.getTabCount(); i++){
+			if(i != tabbedPane.getSelectedIndex()) {
+				tabbedPane.setEnabledAt(i, false);
+			}
+		}
+	}
+	
+	public void resumeTabbedPaneNavigation(){
+		for(int i=0; i<tabbedPane.getTabCount(); i++){
+			tabbedPane.setEnabledAt(i, true);
+		}
+	}
+	
 	public boolean getTabbedPaneEnability(int index){
 		return tabbedPane.isEnabledAt(index);
 	}

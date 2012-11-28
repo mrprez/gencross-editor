@@ -132,8 +132,10 @@ public class ListenerPanel extends GenCrossEditorPanel {
 	}
 
 	@Override
-	public boolean isDataValid() {
-		return true;
+	public Collection<String> getDataErrors() {
+		return null;
 	}
+
+	
 
 }

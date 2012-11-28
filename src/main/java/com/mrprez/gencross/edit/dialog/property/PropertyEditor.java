@@ -37,7 +37,7 @@ public class PropertyEditor extends EditDialog<Property> {
 	
 	private JLabel nameLabel = new JLabel("Nom");
 	private JTextField nameField = new JTextField(20);
-	private JLabel specificationLabel = new JLabel("Sp�cification");
+	private JLabel specificationLabel = new JLabel("Spécification");
 	private JCheckBox specificationCheckBox = new JCheckBox();
 	private JTextField specificationField = new JTextField();
 	private JLabel editableLabel = new JLabel("Editable");
@@ -45,7 +45,7 @@ public class PropertyEditor extends EditDialog<Property> {
 	private JLabel canBeRemovedLabel = new JLabel("Supprimable");
 	private JCheckBox canBeRemovedCheckBox = new JCheckBox();
 	private JLabel valueTypeLabel = new JLabel("Type de valeur");
-	private JComboBox valueTypeCombo = new JComboBox(new String[]{"Aucune", "Texte", "Entier", "D�cimal"});
+	private JComboBox valueTypeCombo = new JComboBox(new String[]{"Aucune", "Texte", "Entier", "Décimal"});
 	private JLabel valueLabel = new JLabel("Valeur");
 	private JTextField valueField = new JTextField(20);
 	private JLabel offsetLabel = new JLabel("Offset");
@@ -54,7 +54,7 @@ public class PropertyEditor extends EditDialog<Property> {
 	private JTextField  maxField = new JTextField(20);
 	private JLabel minLabel = new JLabel("Min");
 	private JTextField minField = new JTextField(20);
-	private JLabel defaultHistoryLabel = new JLabel("Historique par d�faut");
+	private JLabel defaultHistoryLabel = new JLabel("Historique par défaut");
 	private JCheckBox defaultHistoryCheckBox = new JCheckBox();
 	private JButton addRemoveDefaultHistoryButton = new JButton("Ajouter");
 	private JButton editDefaultHistoryButton = new JButton("Editer");
@@ -63,14 +63,15 @@ public class PropertyEditor extends EditDialog<Property> {
 	private JLabel choiceLabel = new JLabel("Choix de valeurs");
 	private JCheckBox choiceCheckBox = new JCheckBox();
 	private JButton addOptionButton = new JButton("Ajouter");
+	private JButton editOptionButton = new JButton("Editer");
 	private JButton removeOptionButton = new JButton("Supprimer");
-	private JList choiceList = new JList();
 	private DefaultListModel choiceListModel = new DefaultListModel();
+	private JList choiceList = new JList(choiceListModel);
 	private JScrollPane choiceScroller = new JScrollPane(choiceList);
 	private JLabel commentLabel = new JLabel("Commentaire");
 	private JTextArea commentTextArea = new JTextArea(5,20);
 	private JScrollPane commentScrollPane = new JScrollPane(commentTextArea);
-	private JLabel subPropertieslabel = new JLabel("Liste de sous-propri�t�s");
+	private JLabel subPropertieslabel = new JLabel("Liste de sous-propriétés");
 	private JCheckBox subPropertiesCheckBox = new JCheckBox();
 	private JButton addRemoveSubPropertiesButton = new JButton();
 	private JButton editSubPropertiesButton = new JButton("Editer");
@@ -146,9 +147,14 @@ public class PropertyEditor extends EditDialog<Property> {
 			}
 			choiceList.setModel(choiceListModel);
 		}
-		addOptionButton.setPreferredSize(new Dimension(Math.max(addOptionButton.getPreferredSize().width, removeOptionButton.getPreferredSize().width), addOptionButton.getPreferredSize().height));
-		removeOptionButton.setPreferredSize(new Dimension(Math.max(addOptionButton.getPreferredSize().width, removeOptionButton.getPreferredSize().width), removeOptionButton.getPreferredSize().height));
+		int buttonWidth = addOptionButton.getPreferredSize().width;
+		buttonWidth = Math.max(buttonWidth, editOptionButton.getPreferredSize().width);
+		buttonWidth = Math.max(buttonWidth, removeOptionButton.getPreferredSize().width);
+		addOptionButton.setPreferredSize(new Dimension(buttonWidth, addOptionButton.getPreferredSize().height));
+		editOptionButton.setPreferredSize(new Dimension(buttonWidth, editOptionButton.getPreferredSize().height));
+		removeOptionButton.setPreferredSize(new Dimension(buttonWidth, removeOptionButton.getPreferredSize().height));
 		addOptionButton.addActionListener(new SimpleEDTAction(this,"addOption"));
+		editOptionButton.addActionListener(new SimpleEDTAction(this,"editOption"));
 		removeOptionButton.addActionListener(new SimpleEDTAction(this, "removeSelectedOptions"));
 		// Comment
 		commentTextArea.setText(property.getComment());
@@ -191,6 +197,7 @@ public class PropertyEditor extends EditDialog<Property> {
 		}
 		specificationField.setEnabled(specificationCheckBox.isSelected());
 		removeOptionButton.setVisible(choiceCheckBox.isSelected());
+		editOptionButton.setVisible(choiceCheckBox.isSelected());
 		addOptionButton.setVisible(choiceCheckBox.isSelected());
 		choiceScroller.setVisible(choiceCheckBox.isSelected());
 		editSubPropertiesButton.setEnabled(property.getSubProperties()!=null);
@@ -231,6 +238,7 @@ public class PropertyEditor extends EditDialog<Property> {
 						.addComponent(rendererLabel)
 						.addComponent(choiceLabel)
 						.addComponent(addOptionButton,GroupLayout.Alignment.CENTER,GroupLayout.PREFERRED_SIZE,GroupLayout.PREFERRED_SIZE,Short.MAX_VALUE)
+						.addComponent(editOptionButton,GroupLayout.Alignment.CENTER,GroupLayout.PREFERRED_SIZE,GroupLayout.PREFERRED_SIZE,Short.MAX_VALUE)
 						.addComponent(removeOptionButton,GroupLayout.Alignment.CENTER,GroupLayout.PREFERRED_SIZE,GroupLayout.PREFERRED_SIZE,Short.MAX_VALUE)
 						.addComponent(commentLabel)
 						.addComponent(subPropertieslabel)
@@ -344,6 +352,8 @@ public class PropertyEditor extends EditDialog<Property> {
 				.addGroup(layout.createSequentialGroup()
 					.addComponent(addOptionButton)
 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+					.addComponent(editOptionButton)
+					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 					.addComponent(removeOptionButton)
 				)
 				.addComponent(choiceScroller, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -368,8 +378,22 @@ public class PropertyEditor extends EditDialog<Property> {
 	
 	public void addOption(){
 		String option = JOptionPane.showInputDialog(this, "Nouvelle option");
-		choiceListModel.addElement(option);
-		pack();
+		if(option != null) {
+			choiceListModel.addElement(option);
+			pack();
+		}
+	}
+	
+	public void editOption(){
+		int selectedIndex = choiceList.getSelectedIndex();
+		if(selectedIndex >= 0){
+			Object oldValue = choiceList.getSelectedValue();
+			String option = JOptionPane.showInputDialog(this, "Editer", oldValue);
+			if(option != null){
+				choiceListModel.setElementAt(option, selectedIndex);
+				pack();
+			}
+		}
 	}
 	
 	public void removeSelectedOptions(){
@@ -381,7 +405,7 @@ public class PropertyEditor extends EditDialog<Property> {
 	
 	private String findError(){
 		if(nameField.getText().isEmpty()){
-			return "Le nom ne doit pas �tre vide";
+			return "Le nom ne doit pas être vide";
 		}
 		if(valueTypeCombo.getSelectedIndex()==2){
 			if(!valueField.getText().matches("[-]?[0-9]+")){
@@ -394,21 +418,21 @@ public class PropertyEditor extends EditDialog<Property> {
 				return "Le maximum n'est pas un entier";
 			}
 			if(!minField.getText().isEmpty() &&!minField.getText().matches("[-]?[0-9]+")){
-				return "le minimum n'est pas un entier";
+				return "Le minimum n'est pas un entier";
 			}
 		}
 		if(valueTypeCombo.getSelectedIndex()==3){
 			if(!valueField.getText().matches("[-]?[0-9]+([.][0-9]+)?")){
-				return "La valeur n'est pas un d�cimal";
+				return "La valeur n'est pas un décimal";
 			}
 			if(!offsetField.getText().isEmpty() && !offsetField.getText().matches("[-]?[0-9]+([.][0-9]+)?")){
-				return "L'offset n'est pas un d�cimal";
+				return "L'offset n'est pas un décimal";
 			}
 			if(!maxField.getText().isEmpty() && !maxField.getText().matches("[-]?[0-9]+([.][0-9]+)?")){
-				return "Le maximum n'est pas un d�cimal";
+				return "Le maximum n'est pas un décimal";
 			}
 			if(!minField.getText().isEmpty() && !minField.getText().matches("[-]?[0-9]+([.][0-9]+)?")){
-				return "Le minimum n'est pas un d�cimal";
+				return "Le minimum n'est pas un décimal";
 			}
 		}
 		if(!rendererField.getText().isEmpty()){
@@ -430,7 +454,7 @@ public class PropertyEditor extends EditDialog<Property> {
 					}
 				}else if(valueTypeCombo.getSelectedIndex()==3){
 					if(!choiceListModel.getElementAt(i).toString().matches("[-]?[0-9]+[.]?[0-9]+")){
-						return "L'option "+choiceListModel.getElementAt(i)+" n'est pas un d�cimal";
+						return "L'option "+choiceListModel.getElementAt(i)+" n'est pas un décimal";
 					}
 				}
 			}
@@ -441,7 +465,7 @@ public class PropertyEditor extends EditDialog<Property> {
 	public void submit() throws InstantiationException, IllegalAccessException, ClassNotFoundException{
 		String error = findError();
 		if(error!=null){
-			JOptionPane.showMessageDialog(this, error, "Propri�t� invalide", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, error, "Propriété invalide", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		

@@ -1,5 +1,8 @@
 package com.mrprez.gencross.edit;
 
+import java.util.Collection;
+
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -33,6 +36,7 @@ public class ChangeTabbedListener implements ChangeListener {
 								tabbedPane.setSelectedIndex(i);
 							}
 						}
+						JOptionPane.showMessageDialog(actualPanel, getErrorsText(actualPanel.getDataErrors()), "Impossible de changer d'onglet", JOptionPane.ERROR_MESSAGE);
 					}else{
 						Personnage newPersonnage = actualPanel.impact();
 						GenCrossEditor.getInstance().setPersonnage(newPersonnage);
@@ -48,6 +52,20 @@ public class ChangeTabbedListener implements ChangeListener {
 		} catch (Exception e) {
 			tabbedPane.setSelectedComponent(actualPanel);
 			ErrorFrame.displayError(e);
+		}
+	}
+	
+	
+	private String getErrorsText(Collection<String> errors){
+		if(errors.size()==1){
+			return errors.iterator().next();
+		} else {
+			StringBuilder sb = new StringBuilder("Plusieurs erreurs: <ul>");
+			for(String error : errors) {
+				sb.append("<li>" + error + "</li>");
+			}
+			sb.append("</ul>");
+			return sb.toString();
 		}
 	}
 	

@@ -30,7 +30,6 @@ public class PropertyTree extends JTree {
 		setBorder(BorderFactory.createLoweredBevelBorder());
 		top = (PersonnageNode) this.getModel().getRoot();
 		setRootVisible(false);
-		//expandPath(new TreePath(top.getPath()));
 		addKeyListener(new Treatment(new EditPropertyListener(this)));
 		popupMenu.add(editMenuItem);
 		popupMenu.add(addMenuItem);

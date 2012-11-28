@@ -4,14 +4,18 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.Collection;
+import java.util.HashSet;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.LayoutStyle;
+
+import org.dom4j.DocumentException;
 
 import com.mrprez.gencross.Personnage;
 import com.mrprez.gencross.disk.PersonnageSaver;
@@ -26,8 +30,6 @@ public class XmlPanel extends GenCrossEditorPanel {
 	private JTextArea xmlArea = new JTextArea();
 	private JScrollPane xmlScrollPane = new JScrollPane(xmlArea);
 	private JButton xmlValidationButton = new JButton("Valider");
-	
-	private Exception xmlException;
 	
 	
 	
@@ -65,13 +67,12 @@ public class XmlPanel extends GenCrossEditorPanel {
 	}
 	
 	public void validateXml(){
-		if(isDataValid()){
-			JTabbedPane tabbedPane = GenCrossEditor.getInstance().getTabbedPane();
-			for(int i=0; i<tabbedPane.getTabCount(); i++){
-				tabbedPane.setEnabledAt(i, true);
-			}
+		Collection<String> errors = getDataErrors();
+		if(errors == null || errors.isEmpty()){
+			GenCrossEditor.getInstance().resumeTabbedPaneNavigation();
 		}else{
-			ErrorFrame.displayError(xmlException);
+			GenCrossEditor.getInstance().stopTabbedPaneNavigation();
+			JOptionPane.showMessageDialog(this, errors.iterator().next(), "XML invalide", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	
@@ -93,16 +94,23 @@ public class XmlPanel extends GenCrossEditorPanel {
 	}
 
 	@Override
-	public boolean isDataValid() {
+	public Collection<String> getDataErrors() {
 		ByteArrayInputStream is = new ByteArrayInputStream(xmlArea.getText().getBytes(Charset.forName("UTF-8")));
 		try {
 			GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(is);
+		} catch (DocumentException e) {
+			e.printStackTrace();
+			Collection<String> result = new HashSet<String>();
+			result.add(e.getMessage());
+			return result;
 		} catch (Exception e) {
-			xmlException = e;
-			return false;
+			e.printStackTrace();
+			ErrorFrame.displayError(e);
+			Collection<String> result = new HashSet<String>();
+			result.add(e.getMessage());
+			return result;
 		}
-		xmlException = null;
-		return true;
+		return null;
 	}
 	
 	
