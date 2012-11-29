@@ -81,17 +81,17 @@ public class PropertyEditor extends EditDialog<Property> {
 	
 	public PropertyEditor(Property property, Frame frame) {
 		super(frame);
-		this.property = property;
+		this.property = property.clone();
 	}
 	
 	public PropertyEditor(Property property, Dialog dialog) {
 		super(dialog);
-		this.property = property;
+		this.property = property.clone();
 	}
 	
 	
 	public void init() throws SecurityException, NoSuchMethodException {
-		// Cr�ation des listeners
+		// Création des listeners
 		valueTypeCombo.addActionListener(new SimpleEDTAction(this,"fieldEnability"));
 		choiceCheckBox.addActionListener(new SimpleEDTAction(this,"fieldEnability"));
 		

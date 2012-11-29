@@ -24,6 +24,7 @@ public class EditSubPropertiesWork implements BackgroundWork {
 		PropertiesList propertiesList = propertiesListEditor.edit();
 		if(propertiesList!=null){
 			GenCrossEditor.getInstance().getTreePanel().setChanged(true);
+			property.setSubProperties(propertiesList);
 		}
 	}
 

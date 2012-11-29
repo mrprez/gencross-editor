@@ -57,12 +57,12 @@ public class PropertiesListEditor extends EditDialog<PropertiesList> {
 	
 	public PropertiesListEditor(PropertiesList propertiesList, Frame frame) {
 		super(frame);
-		this.propertiesList = propertiesList;
+		this.propertiesList = propertiesList.clone();
 	}
 	
 	public PropertiesListEditor(PropertiesList propertiesList, Dialog dialog) {
 		super(dialog);
-		this.propertiesList = propertiesList;
+		this.propertiesList = propertiesList.clone();
 	}
 	
 	
@@ -212,7 +212,7 @@ public class PropertiesListEditor extends EditDialog<PropertiesList> {
 	
 	public String findError(){
 		if(openCheckBox.isSelected() && !defaultPropertyCheckBox.isSelected()){
-			return "Si la liste est ouverte,il faut une propri�t� par d�faut";
+			return "Si la liste est ouverte, il faut une propriété par défaut";
 		}
 		
 		return null;
@@ -221,7 +221,7 @@ public class PropertiesListEditor extends EditDialog<PropertiesList> {
 	public void submit(){
 		String error = findError();
 		if(findError()!=null){
-			JOptionPane.showMessageDialog(this, error, "Liste de propri�t�s invalide", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, error, "Liste de propriétés invalide", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		
