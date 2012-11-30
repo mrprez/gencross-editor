@@ -5,6 +5,7 @@ import com.mrprez.gencross.edit.GenCrossEditor;
 import com.mrprez.gencross.edit.dialog.property.PropertyEditor;
 import com.mrprez.gencross.edit.framework.BackgroundWork;
 import com.mrprez.gencross.edit.framework.Work;
+import com.mrprez.gencross.renderer.Renderer;
 
 
 public class EditPropertyListener implements BackgroundWork {
@@ -22,10 +23,27 @@ public class EditPropertyListener implements BackgroundWork {
 	public void doInBackground() throws Exception {
 		if(propertyTree.getSelectionPath()!=null){
 			PropertyNode node = (PropertyNode) propertyTree.getSelectionPath().getLastPathComponent();
-			PropertyEditor propertyEditor = new PropertyEditor(node.getProperty(), GenCrossEditor.getInstance());
-			Property result = propertyEditor.edit();
-			if(result!=null){
+			Property oldProperty = node.getProperty();
+			PropertyEditor propertyEditor = new PropertyEditor(oldProperty, GenCrossEditor.getInstance());
+			propertyEditor.setFullNameEnability(false);
+			Property resultProperty = propertyEditor.edit();
+			if(resultProperty!=null){
 				GenCrossEditor.getInstance().getTreePanel().setChanged(true);
+				oldProperty.setComment(resultProperty.getComment());
+				oldProperty.setDefaultHistory(resultProperty.getDefaultHistory());
+				oldProperty.setEditable(resultProperty.isEditable());
+				oldProperty.setMax(resultProperty.getMax());
+				oldProperty.setMin(resultProperty.getMin());
+				oldProperty.setOptions(resultProperty.getOptions());
+				oldProperty.setRemovable(resultProperty.isRemovable());
+				oldProperty.setSpecification(resultProperty.getSpecification());
+				oldProperty.setSubProperties(resultProperty.getSubProperties());
+				oldProperty.setValue(resultProperty.getValue());
+				if(resultProperty.getRenderer() != Renderer.DEFAULT_RENDERER){
+					oldProperty.setRenderer(resultProperty.getRenderer());
+				}else{
+					oldProperty.setRenderer(null);
+				}
 			}
 		}
 	}
@@ -35,13 +53,5 @@ public class EditPropertyListener implements BackgroundWork {
 		return nextWork;
 	}
 
-	
-
-
-
-
-	
-
-	
 
 }

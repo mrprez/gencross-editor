@@ -13,6 +13,7 @@ import java.util.Map;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -24,14 +25,13 @@ import javax.xml.rpc.ServiceException;
 import com.mrprez.gencross.Personnage;
 import com.mrprez.gencross.disk.PluginDescriptor;
 import com.mrprez.gencross.edit.GenCrossEditor;
-import com.mrprez.gencross.edit.framework.EditDialog;
 import com.mrprez.gencross.edit.framework.OptionPane;
 import com.mrprez.gencross.edit.framework.ReflectivBackgroundWork;
 import com.mrprez.gencross.edit.framework.ReflectivEdtWork;
 import com.mrprez.gencross.edit.framework.Treatment;
 import com.mrprez.gencross.edit.framework.Work;
 
-public class DistantDialog extends EditDialog<Personnage> {
+public class DistantDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private static String DEFAULT_ADRESS_SERVER = "http://localhost:8181/gencross-web/axis/PersonnageService";
 	private static String VALID_VERSION = "validVersion";
@@ -55,16 +55,11 @@ public class DistantDialog extends EditDialog<Personnage> {
 	private JButton personnageButton = new JButton("Valider");
 	
 	
-	public DistantDialog(Frame frame) {
+	public DistantDialog(Frame frame) throws Exception {
 		super(frame);
+		init();
 	}
 
-	@Override
-	public Personnage getResult() {
-		return personnage;
-	}
-
-	@Override
 	public void init() throws Exception {
 		
 		Work connectWork = new ReflectivBackgroundWork(this, "loadPluginList", new ReflectivEdtWork(this, "refreshPluginComboBox"));
@@ -83,7 +78,7 @@ public class DistantDialog extends EditDialog<Personnage> {
 		Work loadPersoListWork = new ReflectivBackgroundWork(this, "loadPersonnageList", new ReflectivEdtWork(this, "refreshPersonnageComboBox"));
 		pluginButton.addActionListener(new Treatment(loadPersoListWork, true, this));
 		
-		Work loadPersoWork = new ReflectivBackgroundWork(this, "loadPersonnage", new ReflectivEdtWork(this, "validateData"));
+		Work loadPersoWork = new ReflectivBackgroundWork(this, "loadPersonnage", new ReflectivEdtWork(this, "openPersonnage"));
 		personnageButton.addActionListener(new Treatment(loadPersoWork, true, this));
 		
 		refreshPluginComboBox();
@@ -136,10 +131,11 @@ public class DistantDialog extends EditDialog<Personnage> {
 			)
 			.addContainerGap()
 		);
+		pack();
 	}
 	
 	
-	public synchronized static DistantDialog getInstance(){
+	public synchronized static DistantDialog getInstance() throws Exception{
 		if(instance==null){
 			instance = new DistantDialog(GenCrossEditor.getInstance());
 		}
@@ -196,8 +192,11 @@ public class DistantDialog extends EditDialog<Personnage> {
 		Integer personnageId = personnageMap.get(personnageDescriptor);
 		byte xml[] = webServiceClient.loadPersonnage(personnageId.intValue());
 		personnage = GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(new ByteArrayInputStream(xml));
-		
-		super.validateData();
+	}
+	
+	public void openPersonnage() throws Exception{
+		GenCrossEditor.getInstance().setPersonnage(personnage);
+		setVisible(false);
 	}
 
 }

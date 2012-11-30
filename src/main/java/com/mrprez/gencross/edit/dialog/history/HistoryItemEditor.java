@@ -11,10 +11,8 @@ import java.util.GregorianCalendar;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -49,13 +47,13 @@ public class HistoryItemEditor extends EditDialog<HistoryItem> {
 	private JLabel absoluteNameLabel = new JLabel("Nom absolue");
 	private JTextField absoluteNameField = new JTextField();
 	private JLabel oldValueLabel = new JLabel("Ancienne valeur");
-	private JComboBox oldValueTypeComboBox = new JComboBox(new String[]{"Aucune", "Texte", "Entier", "D�cimal"});
+	private JComboBox oldValueTypeComboBox = new JComboBox(new String[]{"Aucune", "Texte", "Entier", "Décimal"});
 	private JTextField oldValueField = new JTextField();
 	private JLabel newValueLabel = new JLabel("Nouvelle valeur");
-	private JComboBox newValueTypeComboBox = new JComboBox(new String[]{"Aucune", "Texte", "Entier", "D�cimal"});
+	private JComboBox newValueTypeComboBox = new JComboBox(new String[]{"Aucune", "Texte", "Entier", "Décimal"});
 	private JTextField newValueField = new JTextField();
 	private JLabel actionLabel = new JLabel("type d'action");
-	private JComboBox actionComboBox = new JComboBox(new String[]{"D�faut","Cr�ation","Modification","Suppression"});
+	private JComboBox actionComboBox = new JComboBox(new String[]{"Défaut","Création","Modification","Suppression"});
 	private JLabel dateLabel = new JLabel("Date");
 	private JTextField yearField = new JTextField(4);
 	private JLabel dateSeparator1 = new JLabel("/");
@@ -70,31 +68,93 @@ public class HistoryItemEditor extends EditDialog<HistoryItem> {
 	private JLabel dateSeparator5 = new JLabel(",");
 	private JTextField milliSecondField = new JTextField(3);
 	
-	private JButton validationButton = new JButton("OK");
-	
-	private HistoryItem historyItem;
-	
+	private HistoryItem initHistoryItem;
 	
 	public HistoryItemEditor(Dialog dialog, HistoryItem historyItem) {
 		super(dialog);
-		this.historyItem = historyItem;
-		setTitle("El�ment d'Historique");
+		this.initHistoryItem = historyItem.clone();
+		setTitle("Elément d'Historique");
 	}
 
 	@Override
-	public HistoryItem getResult() {
-		return historyItem;
+	public HistoryItem getResult() throws IllegalArgumentException, SecurityException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchMethodException, ClassNotFoundException, ParseException {
+		Element historyElement = new DefaultElement("historyItem");
+		// Class
+		historyElement.addAttribute("class", classField.getText());
+		// Action
+		historyElement.addAttribute("action", ""+actionComboBox.getSelectedIndex());
+		// Point pool
+		historyElement.addElement("pointPool").setText((String) pointPoolComboBox.getSelectedItem());
+		// Date
+		Date date = new SimpleDateFormat("yyyyMMddHHmmssSSS").parse(getStringDate());
+		historyElement.addElement("date").setText(""+date.getTime());
+		// AbsoluteName
+		if(!absoluteNameField.getText().trim().isEmpty()){
+			historyElement.addElement("absoluteName").setText(absoluteNameField.getText());
+		}
+		// Old Value
+		Value oldValue;
+		switch(oldValueTypeComboBox.getSelectedIndex()){
+		case 1:
+			oldValue = new StringValue(oldValueField.getText());
+			break;
+		case 2:
+			oldValue = new IntValue(Integer.parseInt(oldValueField.getText()));
+			break;
+		case 3:
+			oldValue = new DoubleValue(Double.parseDouble(oldValueField.getText()));
+			break;
+		default:
+			oldValue = null;
+		}
+		if(oldValue!=null){
+			historyElement.addElement("oldValue").add(oldValue.getXML());
+		}
+		// New Value
+		Value newValue;
+		switch(newValueTypeComboBox.getSelectedIndex()){
+		case 1:
+			newValue = new StringValue(newValueField.getText());
+			break;
+		case 2:
+			newValue = new IntValue(Integer.parseInt(newValueField.getText()));
+			break;
+		case 3:
+			newValue = new DoubleValue(Double.parseDouble(newValueField.getText()));
+			break;
+		default:
+			newValue = null;
+		}
+		if(newValue!=null){
+			historyElement.addElement("newValue").add(newValue.getXML());
+		}
+		// Phase
+		if(phaseComboBox.getSelectedIndex()!=0){
+			historyElement.addElement("phase").setText((String)phaseComboBox.getSelectedItem());
+		}
+		// Args
+		Element argsElement = historyElement.addElement("args");
+		for(int i=0; i<argsModel.getRowCount()-1; i++){
+			String key = (String) argsModel.getValueAt(i, 0);
+			String value = (String) argsModel.getValueAt(i, 1);
+			Element argElement = argsElement.addElement("arg");
+			argElement.addAttribute("key", key);
+			argElement.setText(value);
+		}
+		
+		return HistoryItem.createHistoryItem(historyElement, GenCrossEditor.getInstance().getRepositoryManager().getRepositoryClassLoader());
+		
 	}
 
 	@Override
 	public void init() throws Exception {
 		// Class
-		classField.setText(historyItem.getClass().getCanonicalName());
+		classField.setText(initHistoryItem.getClass().getCanonicalName());
 		// Point pool
 		pointPoolModel.removeAllElements();
 		for(String pointPoolName : GenCrossEditor.getInstance().getPersonnage().getPointPools().keySet()){
 			pointPoolModel.addElement(pointPoolName);
-			if(pointPoolName.equals(historyItem.getPointPool())){
+			if(pointPoolName.equals(initHistoryItem.getPointPool())){
 				pointPoolModel.setSelectedItem(pointPoolName);
 			}
 		}
@@ -102,44 +162,42 @@ public class HistoryItemEditor extends EditDialog<HistoryItem> {
 		phaseComboBox.addItem("");
 		for(String phase : GenCrossEditor.getInstance().getPersonnage().getPhaseList()){
 			phaseComboBox.addItem(phase);
-			if(phase.equals(historyItem.getPhase())){
+			if(phase.equals(initHistoryItem.getPhase())){
 				phaseComboBox.setSelectedItem(phase);
 			}
 		}
 		// Action
-		actionComboBox.setSelectedIndex(historyItem.getAction());
+		actionComboBox.setSelectedIndex(initHistoryItem.getAction());
 		// Absolute Name
-		absoluteNameField.setText(historyItem.getAbsoluteName());
+		absoluteNameField.setText(initHistoryItem.getAbsoluteName());
 		// Old Value
-		if(historyItem.getOldValue()!=null){
-			oldValueField.setText(historyItem.getOldValue().toString());
+		if(initHistoryItem.getOldValue()!=null){
+			oldValueField.setText(initHistoryItem.getOldValue().toString());
 		}
 		oldValueTypeComboBox.addActionListener(new SimpleEDTAction(this, "valueFieldEnability"));
 		// New Value
-		if(historyItem.getNewValue()!=null){
-			newValueField.setText(historyItem.getNewValue().toString());
+		if(initHistoryItem.getNewValue()!=null){
+			newValueField.setText(initHistoryItem.getNewValue().toString());
 		}
 		newValueTypeComboBox.addActionListener(new SimpleEDTAction(this, "valueFieldEnability"));
 		valueFieldEnability();
 		// Date
 		Calendar calendar = new GregorianCalendar();
-		calendar.setTime(historyItem.getDate());
-		yearField.setText(new SimpleDateFormat("yyyy").format(historyItem.getDate()));
-		monthField.setText(new SimpleDateFormat("MM").format(historyItem.getDate()));
-		dayField.setText(new SimpleDateFormat("dd").format(historyItem.getDate()));
-		hourField.setText(new SimpleDateFormat("HH").format(historyItem.getDate()));
-		minuteField.setText(new SimpleDateFormat("mm").format(historyItem.getDate()));
-		secondField.setText(new SimpleDateFormat("ss").format(historyItem.getDate()));
-		milliSecondField.setText(new SimpleDateFormat("SSS").format(historyItem.getDate()));
+		calendar.setTime(initHistoryItem.getDate());
+		yearField.setText(new SimpleDateFormat("yyyy").format(initHistoryItem.getDate()));
+		monthField.setText(new SimpleDateFormat("MM").format(initHistoryItem.getDate()));
+		dayField.setText(new SimpleDateFormat("dd").format(initHistoryItem.getDate()));
+		hourField.setText(new SimpleDateFormat("HH").format(initHistoryItem.getDate()));
+		minuteField.setText(new SimpleDateFormat("mm").format(initHistoryItem.getDate()));
+		secondField.setText(new SimpleDateFormat("ss").format(initHistoryItem.getDate()));
+		milliSecondField.setText(new SimpleDateFormat("SSS").format(initHistoryItem.getDate()));
 		// Args
-		for(String key : historyItem.getArgs().keySet()){
-			argsModel.addRow(new String[]{key,historyItem.getArgs().get(key)});
+		for(String key : initHistoryItem.getArgs().keySet()){
+			argsModel.addRow(new String[]{key, initHistoryItem.getArgs().get(key)});
 		}
 		argsModel.addRow(new String[]{"",""});
 		argsPane.setPreferredSize(new Dimension(argsTable.getPreferredSize().width, argsTable.getPreferredSize().height*2));
 		argsModel.addTableModelListener(new ArgsTableListener(argsModel, this));
-		// ValidateButton
-		validationButton.addActionListener(new SimpleEDTAction(this, "submit"));
 		
 		initLayout();
 		
@@ -271,6 +329,7 @@ public class HistoryItemEditor extends EditDialog<HistoryItem> {
 		newValueField.setEnabled(newValueTypeComboBox.getSelectedIndex()!=0);
 	}
 	
+	@Override
 	public String findError(){
 		// Class
 		try {
@@ -309,84 +368,6 @@ public class HistoryItemEditor extends EditDialog<HistoryItem> {
 		
 		return null;
 	}
-	
-	public void submit() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SecurityException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, ParseException{
-		String error = findError();
-		if(error!=null){
-			JOptionPane.showMessageDialog(this, error, "Historique invalide", JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-		
-		Element historyElement = new DefaultElement("historyItem");
-		// Class
-		historyElement.addAttribute("class", classField.getText());
-		// Action
-		historyElement.addAttribute("action", ""+actionComboBox.getSelectedIndex());
-		// Point pool
-		historyElement.addElement("pointPool").setText((String) pointPoolComboBox.getSelectedItem());
-		// Date
-		Date date = new SimpleDateFormat("yyyyMMddHHmmssSSS").parse(getStringDate());
-		historyElement.addElement("date").setText(""+date.getTime());
-		// AbsoluteName
-		historyItem.setAbsoluteName(absoluteNameField.getText());
-		if(!absoluteNameField.getText().trim().isEmpty()){
-			historyElement.addElement("absoluteName").setText(absoluteNameField.getText());
-		}
-		// Old Value
-		Value oldValue;
-		switch(oldValueTypeComboBox.getSelectedIndex()){
-		case 1:
-			oldValue = new StringValue(oldValueField.getText());
-			break;
-		case 2:
-			oldValue = new IntValue(Integer.parseInt(oldValueField.getText()));
-			break;
-		case 3:
-			oldValue = new DoubleValue(Double.parseDouble(oldValueField.getText()));
-			break;
-		default:
-			oldValue = null;
-		}
-		if(oldValue!=null){
-			historyElement.addElement("oldValue").add(oldValue.getXML());
-		}
-		// New Value
-		Value newValue;
-		switch(newValueTypeComboBox.getSelectedIndex()){
-		case 1:
-			newValue = new StringValue(newValueField.getText());
-			break;
-		case 2:
-			newValue = new IntValue(Integer.parseInt(newValueField.getText()));
-			break;
-		case 3:
-			newValue = new DoubleValue(Double.parseDouble(newValueField.getText()));
-			break;
-		default:
-			newValue = null;
-		}
-		if(newValue!=null){
-			historyElement.addElement("newValue").add(newValue.getXML());
-		}
-		// Phase
-		if(phaseComboBox.getSelectedIndex()!=0){
-			historyElement.addElement("phase").setText((String)phaseComboBox.getSelectedItem());
-		}
-		// Args
-		Element argsElement = historyElement.addElement("args");
-		for(int i=0; i<argsModel.getRowCount()-1; i++){
-			String key = (String) argsModel.getValueAt(i, 0);
-			String value = (String) argsModel.getValueAt(i, 1);
-			Element argElement = argsElement.addElement("arg");
-			argElement.addAttribute("key", key);
-			argElement.setText(value);
-		}
-		
-		this.historyItem = HistoryItem.createHistoryItem(historyElement, GenCrossEditor.getInstance().getRepositoryManager().getRepositoryClassLoader());
-		
-		validateData();
-	}
-	
 	
 	private String getStringDate(){
 		return yearField.getText()+monthField.getText()+dayField.getText()+hourField.getText()+minuteField.getText()+secondField.getText()+milliSecondField.getText();
