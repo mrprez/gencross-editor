@@ -3,6 +3,8 @@ package com.mrprez.gencross.edit.dialog.property;
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -189,7 +191,7 @@ public class PropertyEditor extends EditDialog<Property> {
 			minField.setEnabled(true);
 			maxField.setEnabled(true);
 		}
-		specificationField.setEnabled(specificationCheckBox.isSelected() && specificationCheckBox.isEnabled());
+		specificationField.setEnabled(specificationCheckBox.isSelected());
 		removeOptionButton.setVisible(choiceCheckBox.isSelected());
 		editOptionButton.setVisible(choiceCheckBox.isSelected());
 		addOptionButton.setVisible(choiceCheckBox.isSelected());
@@ -459,19 +461,85 @@ public class PropertyEditor extends EditDialog<Property> {
 		return null;
 	}
 	
-	public void setFullNameEnability(boolean enability){
-		nameField.setEnabled(enability);
-		specificationCheckBox.setEnabled(enability);
-		specificationField.setEnabled(enability && specificationCheckBox.isSelected());
-	}
 	
 	@Override
-	public Property getResult() {
+	public Property getResult() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		property.setName(nameField.getText());
+		property.setSpecification(specificationCheckBox.isSelected()?specificationField.getText():null);
+		property.setEditable(editableCheckBox.isSelected());
+		property.setRemovable(canBeRemovedCheckBox.isSelected());
+		Value value = null;
+		Value min = null;
+		Value max = null;
+		if(valueTypeCombo.getSelectedIndex()==1){
+			value = new StringValue(valueField.getText());
+			if(!offsetField.getText().isEmpty()){
+				String offset = offsetField.getText();
+				value.setOffset(offset);
+			}
+		}else if(valueTypeCombo.getSelectedIndex()==2){
+			value = new IntValue(Integer.parseInt(valueField.getText()));
+			if(!offsetField.getText().isEmpty()){
+				int offset = Integer.parseInt(offsetField.getText());
+				if(offset!=1){
+					value.setOffset(offset);
+				}
+			}
+			if(!minField.getText().isEmpty()){
+				min = new IntValue(Integer.parseInt(minField.getText()));
+			}
+			if(!maxField.getText().isEmpty()){
+				max = new IntValue(Integer.parseInt(maxField.getText()));
+			}
+		}else if(valueTypeCombo.getSelectedIndex()==3){
+			value = new DoubleValue(Double.parseDouble(valueField.getText()));
+			if(!offsetField.getText().isEmpty()){
+				double offset = Double.parseDouble(offsetField.getText());
+				if(offset!=1.0){
+					value.setOffset(offset);
+				}
+			}
+			if(!minField.getText().isEmpty()){
+				min = new DoubleValue(Double.parseDouble(minField.getText()));
+			}
+			if(!maxField.getText().isEmpty()){
+				max = new DoubleValue(Double.parseDouble(maxField.getText()));
+			}
+		}
+		property.setValue(value);
+		property.setMin(min);
+		property.setMax(max);
+		if(!rendererField.getText().isEmpty()){
+			property.setRenderer((Renderer) GenCrossEditor.getInstance().getRepositoryManager().getRepositoryClassLoader().loadClass(rendererField.getText()).newInstance());
+		}else{
+			property.setRenderer(null);
+		}
+		if(choiceCheckBox.isSelected() && valueTypeCombo.getSelectedIndex()>0){
+			List<Value> options = new ArrayList<Value>();
+			for(int i=0; i<choiceListModel.size(); i++){
+				if(valueTypeCombo.getSelectedIndex()==1){
+					options.add(new StringValue(choiceListModel.getElementAt(i).toString()));
+				}else if(valueTypeCombo.getSelectedIndex()==2){
+					options.add(new IntValue(Integer.parseInt(choiceListModel.getElementAt(i).toString())));
+				}else if(valueTypeCombo.getSelectedIndex()==3){
+					options.add(new DoubleValue(Double.parseDouble(choiceListModel.getElementAt(i).toString())));
+				}
+			}
+			property.setOptions(options);
+		}else{
+			property.setOptions((List<Value>) null);
+		}
 		return property;
 	}
 	
 	public Property getProperty(){
 		return property;
+	}
+	
+	public void setFullNameEnability(boolean enability){
+		nameField.setEnabled(enability);
+		specificationCheckBox.setEnabled(enability);
+		specificationField.setEnabled(enability && specificationCheckBox.isSelected());
 	}
 	
 }
