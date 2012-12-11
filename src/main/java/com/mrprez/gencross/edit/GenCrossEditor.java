@@ -8,9 +8,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -18,16 +15,11 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JTabbedPane;
 
-import com.mrprez.gencross.Personnage;
 import com.mrprez.gencross.disk.PersonnageFactory;
-import com.mrprez.gencross.disk.PluginDescriptor;
 import com.mrprez.gencross.disk.RepositoryManager;
 import com.mrprez.gencross.edit.error.ErrorFrame;
 import com.mrprez.gencross.edit.framework.Treatment;
-import com.mrprez.gencross.edit.listeners.ListenerPanel;
-import com.mrprez.gencross.edit.tree.TreePanel;
 import com.mrprez.gencross.edit.xml.XmlPanel;
 
 public class GenCrossEditor extends JFrame {
@@ -41,7 +33,6 @@ public class GenCrossEditor extends JFrame {
 	
 	private JFileChooser fileChooser = new JFileChooser();
 	
-	private Personnage personnage;
 	private RepositoryManager repositoryManager;
 	private PersonnageFactory personnageFactory;
 	
@@ -50,13 +41,9 @@ public class GenCrossEditor extends JFrame {
 	private JMenuItem openItem = new JMenuItem("Ouvrir");
 	private JMenuItem openDistantItem = new JMenuItem("Ouvrir à distance");
 	private JMenuItem saveAsItem = new JMenuItem("Sauvegarder sous");
+	private JMenuItem testItem = new JMenuItem("Tester");
 	
-	private JTabbedPane tabbedPane = new JTabbedPane();
-	
-	private TreePanel treePanel;
 	private XmlPanel xmlPanel;
-	private ListenerPanel listenerPanel;
-	private List<GenCrossEditorPanel> panelList = new ArrayList<GenCrossEditorPanel>();
 	
 	
 	public static void main(String[] args) throws Exception {
@@ -77,8 +64,6 @@ public class GenCrossEditor extends JFrame {
 	
 	
 	public void init() throws Exception{
-		personnage = new Personnage();
-		personnage.setPluginDescriptor(new PluginDescriptor(new Properties()));
 		repositoryManager = new RepositoryManager(new File(getExecutionDirectory(), PERSONNAGE_REPOSITORY_NAME));
 		personnageFactory = new PersonnageFactory(repositoryManager.getRepositoryClassLoader());
 		
@@ -94,24 +79,16 @@ public class GenCrossEditor extends JFrame {
 		fileMenu.add(openItem);
 		fileMenu.add(openDistantItem);
 		fileMenu.add(saveAsItem);
+		fileMenu.add(testItem);
 		openItem.addActionListener(new Treatment(new OpenWork()));
 		openDistantItem.addActionListener(new Treatment(new DistantPersonnageWork()));
 		saveAsItem.addActionListener(new Treatment(new SaveAsWork()));
+		testItem.addActionListener(new Treatment(new TestWork()));
 		
 		// Panels
-		treePanel = new TreePanel(personnage);
-		xmlPanel = new XmlPanel(personnage);
-		listenerPanel = new ListenerPanel(personnage);
-		tabbedPane.addTab("Arbre", treePanel);
-		tabbedPane.addTab("Listeners", listenerPanel);
-		tabbedPane.addTab("Source XML", xmlPanel);
-		panelList.add(treePanel);
-		panelList.add(listenerPanel);
-		panelList.add(xmlPanel);
+		xmlPanel = new XmlPanel();
 		
-		tabbedPane.addChangeListener(new ChangeTabbedListener(tabbedPane));
-		
-		add(tabbedPane);
+		add(xmlPanel);
 		
 		pack();
 	}
@@ -128,60 +105,12 @@ public class GenCrossEditor extends JFrame {
 	}
 
 
-	public Personnage getPersonnage() {
-		return personnage;
-	}
-	
-	public void setTabbedPanEnability(int index, boolean enable){
-		tabbedPane.setEnabledAt(index, enable);
-		if(!enable && tabbedPane.getSelectedIndex()==index){
-			tabbedPane.setSelectedIndex(index==0?1:0);
-		}
-	}
-	
-	public void stopTabbedPaneNavigation(){
-		for(int i=0; i<tabbedPane.getTabCount(); i++){
-			if(i != tabbedPane.getSelectedIndex()) {
-				tabbedPane.setEnabledAt(i, false);
-			}
-		}
-	}
-	
-	public void resumeTabbedPaneNavigation(){
-		for(int i=0; i<tabbedPane.getTabCount(); i++){
-			tabbedPane.setEnabledAt(i, true);
-		}
-	}
-	
-	public boolean getTabbedPaneEnability(int index){
-		return tabbedPane.isEnabledAt(index);
-	}
-	
-	
 	public void setPersonnageName(String personnageName) {
 		if(personnageName != null) {
 			setTitle(SIMPLE_TITLE + TITLE_SEPARATOR + personnageName);
 		} else {
 			setTitle(SIMPLE_TITLE);
 		}
-	}
-	
-	public void setPersonnage(Personnage personnage) throws Exception {
-		this.personnage = personnage;
-		for(GenCrossEditorPanel editorPanel : panelList){
-			editorPanel.refresh();
-		}
-	}
-	
-	public JTabbedPane getTabbedPane() {
-		return tabbedPane;
-	}
-	
-	public TreePanel getTreePanel(){
-		return treePanel;
-	}
-	public XmlPanel getXmlPanel(){
-		return xmlPanel;
 	}
 	
 	public JFileChooser getFileChooser(){
@@ -196,6 +125,12 @@ public class GenCrossEditor extends JFrame {
 		return personnageFactory;
 	}
 	
+	public void loadXml(String xml){
+		xmlPanel.setText(xml);
+	}
 	
+	public String getXml(){
+		return xmlPanel.getText();
+	}
 	
 }

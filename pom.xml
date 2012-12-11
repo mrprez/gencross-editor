@@ -23,6 +23,12 @@
 			<groupId>com.mrprez.gencross</groupId>
 			<version>${gencross.version}</version>
 		</dependency>
+		<dependency>
+			<artifactId>gencross</artifactId>
+			<groupId>com.mrprez.gencross</groupId>
+			<version>${gencross-ui.version}</version>
+		</dependency>
+		
 		
 		<!-- AXIS -->
 		<dependency>

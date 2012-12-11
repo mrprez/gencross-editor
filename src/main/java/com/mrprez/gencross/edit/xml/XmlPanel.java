@@ -1,30 +1,23 @@
 package com.mrprez.gencross.edit.xml;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.Collection;
-import java.util.HashSet;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.LayoutStyle;
 
-import org.dom4j.DocumentException;
-
-import com.mrprez.gencross.Personnage;
-import com.mrprez.gencross.disk.PersonnageSaver;
 import com.mrprez.gencross.edit.GenCrossEditor;
-import com.mrprez.gencross.edit.GenCrossEditorPanel;
 import com.mrprez.gencross.edit.error.ErrorFrame;
 import com.mrprez.gencross.edit.framework.SimpleEDTAction;
 
-public class XmlPanel extends GenCrossEditorPanel {
+public class XmlPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private JTextArea xmlArea = new JTextArea();
@@ -34,18 +27,13 @@ public class XmlPanel extends GenCrossEditorPanel {
 	
 	
 
-	public XmlPanel(Personnage personnage) throws IOException, SecurityException, NoSuchMethodException {
+	public XmlPanel() throws IOException, SecurityException, NoSuchMethodException {
 		super();
-		
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-		PersonnageSaver.savePersonnage(GenCrossEditor.getInstance().getPersonnage(), os);
-		setText(new String(os.toByteArray(), Charset.forName("UTF-8")));
 		
 		xmlScrollPane.setBorder(BorderFactory.createLoweredBevelBorder());
 		xmlScrollPane.setPreferredSize(this.getSize());
 		
 		xmlValidationButton.addActionListener(new SimpleEDTAction(this, "validateXml"));
-		xmlArea.addKeyListener(new TypeTextListener(this));
 		
 		GroupLayout layout = new GroupLayout(this);
 		setLayout(layout);
@@ -66,51 +54,24 @@ public class XmlPanel extends GenCrossEditorPanel {
 		);
 	}
 	
-	public void validateXml(){
-		Collection<String> errors = getDataErrors();
-		if(errors == null || errors.isEmpty()){
-			GenCrossEditor.getInstance().resumeTabbedPaneNavigation();
-		}else{
-			GenCrossEditor.getInstance().stopTabbedPaneNavigation();
-			JOptionPane.showMessageDialog(this, errors.iterator().next(), "XML invalide", JOptionPane.INFORMATION_MESSAGE);
-		}
-	}
-	
 	public void setText(String xmlText){
 		xmlArea.setText(xmlText);
 	}
-
-	@Override
-	public Personnage impact() throws Exception {
-		ByteArrayInputStream is = new ByteArrayInputStream(xmlArea.getText().getBytes(Charset.forName("UTF-8")));
-		return GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(is);
+	
+	public String getText(){
+		return xmlArea.getText();
 	}
 
-	@Override
-	public void refresh() throws Exception {
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-		PersonnageSaver.savePersonnage(GenCrossEditor.getInstance().getPersonnage(), os);
-		setText(new String(os.toByteArray(), Charset.forName("UTF-8")));
-	}
-
-	@Override
-	public Collection<String> getDataErrors() {
+	public void validateXml() {
 		ByteArrayInputStream is = new ByteArrayInputStream(xmlArea.getText().getBytes(Charset.forName("UTF-8")));
 		try {
 			GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(is);
-		} catch (DocumentException e) {
-			e.printStackTrace();
-			Collection<String> result = new HashSet<String>();
-			result.add(e.getMessage());
-			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
 			ErrorFrame.displayError(e);
-			Collection<String> result = new HashSet<String>();
-			result.add(e.getMessage());
-			return result;
+			return;
 		}
-		return null;
+		JOptionPane.showMessageDialog(GenCrossEditor.getInstance(), "XML valide", "SUCCESS", JOptionPane.PLAIN_MESSAGE);
 	}
 	
 	

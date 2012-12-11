@@ -2,7 +2,6 @@ package com.mrprez.gencross.edit.dialog.distant;
 
 import java.awt.Component;
 import java.awt.Frame;
-import java.io.ByteArrayInputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
@@ -22,9 +21,9 @@ import javax.swing.LayoutStyle;
 import javax.swing.ListCellRenderer;
 import javax.xml.rpc.ServiceException;
 
-import com.mrprez.gencross.Personnage;
 import com.mrprez.gencross.disk.PluginDescriptor;
 import com.mrprez.gencross.edit.GenCrossEditor;
+import com.mrprez.gencross.edit.SetXmlEdtWork;
 import com.mrprez.gencross.edit.framework.OptionPane;
 import com.mrprez.gencross.edit.framework.ReflectivBackgroundWork;
 import com.mrprez.gencross.edit.framework.ReflectivEdtWork;
@@ -42,7 +41,7 @@ public class DistantDialog extends JDialog {
 	private WebServiceClient webServiceClient;
 	private List<PluginDescriptor> pluginList;
 	private Map<String, Integer> personnageMap;
-	private Personnage personnage;
+	private SetXmlEdtWork setXmlEdtWork = new SetXmlEdtWork(null, null);
 	
 	private JLabel serverAdressLabel = new JLabel("Adresse du serveur");
 	private JTextField serverAdressField = new JTextField(DEFAULT_ADRESS_SERVER);
@@ -78,7 +77,7 @@ public class DistantDialog extends JDialog {
 		Work loadPersoListWork = new ReflectivBackgroundWork(this, "loadPersonnageList", new ReflectivEdtWork(this, "refreshPersonnageComboBox"));
 		pluginButton.addActionListener(new Treatment(loadPersoListWork, true, this));
 		
-		Work loadPersoWork = new ReflectivBackgroundWork(this, "loadPersonnage", new ReflectivEdtWork(this, "openPersonnage"));
+		Work loadPersoWork = new ReflectivBackgroundWork(this, "loadPersonnage", setXmlEdtWork);
 		personnageButton.addActionListener(new Treatment(loadPersoWork, true, this));
 		
 		refreshPluginComboBox();
@@ -191,12 +190,8 @@ public class DistantDialog extends JDialog {
 		String personnageDescriptor = (String) personnageComboBox.getSelectedItem();
 		Integer personnageId = personnageMap.get(personnageDescriptor);
 		byte xml[] = webServiceClient.loadPersonnage(personnageId.intValue());
-		personnage = GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(new ByteArrayInputStream(xml));
+		setXmlEdtWork.setXml(new String(xml, "UTF-8"));
+		setXmlEdtWork.setPersonnageName(personnageDescriptor);
 	}
 	
-	public void openPersonnage() throws Exception{
-		GenCrossEditor.getInstance().setPersonnage(personnage);
-		setVisible(false);
-	}
-
 }

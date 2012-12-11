@@ -5,10 +5,11 @@ import com.mrprez.gencross.edit.framework.EdtWork;
 import com.mrprez.gencross.edit.framework.Work;
 
 public class DistantPersonnageWork implements EdtWork {
+	private Work nextWork;
 
 	@Override
 	public Work getNextWork() {
-		return null;
+		return nextWork;
 	}
 
 	@Override

@@ -1,9 +1,12 @@
 package com.mrprez.gencross.edit;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
 
 import javax.swing.JFileChooser;
 
+import com.mrprez.gencross.Personnage;
 import com.mrprez.gencross.disk.PersonnageSaver;
 import com.mrprez.gencross.edit.framework.BackgroundWork;
 import com.mrprez.gencross.edit.framework.Work;
@@ -20,7 +23,9 @@ public class SaveAsWork implements BackgroundWork {
 			if(!file.getName().endsWith(".gcr")){
 	    		file = new File(file.getParentFile(), file.getName()+".gcr");
 	    	}
-			PersonnageSaver.savePersonnageGcr(GenCrossEditor.getInstance().getPersonnage(), file);
+			InputStream is = new ByteArrayInputStream(GenCrossEditor.getInstance().getXml().getBytes("UTF-8")); 
+			Personnage personnage = GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(is);
+			PersonnageSaver.savePersonnageGcr(personnage, file);
 		}
 		
 	}
