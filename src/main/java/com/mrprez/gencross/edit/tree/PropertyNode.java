@@ -12,7 +12,7 @@ import com.mrprez.gencross.edit.util.IteratorEnumeration;
 public class PropertyNode implements TreeNode {
 	private Property property;
 	private TreeNode parent;
-	private ArrayList<PropertyNode> children = new ArrayList<PropertyNode>();
+	private ArrayList<TreeNode> children = new ArrayList<TreeNode>();
 	
 	
 	public PropertyNode(Property property, TreeNode parent) {
@@ -22,9 +22,9 @@ public class PropertyNode implements TreeNode {
 	}
 
 	@Override
-	public Enumeration<PropertyNode> children() {
+	public Enumeration<TreeNode> children() {
 		refresh();
-		return new IteratorEnumeration<PropertyNode>(children.iterator());
+		return new IteratorEnumeration<TreeNode>(children.iterator());
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class PropertyNode implements TreeNode {
 		if(property.getSubProperties()==null){
 			return 0;
 		}
-		return property.getSubProperties().size();
+		return property.getSubProperties().size() + 1;
 	}
 
 	@Override
@@ -78,6 +78,7 @@ public class PropertyNode implements TreeNode {
 			for(Property subProperty : property.getSubProperties()){
 				children.add(new PropertyNode(subProperty, this));
 			}
+			children.add(new AddNode());
 		}
 	}
 	
@@ -88,22 +89,24 @@ public class PropertyNode implements TreeNode {
 			}
 			return;
 		}
-		if(children.size()!=property.getSubProperties().size()){
+		if(children.size()-1!=property.getSubProperties().size()){
 			update();
 			return;
 		}
 		Iterator<Property> subPropertyIt = property.getSubProperties().iterator();
-		Iterator<PropertyNode> treeIt = children.iterator();
+		Iterator<TreeNode> treeIt = children.iterator();
 		while(subPropertyIt.hasNext()){
 			Property subProperty = subPropertyIt.next();
-			Property treeProperty = treeIt.next().getProperty();
+			Property treeProperty = ((PropertyNode)treeIt.next()).getProperty();
 			if(subProperty != treeProperty){
 				update();
 				return;
 			}
 		}
-		for(PropertyNode propertyNode : children){
-			propertyNode.refresh();
+		for(TreeNode childNode : children){
+			if(childNode instanceof PropertyNode){
+				((PropertyNode)childNode).refresh();
+			}
 		}
 	}
 	

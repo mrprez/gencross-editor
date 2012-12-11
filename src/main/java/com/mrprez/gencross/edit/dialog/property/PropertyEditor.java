@@ -71,10 +71,6 @@ public class PropertyEditor extends EditDialog<Property> {
 	private JLabel commentLabel = new JLabel("Commentaire");
 	private JTextArea commentTextArea = new JTextArea(5,20);
 	private JScrollPane commentScrollPane = new JScrollPane(commentTextArea);
-	private JLabel subPropertieslabel = new JLabel("Liste de sous-propriétés");
-	private JCheckBox subPropertiesCheckBox = new JCheckBox();
-	private JButton addRemoveSubPropertiesButton = new JButton();
-	private JButton editSubPropertiesButton = new JButton("Editer");
 	
 	
 	public PropertyEditor(Property property, Frame frame) {
@@ -157,11 +153,6 @@ public class PropertyEditor extends EditDialog<Property> {
 		// Comment
 		commentTextArea.setText(property.getComment());
 		commentScrollPane.setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
-		// SubProperties
-		subPropertiesCheckBox.setEnabled(false);
-		subPropertiesCheckBox.setSelected(property.getSubProperties()!=null);
-		addRemoveSubPropertiesButton.addActionListener(new Treatment(new AddRemoveSubPropertiesWork(this, property)));
-		editSubPropertiesButton.addActionListener(new Treatment(new EditSubPropertiesWork(this, property)));
 		// Calcul des "enable" des champs
 		fieldEnability();
 		
@@ -196,13 +187,6 @@ public class PropertyEditor extends EditDialog<Property> {
 		editOptionButton.setVisible(choiceCheckBox.isSelected());
 		addOptionButton.setVisible(choiceCheckBox.isSelected());
 		choiceScroller.setVisible(choiceCheckBox.isSelected());
-		editSubPropertiesButton.setEnabled(property.getSubProperties()!=null);
-		subPropertiesCheckBox.setSelected(property.getSubProperties()!=null);
-		if(property.getSubProperties()==null){
-			addRemoveSubPropertiesButton.setText("Ajouter");
-		}else{
-			addRemoveSubPropertiesButton.setText("Suppr.");
-		}
 		defaultHistoryCheckBox.setSelected(property.getActualDefaultHistory()!=null);
 		editDefaultHistoryButton.setEnabled(property.getActualDefaultHistory()!=null);
 		addRemoveDefaultHistoryButton.setText(property.getActualDefaultHistory()==null?"Ajouter":"Suppr.");
@@ -237,7 +221,6 @@ public class PropertyEditor extends EditDialog<Property> {
 						.addComponent(editOptionButton,GroupLayout.Alignment.CENTER,GroupLayout.PREFERRED_SIZE,GroupLayout.PREFERRED_SIZE,Short.MAX_VALUE)
 						.addComponent(removeOptionButton,GroupLayout.Alignment.CENTER,GroupLayout.PREFERRED_SIZE,GroupLayout.PREFERRED_SIZE,Short.MAX_VALUE)
 						.addComponent(commentLabel)
-						.addComponent(subPropertieslabel)
 					)
 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 					.addGroup(layout.createParallelGroup()
@@ -265,14 +248,6 @@ public class PropertyEditor extends EditDialog<Property> {
 						.addComponent(choiceCheckBox)
 						.addComponent(choiceScroller)
 						.addComponent(commentScrollPane)
-						.addGroup(layout.createSequentialGroup()
-							.addComponent(subPropertiesCheckBox)
-							.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-							.addComponent(addRemoveSubPropertiesButton)
-							.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-							.addComponent(editSubPropertiesButton)
-						)
-							
 					)
 				)
 				.addComponent(validationButton, GroupLayout.Alignment.CENTER)
@@ -358,13 +333,6 @@ public class PropertyEditor extends EditDialog<Property> {
 			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER, true)
 				.addComponent(commentLabel)
 				.addComponent(commentScrollPane, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE)
-			)
-			.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER, false)
-				.addComponent(subPropertieslabel)
-				.addComponent(subPropertiesCheckBox)
-				.addComponent(addRemoveSubPropertiesButton)
-				.addComponent(editSubPropertiesButton)
 			)
 			.addGap(20)
 			.addComponent(validationButton)

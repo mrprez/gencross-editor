@@ -9,7 +9,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JTree;
 import javax.swing.ToolTipManager;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 
 import com.mrprez.gencross.Personnage;
@@ -35,18 +34,11 @@ public class PropertyTree extends JTree {
 		popupMenu.add(addMenuItem);
 		editMenuItem.addActionListener(new Treatment(new EditPropertyListener(this)));
 		addMenuItem.addActionListener(new Treatment(new AddPropertyListener()));
-		addMouseListener(new DisplayPopupMenu(this));
+		addMouseListener(new PropertyTreeMouseListener(this));
 	}
 	
 	public void refresh(){
 		top.refresh();
-	}
-	
-	public void expandAll(DefaultMutableTreeNode node){
-		this.expandPath(new TreePath(node.getPath()));
-		for(int i=0; i<node.getChildCount();i++){
-			expandAll((DefaultMutableTreeNode)node.getChildAt(i));
-		}
 	}
 	
 	public void displayPopupMenu(int x, int y){
@@ -60,10 +52,12 @@ public class PropertyTree extends JTree {
 		if(treePath==null){
 			return super.getToolTipText();
 		}
-		Property property = ((PropertyNode)treePath.getLastPathComponent()).getProperty();
-		
-		if(property.getComment()!=null){
-			return property.getComment().length()<200?property.getComment():(property.getComment().substring(0, 200)+"...");
+		if(treePath.getLastPathComponent() instanceof PropertyNode){
+			Property property = ((PropertyNode)treePath.getLastPathComponent()).getProperty();
+			
+			if(property.getComment()!=null){
+				return property.getComment().length()<200?property.getComment():(property.getComment().substring(0, 200)+"...");
+			}
 		}
 		return super.getToolTipText();
 	}

@@ -12,7 +12,7 @@ import com.mrprez.gencross.edit.util.IteratorEnumeration;
 
 public class PersonnageNode implements TreeNode {
 	private Personnage personnage;
-	private ArrayList<PropertyNode> children = new ArrayList<PropertyNode>();
+	private ArrayList<TreeNode> children = new ArrayList<TreeNode>();
 	
 
 	
@@ -22,9 +22,9 @@ public class PersonnageNode implements TreeNode {
 	}
 
 	@Override
-	public Enumeration<PropertyNode> children() {
+	public Enumeration<TreeNode> children() {
 		refresh();
-		return new IteratorEnumeration<PropertyNode>(children.iterator());
+		return new IteratorEnumeration<TreeNode>(children.iterator());
 	}
 
 	@Override
@@ -70,24 +70,26 @@ public class PersonnageNode implements TreeNode {
 	}
 	
 	public void refresh(){
-		if(children.size()!=personnage.size()){
+		if(children.size()!=personnage.size() + 1){
 			update();
 			return;
 		}
 		Iterator<Property> personnageIt = personnage.iterator();
-		Iterator<PropertyNode> treeIt = children.iterator();
+		Iterator<TreeNode> treeIt = children.iterator();
 		
 		while(personnageIt.hasNext() && treeIt.hasNext()){
 			Property personnageProperty = personnageIt.next();
-			Property treeProperty = treeIt.next().getProperty();
+			Property treeProperty = ((PropertyNode)treeIt.next()).getProperty();
 			if(personnageProperty != treeProperty){
 				update();
 				return;
 			}
 		}
 		
-		for(PropertyNode propertyNode : children){
-			propertyNode.refresh();
+		for(TreeNode treeNode : children){
+			if(treeNode instanceof PropertyNode){
+				((PropertyNode)treeNode).refresh();
+			}
 		}
 		
 	}
@@ -98,6 +100,7 @@ public class PersonnageNode implements TreeNode {
 		while(it.hasNext()){
 			children.add(new PropertyNode(it.next(), this));
 		}
+		children.add(new AddNode());
 	}
 	
 	
