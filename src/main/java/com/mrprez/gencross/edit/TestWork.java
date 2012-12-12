@@ -6,6 +6,7 @@ import java.io.InputStream;
 import com.mrprez.gencross.Personnage;
 import com.mrprez.gencross.edit.framework.EdtWork;
 import com.mrprez.gencross.edit.framework.Work;
+import com.mrprez.gencross.ui.GenCrossUI;
 
 public class TestWork implements EdtWork {
 
@@ -19,9 +20,10 @@ public class TestWork implements EdtWork {
 		InputStream is = new ByteArrayInputStream(GenCrossEditor.getInstance().getXml().getBytes("UTF-8"));
 		Personnage personnage = GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(is);
 		
-		GenCrossTester genCrossTester = new GenCrossTester(GenCrossEditor.getInstance().getRepositoryManager().getRepository());
+		GenCrossUIEssayDecorator genCrossUIDecorator = new GenCrossUIEssayDecorator();
 		
-		genCrossTester.setPersonnage(personnage);
+		GenCrossUI genCrossUI = genCrossUIDecorator.buildGenCrossUIEssay(personnage);
+		
 
 	}
 
