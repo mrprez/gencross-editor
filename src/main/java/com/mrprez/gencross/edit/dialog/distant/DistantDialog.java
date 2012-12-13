@@ -78,6 +78,7 @@ public class DistantDialog extends JDialog {
 		pluginButton.addActionListener(new Treatment(loadPersoListWork, true, this));
 		
 		Work loadPersoWork = new ReflectivBackgroundWork(this, "loadPersonnage", setXmlEdtWork);
+		setXmlEdtWork.setNextWork(new ReflectivEdtWork(this, "dispose"));
 		personnageButton.addActionListener(new Treatment(loadPersoWork, true, this));
 		
 		refreshPluginComboBox();
@@ -144,7 +145,8 @@ public class DistantDialog extends JDialog {
 	public void loadPluginList() throws ServiceException, MalformedURLException, RemoteException {
 		pluginList = null;
 		personnageMap = null;
-		webServiceClient = new WebServiceClient(serverAdressField.getText().trim());
+		GenCrossEditor.setServerAddress(serverAdressField.getText().trim());
+		webServiceClient = new WebServiceClient(GenCrossEditor.getServerAddress());
 		pluginList = new ArrayList<PluginDescriptor>(webServiceClient.loadPluginList());
 		refreshPluginComboBox();
 	}
@@ -189,6 +191,7 @@ public class DistantDialog extends JDialog {
 		}
 		String personnageDescriptor = (String) personnageComboBox.getSelectedItem();
 		Integer personnageId = personnageMap.get(personnageDescriptor);
+		GenCrossEditor.setPersonnageId(personnageId);
 		byte xml[] = webServiceClient.loadPersonnage(personnageId.intValue());
 		setXmlEdtWork.setXml(new String(xml, "UTF-8"));
 		setXmlEdtWork.setPersonnageName(personnageDescriptor);

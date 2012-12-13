@@ -7,6 +7,7 @@ import java.nio.charset.Charset;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -15,15 +16,16 @@ import javax.swing.LayoutStyle;
 
 import com.mrprez.gencross.edit.GenCrossEditor;
 import com.mrprez.gencross.edit.error.ErrorFrame;
-import com.mrprez.gencross.edit.framework.SimpleEDTAction;
+import com.mrprez.gencross.edit.framework.ReflectivBackgroundWork;
+import com.mrprez.gencross.edit.framework.Treatment;
 
 public class XmlPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private JTextArea xmlArea = new JTextArea();
 	private JScrollPane xmlScrollPane = new JScrollPane(xmlArea);
+	private JLabel positionLabel = new JLabel("1 : 1");
 	private JButton xmlValidationButton = new JButton("Valider");
-	
 	
 	
 
@@ -33,7 +35,10 @@ public class XmlPanel extends JPanel {
 		xmlScrollPane.setBorder(BorderFactory.createLoweredBevelBorder());
 		xmlScrollPane.setPreferredSize(this.getSize());
 		
-		xmlValidationButton.addActionListener(new SimpleEDTAction(this, "validateXml"));
+		xmlArea.addCaretListener(new TypeTextKeyListener(xmlArea, positionLabel));
+		xmlArea.setTabSize(2);
+		
+		xmlValidationButton.addActionListener(new Treatment(new ReflectivBackgroundWork(this, "validateXml"), true, GenCrossEditor.getInstance()));
 		
 		GroupLayout layout = new GroupLayout(this);
 		setLayout(layout);
@@ -41,6 +46,7 @@ public class XmlPanel extends JPanel {
 			.addContainerGap()
 			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
 				.addComponent(xmlScrollPane)
+				.addComponent(positionLabel, GroupLayout.Alignment.LEADING)
 				.addComponent(xmlValidationButton)
 			)
 			.addContainerGap()
@@ -48,6 +54,8 @@ public class XmlPanel extends JPanel {
 		layout.setVerticalGroup(layout.createSequentialGroup()
 			.addContainerGap()
 			.addComponent(xmlScrollPane)
+			.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+			.addComponent(positionLabel)
 			.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 			.addComponent(xmlValidationButton)
 			.addContainerGap()
@@ -63,15 +71,21 @@ public class XmlPanel extends JPanel {
 	}
 
 	public void validateXml() {
+		if(isValidXml()){
+			JOptionPane.showMessageDialog(GenCrossEditor.getInstance(), "XML valide", "SUCCESS", JOptionPane.PLAIN_MESSAGE);
+		}
+	}
+	
+	public boolean isValidXml(){
 		ByteArrayInputStream is = new ByteArrayInputStream(xmlArea.getText().getBytes(Charset.forName("UTF-8")));
 		try {
 			GenCrossEditor.getInstance().getPersonnageFactory().loadPersonnage(is);
 		} catch (Exception e) {
 			e.printStackTrace();
 			ErrorFrame.displayError(e);
-			return;
+			return false;
 		}
-		JOptionPane.showMessageDialog(GenCrossEditor.getInstance(), "XML valide", "SUCCESS", JOptionPane.PLAIN_MESSAGE);
+		return true;
 	}
 	
 	

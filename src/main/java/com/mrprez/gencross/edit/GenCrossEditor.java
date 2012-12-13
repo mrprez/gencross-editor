@@ -30,6 +30,8 @@ public class GenCrossEditor extends JFrame {
 	private final static String TITLE_SEPARATOR = " - ";
 	
 	private static GenCrossEditor instance;
+	private static String serverAddress;
+	private static Integer personnageId;
 	
 	private JFileChooser fileChooser = new JFileChooser();
 	
@@ -41,6 +43,7 @@ public class GenCrossEditor extends JFrame {
 	private JMenuItem openItem = new JMenuItem("Ouvrir");
 	private JMenuItem openDistantItem = new JMenuItem("Ouvrir à distance");
 	private JMenuItem saveAsItem = new JMenuItem("Sauvegarder sous");
+	private JMenuItem sendItem = new JMenuItem("Sauvegarder sur le serveur");
 	private JMenuItem testItem = new JMenuItem("Tester");
 	
 	private XmlPanel xmlPanel;
@@ -79,10 +82,12 @@ public class GenCrossEditor extends JFrame {
 		fileMenu.add(openItem);
 		fileMenu.add(openDistantItem);
 		fileMenu.add(saveAsItem);
+		fileMenu.add(sendItem);
 		fileMenu.add(testItem);
 		openItem.addActionListener(new Treatment(new OpenWork()));
 		openDistantItem.addActionListener(new Treatment(new DistantPersonnageWork()));
 		saveAsItem.addActionListener(new Treatment(new SaveAsWork()));
+		sendItem.addActionListener(new Treatment(new SendPersonnageWork()));
 		testItem.addActionListener(new Treatment(new TestWork()));
 		
 		// Panels
@@ -113,6 +118,10 @@ public class GenCrossEditor extends JFrame {
 		}
 	}
 	
+	public boolean isValidXml(){
+		return xmlPanel.isValidXml();
+	}
+	
 	public JFileChooser getFileChooser(){
 		return fileChooser;
 	}
@@ -131,6 +140,22 @@ public class GenCrossEditor extends JFrame {
 	
 	public String getXml(){
 		return xmlPanel.getText();
+	}
+
+	public static Integer getPersonnageId() {
+		return personnageId;
+	}
+
+	public static void setPersonnageId(Integer personnageId) {
+		GenCrossEditor.personnageId = personnageId;
+	}
+
+	public static String getServerAddress() {
+		return serverAddress;
+	}
+
+	public static void setServerAddress(String serverAddress) {
+		GenCrossEditor.serverAddress = serverAddress;
 	}
 	
 }

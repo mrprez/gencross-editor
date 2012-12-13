@@ -6,7 +6,6 @@ import java.io.InputStream;
 import com.mrprez.gencross.Personnage;
 import com.mrprez.gencross.edit.framework.EdtWork;
 import com.mrprez.gencross.edit.framework.Work;
-import com.mrprez.gencross.ui.GenCrossUI;
 
 public class TestWork implements EdtWork {
 
@@ -22,7 +21,7 @@ public class TestWork implements EdtWork {
 		
 		GenCrossUIEssayDecorator genCrossUIDecorator = new GenCrossUIEssayDecorator();
 		
-		GenCrossUI genCrossUI = genCrossUIDecorator.buildGenCrossUIEssay(personnage);
+		genCrossUIDecorator.buildGenCrossUIEssay(personnage);
 		
 
 	}

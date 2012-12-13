@@ -24,7 +24,7 @@
 			<version>${gencross.version}</version>
 		</dependency>
 		<dependency>
-			<artifactId>gencross</artifactId>
+			<artifactId>gencross-ui</artifactId>
 			<groupId>com.mrprez.gencross</groupId>
 			<version>${gencross-ui.version}</version>
 		</dependency>

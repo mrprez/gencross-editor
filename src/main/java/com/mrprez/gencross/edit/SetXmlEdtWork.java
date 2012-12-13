@@ -6,6 +6,7 @@ import com.mrprez.gencross.edit.framework.Work;
 public class SetXmlEdtWork implements EdtWork {
 	private String xml;
 	private String personnageName;
+	private Work nextWork;
 	
 	
 	public SetXmlEdtWork(String personnageName,String xml) {
@@ -13,10 +14,14 @@ public class SetXmlEdtWork implements EdtWork {
 		this.personnageName = personnageName;
 		this.xml = xml;
 	}
+	
+	public void setNextWork(Work nextWork) {
+		this.nextWork = nextWork;
+	}
 
 	@Override
 	public Work getNextWork() {
-		return null;
+		return nextWork;
 	}
 
 	@Override

@@ -23,6 +23,7 @@ public class WebServiceClient {
 	private static String GET_PLUGIN_LIST = "getPluginList";
 	private static String FIND_PERSONNAGE_LIST = "findPersonnageList";
 	private static String LOAD_PERSONNAGE = "loadPersonnage";
+	private static String SAVE_PERSONNAGE = "savePersonnage";
 	
 	private Service service = new Service();
 	
@@ -74,6 +75,13 @@ public class WebServiceClient {
 		call.setOperationName(new QName(NAMESPACE_URI, LOAD_PERSONNAGE));
 		
 		return (byte[]) call.invoke(new Object[]{personnageId});
+	}
+	
+	public void savePersonnage(Integer personnageId, byte[] personnageContent) throws ServiceException, RemoteException{
+		Call call = (Call) service.createCall();
+		call.setTargetEndpointAddress(targetEndpointUrl);
+		call.setOperationName(new QName(NAMESPACE_URI, SAVE_PERSONNAGE));
+		call.invoke(new Object[]{personnageId, personnageContent});
 	}
 
 }
