@@ -6,7 +6,6 @@
 	<packaging>jar</packaging>
 	
 	<artifactId>gencross-editor</artifactId>
-	<groupId>com.mrprez.gencross</groupId>
 	<version>0.8</version>
 	
 	<name>GenCrossEditor</name>
