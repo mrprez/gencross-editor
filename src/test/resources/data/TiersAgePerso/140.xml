@@ -1,0 +1,3551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<personnage class="com.mrprez.gencross.impl.tiersAge.TiersAgePerso" version="1.1" password="hlttclm" appendix="TiersAgePerso">
+	<phase name="Vocation"/>
+	<phaseList>
+		<phase name="Race"/>
+		<phase name="Attributs"/>
+		<phase name="Bonus Vocation"/>
+		<phase name="Héritage culturel"/>
+		<phase name="Choix origine"/>
+		<phase name="Origine"/>
+		<phase name="Choix enfance"/>
+		<phase name="Enfance"/>
+		<phase name="Vocation"/>
+		<phase name="En vie"/>
+	</phaseList>
+	<pointPools>
+		<pool name="Bonus Vocation" remaining="0" total="2" toEmpty="true"/>
+		<pool name="Création" remaining="0" total="60" toEmpty="true"/>
+		<pool name="Magie elfique" remaining="0" total="0" toEmpty="true"/>
+		<pool name="Magie d'Aman" remaining="0" total="0" toEmpty="true"/>
+		<pool name="Magie runique" remaining="0" total="0" toEmpty="true"/>
+		<pool name="Haute magie" remaining="0" total="0" toEmpty="true"/>
+		<pool name="Sorcellerie" remaining="0" total="0" toEmpty="true"/>
+		<pool name="Magie naturelle" remaining="0" total="0" toEmpty="true"/>
+		<pool name="Dons thaumaturgiques" remaining="0" total="4" toEmpty="true"/>
+		<pool name="Ténèbres" remaining="0" total="0" toEmpty="true"/>
+		<pool name="Experience" remaining="0" total="0" toEmpty="false"/>
+	</pointPools>
+	<properties>
+		<property name="Nom" editable="true" canBeRemoved="true">
+			<Value class="com.mrprez.gencross.value.StringValue">Ilentar de Peldagur</Value>
+		</property>
+		<property name="Race" editable="false" canBeRemoved="true">
+			<Value class="com.mrprez.gencross.value.StringValue">Dunadan</Value>
+			<valueChoice>
+				<Value class="com.mrprez.gencross.value.StringValue">Demi-elfe</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Dunadan</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Elfe Sylvain</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Elfe Gris de Foncombe</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Elfe Gris des Havres</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Haut-Elfe</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Hobbit Fort</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Hobbit Pâle</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Hobbit Pied-velu</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Homme commun</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Homme de Rohan</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Nain</Value>
+			</valueChoice>
+		</property>
+		<property name="Origine" editable="false" canBeRemoved="true">
+			<Value class="com.mrprez.gencross.value.StringValue">Rhudaur</Value>
+			<valueChoice>
+				<Value class="com.mrprez.gencross.value.StringValue">Gondor</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Cardolan</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Rhudaur</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Arthedain</Value>
+			</valueChoice>
+		</property>
+		<property name="Enfance" editable="false" canBeRemoved="true">
+			<Value class="com.mrprez.gencross.value.StringValue">Menacée</Value>
+			<valueChoice>
+				<Value class="com.mrprez.gencross.value.StringValue">Menacée</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Tutelle elfique</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Education seigneuriale</Value>
+			</valueChoice>
+		</property>
+		<property name="Vocation" editable="false" canBeRemoved="true">
+			<Value class="com.mrprez.gencross.value.StringValue">Guerrier</Value>
+			<valueChoice>
+				<Value class="com.mrprez.gencross.value.StringValue">Bucheron</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Cambrioleur</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Chasseur</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Chevalier</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Chroniqueur</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Cuisinier</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Ermite</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Forgeron</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Guérisseur</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Guerrier</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Housekarl</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Jardinier</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Marchand</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Marin</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Ménestrel</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Nomade</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Orfèvre</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Prospecteur</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Rôdeur</Value>
+				<Value class="com.mrprez.gencross.value.StringValue">Shirrif</Value>
+			</valueChoice>
+		</property>
+		<property name="Attributs" editable="false" canBeRemoved="true">
+			<propertiesList fixe="true" open="false">
+				<propertyChoice/>
+				<properties>
+					<property name="Carrure" editable="false" canBeRemoved="true" id="1">
+						<Value class="com.mrprez.gencross.value.IntValue" offset="2">18</Value>
+						<min>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="2">18</Value>
+						</min>
+						<max>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="1">18</Value>
+						</max>
+						<renderer class="com.mrprez.gencross.impl.tiersAge.TiersAgeRenderer"/>
+						<propertiesList fixe="true" open="false">
+							<propertyChoice>
+								<property name="Armes à 2 mains" editable="true" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Epées" editable="true" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Forge" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Haches" editable="true" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Lances" editable="true" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Masses" editable="true" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Natation" editable="true" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Taille de la pierre" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Verrerie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</propertyChoice>
+							<properties>
+								<property name="Points de Vie" editable="false" canBeRemoved="true" id="1">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Bagarre" editable="true" canBeRemoved="true" id="2">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Endurance" editable="true" canBeRemoved="true" id="3">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Forcer" editable="true" canBeRemoved="true" id="4">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Lutte" editable="true" canBeRemoved="true" id="5">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Sauter" editable="true" canBeRemoved="true" id="6">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Armes à 2 mains" editable="true" canBeRemoved="true" id="7">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Masses" editable="true" canBeRemoved="true" id="8">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Natation" editable="true" canBeRemoved="true" id="9">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Haches" editable="true" canBeRemoved="true" id="10">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Lances" editable="true" canBeRemoved="true" id="11">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Epées" editable="true" canBeRemoved="true" id="12">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</properties>
+						</propertiesList>
+					</property>
+					<property name="Grâce" editable="false" canBeRemoved="true" id="2">
+						<Value class="com.mrprez.gencross.value.IntValue" offset="2">14</Value>
+						<min>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="2">12</Value>
+						</min>
+						<max>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="1">18</Value>
+						</max>
+						<renderer class="com.mrprez.gencross.impl.tiersAge.TiersAgeRenderer"/>
+						<propertiesList fixe="true" open="false">
+							<propertyChoice>
+								<property name="Archerie" editable="true" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Chirurgie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Conduite d’attelage" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Couture et broderie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Crocheter" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Danse" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Désamorcer" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Détrousser" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Pêche" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Poterie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Travail du bois" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Travail du cuir" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</propertyChoice>
+							<properties>
+								<property name="Actions/Tour" editable="false" canBeRemoved="true" id="1">
+									<Value class="com.mrprez.gencross.value.DoubleValue" offset="1.0">3</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.DoubleValue" offset="1.0">3</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Initiative" editable="false" canBeRemoved="true" id="2">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">9</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">9</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Course" editable="false" canBeRemoved="true" id="3">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">9</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">9</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Acrobatie" editable="false" canBeRemoved="true" id="4">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Equitation" editable="true" canBeRemoved="true" id="5">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Escalade" editable="true" canBeRemoved="true" id="6">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Esquive" editable="true" canBeRemoved="true" id="7">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Lancer" editable="true" canBeRemoved="true" id="8">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Parade" editable="true" canBeRemoved="true" id="9">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Poignards" editable="true" canBeRemoved="true" id="10">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Se cacher" editable="false" canBeRemoved="true" id="11">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Archerie" editable="true" canBeRemoved="true" id="12">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</properties>
+						</propertiesList>
+					</property>
+					<property name="Poésie" editable="false" canBeRemoved="true" id="3">
+						<Value class="com.mrprez.gencross.value.IntValue" offset="2">6</Value>
+						<min>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="2">6</Value>
+						</min>
+						<max>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="1">18</Value>
+						</max>
+						<renderer class="com.mrprez.gencross.impl.tiersAge.TiersAgeRenderer"/>
+						<propertiesList fixe="true" open="false">
+							<propertyChoice>
+								<property name="Calligraphie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Composition musicale" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Composition poétique" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Cuisine" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Enchantement" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Instrument de musique" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Lutherie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Orfèvrerie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Peinture et enluminure" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</propertyChoice>
+							<properties>
+								<property name="Magie elfique" editable="false" canBeRemoved="true" id="1">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Magie d'Aman" editable="false" canBeRemoved="true" id="2">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Points de rêve" editable="false" canBeRemoved="true" id="3">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Chant" editable="false" canBeRemoved="true" id="4">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Comédie" editable="false" canBeRemoved="true" id="5">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Rêverie" editable="false" canBeRemoved="true" id="6">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</properties>
+						</propertiesList>
+					</property>
+					<property name="Erudition" editable="false" canBeRemoved="true" id="4">
+						<Value class="com.mrprez.gencross.value.IntValue" offset="2">10</Value>
+						<min>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="2">10</Value>
+						</min>
+						<max>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="1">18</Value>
+						</max>
+						<renderer class="com.mrprez.gencross.impl.tiersAge.TiersAgeRenderer"/>
+						<propertiesList fixe="true" open="false">
+							<propertyChoice>
+								<property name="Architecture" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Jardinage" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Etudes ésotériques" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Géographie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Géologie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Langues" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Lecture de runes" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Légendes" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Lire/Ecrire" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Premiers soins" editable="true" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Sortilège" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Stratégie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Tactique" editable="true" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</propertyChoice>
+							<properties>
+								<property name="Magie runique" editable="false" canBeRemoved="true" id="1">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Haute magie" editable="false" canBeRemoved="true" id="2">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Sorcellerie" editable="false" canBeRemoved="true" id="3">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Points de sagesse" editable="false" canBeRemoved="true" id="4">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Langue maternelle" editable="false" canBeRemoved="true" id="5">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Westron" editable="false" canBeRemoved="true" id="6">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Stratégie" editable="false" canBeRemoved="true" id="7">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Tactique" editable="true" canBeRemoved="true" id="8">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Premiers soins" editable="true" canBeRemoved="true" id="9">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</properties>
+						</propertiesList>
+					</property>
+					<property name="Eveil" editable="false" canBeRemoved="true" id="5">
+						<Value class="com.mrprez.gencross.value.IntValue" offset="2">8</Value>
+						<min>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="2">8</Value>
+						</min>
+						<max>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="1">18</Value>
+						</max>
+						<renderer class="com.mrprez.gencross.impl.tiersAge.TiersAgeRenderer"/>
+						<propertiesList fixe="true" open="false">
+							<propertyChoice>
+								<property name="Chamanisme" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Détecter piège" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Empathie animale" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Empathie horticole" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Empathie marine" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Empathie rocheuse" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Empathie sylvestre" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Estimation matérielle" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Navigation" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Perspicacité" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Pister" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Vénerie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</propertyChoice>
+							<properties>
+								<property name="Magie naturelle" editable="false" canBeRemoved="true" id="1">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Points de communion" editable="false" canBeRemoved="true" id="2">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Orientation" editable="false" canBeRemoved="true" id="3">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Mémoriser" editable="false" canBeRemoved="true" id="4">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Perception" editable="true" canBeRemoved="true" id="5">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</properties>
+						</propertiesList>
+					</property>
+					<property name="Noblesse" editable="false" canBeRemoved="true" id="6">
+						<Value class="com.mrprez.gencross.value.IntValue" offset="2">16</Value>
+						<min>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="2">16</Value>
+						</min>
+						<max>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="1">18</Value>
+						</max>
+						<renderer class="com.mrprez.gencross.impl.tiersAge.TiersAgeRenderer"/>
+						<propertiesList fixe="true" open="false">
+							<propertyChoice>
+								<property name="Inspirer confiance" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Sens de l’honneur" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Sentir le Mal" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Thaumaturgie royale" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</propertyChoice>
+							<properties>
+								<property name="Dons thaumaturgiques" editable="false" canBeRemoved="true" id="1">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Points malice/majesté" editable="false" canBeRemoved="true" id="2">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">10</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">10</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">10</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Résistance à la Sorcellerie" editable="false" canBeRemoved="true" id="3">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Résistance aux Ténèbres" editable="false" canBeRemoved="true" id="4">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Thaumaturgie royale" editable="false" canBeRemoved="true" id="5">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Sens de l’honneur" editable="true" canBeRemoved="true" id="6">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</properties>
+						</propertiesList>
+					</property>
+					<property name="Prestance" editable="false" canBeRemoved="true" id="7">
+						<Value class="com.mrprez.gencross.value.IntValue" offset="2">14</Value>
+						<min>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="2">14</Value>
+						</min>
+						<max>
+							<Value class="com.mrprez.gencross.value.IntValue" offset="1">18</Value>
+						</max>
+						<renderer class="com.mrprez.gencross.impl.tiersAge.TiersAgeRenderer"/>
+						<propertiesList fixe="true" open="false">
+							<propertyChoice>
+								<property name="Criée" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Commander" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Dressage" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Intimidation" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Mendier" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</propertyChoice>
+							<properties>
+								<property name="Charme" editable="false" canBeRemoved="true" id="1">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Baratin" editable="false" canBeRemoved="true" id="2">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Eloquence" editable="false" canBeRemoved="true" id="3">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Enseigner" editable="false" canBeRemoved="true" id="4">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Marchander" editable="false" canBeRemoved="true" id="5">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+									</min>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Commander" editable="true" canBeRemoved="true" id="6">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+								<property name="Intimidation" editable="true" canBeRemoved="true" id="7">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									<min>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+									</min>
+									<max>
+										<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+									</max>
+									<defaultHistory>
+										<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+											<date>1327679556296</date>
+											<pointPool>Création</pointPool>
+											<args/>
+										</historyItem>
+									</defaultHistory>
+								</property>
+							</properties>
+						</propertiesList>
+					</property>
+				</properties>
+			</propertiesList>
+			<defaultHistory>
+				<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+					<date>1327679556296</date>
+					<pointPool>Bonus Vocation</pointPool>
+					<args/>
+				</historyItem>
+			</defaultHistory>
+		</property>
+		<property name="Magie spontanée" editable="false" canBeRemoved="false">
+			<propertiesList fixe="true" open="false">
+				<propertyChoice/>
+				<properties>
+					<property name="Magie elfique" editable="false" canBeRemoved="false" id="1">
+						<propertiesList fixe="false" open="false">
+							<propertyChoice>
+								<property name="Chanson de Marche" editable="true" canBeRemoved="true"/>
+								<property name="Aura elfique" editable="true" canBeRemoved="true"/>
+								<property name="Démarche elfique" editable="true" canBeRemoved="true"/>
+								<property name="Séduction" editable="true" canBeRemoved="true"/>
+								<property name="Acuité sensorielle" editable="true" canBeRemoved="true"/>
+							</propertyChoice>
+							<properties/>
+						</propertiesList>
+						<defaultHistory>
+							<historyItem class="com.mrprez.gencross.history.ConstantHistoryItem" action="0">
+								<date>1327679556296</date>
+								<pointPool>Magie elfique</pointPool>
+								<args>
+									<arg key="cost">1</arg>
+								</args>
+							</historyItem>
+						</defaultHistory>
+					</property>
+					<property name="Magie d'Aman" editable="false" canBeRemoved="false" id="2">
+						<propertiesList fixe="false" open="false">
+							<propertyChoice>
+								<property name="Cantique d'Elbereth" editable="true" canBeRemoved="true"/>
+								<property name="Cantique de Yavanna" editable="true" canBeRemoved="true"/>
+								<property name="Silence intérieur" editable="true" canBeRemoved="true"/>
+								<property name="Ouverture spirituelle" editable="true" canBeRemoved="true"/>
+								<property name="Chant de Felagund" editable="true" canBeRemoved="true"/>
+							</propertyChoice>
+							<properties/>
+						</propertiesList>
+						<defaultHistory>
+							<historyItem class="com.mrprez.gencross.history.ConstantHistoryItem" action="0">
+								<date>1327679556296</date>
+								<pointPool>Magie d'Aman</pointPool>
+								<args>
+									<arg key="cost">1</arg>
+								</args>
+							</historyItem>
+						</defaultHistory>
+					</property>
+					<property name="Magie naturelle" editable="false" canBeRemoved="false" id="3">
+						<propertiesList fixe="false" open="false">
+							<propertyChoice>
+								<property name="Prévision du temps" editable="true" canBeRemoved="true"/>
+								<property name="Camouflage en milieu naturel" editable="true" canBeRemoved="true"/>
+								<property name="Sommeil réparateur" editable="true" canBeRemoved="true"/>
+								<property name="Langage animal" editable="true" canBeRemoved="true"/>
+								<property name="Imprégnation spirituelle" editable="true" canBeRemoved="true"/>
+							</propertyChoice>
+							<properties/>
+						</propertiesList>
+						<defaultHistory>
+							<historyItem class="com.mrprez.gencross.history.ConstantHistoryItem" action="0">
+								<date>1327679556296</date>
+								<pointPool>Magie naturelle</pointPool>
+								<args>
+									<arg key="cost">1</arg>
+								</args>
+							</historyItem>
+						</defaultHistory>
+					</property>
+					<property name="Dons thaumaturgiques" editable="false" canBeRemoved="false" id="4">
+						<propertiesList fixe="false" open="false">
+							<propertyChoice>
+								<property name="Ralliement" editable="true" canBeRemoved="true"/>
+								<property name="Immunité royale" editable="true" canBeRemoved="true"/>
+								<property name="Feu sacré" editable="true" canBeRemoved="true"/>
+								<property name="Imposition des mains" editable="true" canBeRemoved="true"/>
+							</propertyChoice>
+							<properties>
+								<property name="Ralliement" editable="true" canBeRemoved="true" id="1"/>
+								<property name="Immunité royale" editable="true" canBeRemoved="true" id="2"/>
+								<property name="Feu sacré" editable="true" canBeRemoved="true" id="3"/>
+								<property name="Imposition des mains" editable="true" canBeRemoved="true" id="4"/>
+							</properties>
+						</propertiesList>
+						<defaultHistory>
+							<historyItem class="com.mrprez.gencross.history.ConstantHistoryItem" action="0">
+								<date>1327679556296</date>
+								<pointPool>Dons thaumaturgiques</pointPool>
+								<args>
+									<arg key="cost">1</arg>
+								</args>
+							</historyItem>
+						</defaultHistory>
+					</property>
+					<property name="Ténèbres" editable="false" canBeRemoved="false" id="5">
+						<propertiesList fixe="false" open="false">
+							<propertyChoice>
+								<property name="Souffle noir" editable="true" canBeRemoved="true"/>
+								<property name="Envoûtement" editable="true" canBeRemoved="true"/>
+								<property name="Horreur" editable="true" canBeRemoved="true"/>
+								<property name="Tempestaire" editable="true" canBeRemoved="true"/>
+								<property name="Hurleloup" editable="true" canBeRemoved="true"/>
+							</propertyChoice>
+							<properties/>
+						</propertiesList>
+						<defaultHistory>
+							<historyItem class="com.mrprez.gencross.history.ConstantHistoryItem" action="0">
+								<date>1327679556296</date>
+								<pointPool>Ténèbres</pointPool>
+								<args>
+									<arg key="cost">1</arg>
+								</args>
+							</historyItem>
+						</defaultHistory>
+					</property>
+				</properties>
+			</propertiesList>
+		</property>
+		<property name="Magie rituelle" editable="false" canBeRemoved="false">
+			<propertiesList fixe="true" open="false">
+				<propertyChoice/>
+				<properties>
+					<property name="Magie runique" editable="false" canBeRemoved="true" id="1">
+						<propertiesList fixe="false" open="false">
+							<propertyChoice>
+								<property name="Rune de Hargne Mineure" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Rune Lunaire Mineure" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Rune Mineure de Défense" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Rune Mineure de Fermeture" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Rune Mineure de Prouesse" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Rune Mineure de Ralliement" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Rune Mineur de Vandalisme" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Grande Rune de Hargne" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Grande Rune Lunaire" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Grande Rune de Défense" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Grande Rune de Prouesse" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Grande rune de Ralliement" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Petit Brisefer Runique" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Rune Elfique Mineure" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Rune Mineure de Sauvegarde" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Rune Mineure de Sérénité" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Entrelacs Runique de Hargne" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Entrelacs Lunaire" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Entrelacs Runique de défense" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Entrelacs Runique de Prouesse" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Entrelacs Runique de Ralliement" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Grande Rune de Sauvegarde" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Grande Rune de Vandalisme" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Entrelacs Runique de Sauvegarde" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Grand Brisefer Runique" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Grande Rune Elfique" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Grande Rune de Sérénité" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Rune Mineure de Sanctuaire" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Rune Mineure de Vaillance" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Rune Mineure de Rage" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Entrelacs Vandale" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Grande Rune de Rage" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Grande Rune de Sanctuaire" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Grande Rune de Vaillance" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Entrelacs Brisefer" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="Entrelacs Runique de Rage" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="Entrelacs Elfique" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="Entrelacs Runique de Sérénité" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="Entrelacs Runique de Sanctuaire" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="Entrelacs Runique de Vaillance" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+							</propertyChoice>
+							<properties/>
+						</propertiesList>
+						<defaultHistory>
+							<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+								<date>1327679556296</date>
+								<pointPool>Magie runique</pointPool>
+								<args/>
+							</historyItem>
+						</defaultHistory>
+					</property>
+					<property name="Haute magie" editable="false" canBeRemoved="true" id="2">
+						<propertiesList fixe="false" open="false">
+							<propertyChoice>
+								<property name="Androgynie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Beauté" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Brise" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Croissance du feu" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Dissipation du brouillard" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Don de sourcier" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Ecoute de la Terre" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Interprétation des empreintes" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Le dit des rides" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Le dit du gravier" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Murmures de l'onde" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Narcos" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Porte des songes" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Purification de l'air" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Pyrogénèse" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Sourires morphiques" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Tourbillon de poussière" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Brume" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Connaissance des minerais" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Disparition des empreintes" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Eclair" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Interprétation des étoiles" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Maîtrise de la croissance" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Maîtrise du type" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Purification de l'eau" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Pyrotechnie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Solidification de la vase" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Songe" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Songe prémonitoire" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Vent" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Apaisement du vent" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Architecture du Rêve" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Eaux dormantes" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Erosion" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Cercle ardent" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Disproportion" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Maîtrise des courants" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Maîtrise des traits" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Miroir de Galadriel" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Murmures du vent" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Pétrification" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Rafales" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Cosmopolitisme" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Crevasse" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Eboulement" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Eclaircie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Pluie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Polymorphisme" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Rêve éveillé" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Trait de feu" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Visite onirique" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Bestialisation" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Bourrasque de feu" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Gémellité" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Gouffre" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Mirage onirique" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Muraille de feu" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Foudre" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="La voie de l'Ent" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="La voie du Troll" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="Secousse sismique" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+							</propertyChoice>
+							<properties/>
+						</propertiesList>
+						<defaultHistory>
+							<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+								<date>1327679556296</date>
+								<pointPool>Haute magie</pointPool>
+								<args/>
+							</historyItem>
+						</defaultHistory>
+					</property>
+					<property name="Sorcellerie" editable="false" canBeRemoved="true" id="3">
+						<propertiesList fixe="false" open="false">
+							<propertyChoice>
+								<property name="Absence" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Eczéma" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Engourdissement" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Epuisement" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Etat d'âme" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Faux mouvement" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Lapsus" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Le dit de la cendre" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Leitmotiv" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Perception manipulée" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Résurgence" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+								</property>
+								<property name="Assoupissement" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Bavardage" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Confusion" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Crampe" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Doute" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Feux-follets" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Laideur" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Malchance" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Mauvais rêve" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Pyromancie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Refoulement" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Sentiment" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Somnolence" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+								</property>
+								<property name="Cauchemar" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Corruption" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Distraction" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Faiblesse" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Sommeil" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Suggestion" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Trou de mémoire" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+								</property>
+								<property name="Bouc émissaire" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Grêle" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Hémophilie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Nuées orageuses" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Onde de choc" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Peur" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Pulsion" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Vague de sommeil" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+								</property>
+								<property name="Feu sombre" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Infirmité" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Lame de morgul" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Mauvais oeil" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Obsession" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Panique" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Passion" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Tétanisation" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Tornade" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+								</property>
+								<property name="Amnésie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="Dévastation" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="Epouvante" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="Flamme d'Udùn" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="Flétrissure" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+								<property name="Phobie" editable="false" canBeRemoved="true">
+									<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+								</property>
+							</propertyChoice>
+							<properties/>
+						</propertiesList>
+						<defaultHistory>
+							<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="0">
+								<date>1327679556296</date>
+								<pointPool>Sorcellerie</pointPool>
+								<args/>
+							</historyItem>
+						</defaultHistory>
+					</property>
+				</properties>
+			</propertiesList>
+		</property>
+		<property name="Equipement" editable="false" canBeRemoved="true">
+			<propertiesList fixe="true" open="true">
+				<defaultProperty>
+					<property name="" editable="false" canBeRemoved="true"/>
+				</defaultProperty>
+				<propertyChoice/>
+				<properties/>
+			</propertiesList>
+		</property>
+		<property name="Points de Valeur" editable="true" canBeRemoved="true">
+			<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+		</property>
+		<property name="Désespoir/Mélancolie" editable="true" canBeRemoved="true">
+			<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+		</property>
+		<property name="Echo magique" editable="true" canBeRemoved="true">
+			<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+		</property>
+		<property name="Notoriété magique" editable="true" canBeRemoved="true">
+			<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+		</property>
+	</properties>
+	<beforeChangeValueListeners/>
+	<afterChangeValueListeners>
+		<listener class="com.mrprez.gencross.listener.impl.TabFormulaListener">
+			<pattern>Attributs#Grâce</pattern>
+			<arg name="key4">28.0</arg>
+			<arg name="key3">26.0</arg>
+			<arg name="dependantPropertyName">Attributs#Grâce#Actions/Tour</arg>
+			<arg name="key5">30.0</arg>
+			<arg name="key0">20.0</arg>
+			<arg name="key2">24.0</arg>
+			<arg name="key1">22.0</arg>
+			<arg name="value5">5.0</arg>
+			<arg name="value3">5.0</arg>
+			<arg name="value4">5.0</arg>
+			<arg name="value1">4.0</arg>
+			<arg name="value2">5.0</arg>
+			<arg name="value0">4.0</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.AlimentationPropertyListener">
+			<pattern>Attributs#Poésie#Magie elfique</pattern>
+			<arg name="pointPool">Magie elfique</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.AlimentationPropertyListener">
+			<pattern>Attributs#Poésie#Magie d'Aman</pattern>
+			<arg name="pointPool">Magie d'Aman</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.AlimentationPropertyListener">
+			<pattern>Attributs#Erudition#Magie runique</pattern>
+			<arg name="pointPool">Magie runique</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.AlimentationPropertyListener">
+			<pattern>Attributs#Erudition#Haute magie</pattern>
+			<arg name="pointPool">Haute magie</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.AlimentationPropertyListener">
+			<pattern>Attributs#Erudition#Sorcellerie</pattern>
+			<arg name="pointPool">Sorcellerie</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.AlimentationPropertyListener">
+			<pattern>Attributs#Eveil#Magie naturelle</pattern>
+			<arg name="pointPool">Magie naturelle</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.AlimentationPropertyListener">
+			<pattern>Attributs#Noblesse#Dons thaumaturgiques</pattern>
+			<arg name="pointPool">Dons thaumaturgiques</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.AlimentationPropertyListener">
+			<pattern>Attributs#Noblesse#Ténèbres</pattern>
+			<arg name="pointPool">Ténèbres</arg>
+		</listener>
+	</afterChangeValueListeners>
+	<beforeAddPropertyListeners/>
+	<afterAddPropertyListeners/>
+	<beforeDeletePropertyListeners/>
+	<afterDeletePropertyListeners/>
+	<passToNextPhaseListeners>
+		<listener class="com.mrprez.gencross.listener.impl.EditableListener">
+			<phase>Race</phase>
+			<arg name="propertyName">Vocation</arg>
+			<arg name="editable">false</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.EditableListener">
+			<phase>Race</phase>
+			<arg name="propertyName">Race</arg>
+			<arg name="editable">false</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.ToEmptyListener">
+			<phase>Attributs</phase>
+			<arg name="toEmpty">true</arg>
+			<arg name="pointPool">Bonus Vocation</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.SetMinListener">
+			<phase>Attributs</phase>
+			<arg name="pattern">Attributs#[^#]*</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.custom.CustomPassToNextPhaseListener">
+			<phase>Attributs</phase>
+			<arg name="method">passToPhaseBonusVocation</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.ChangeDefaultHistoryListener">
+			<phase>Attributs</phase>
+			<arg name="class">com.mrprez.gencross.history.OneForOneHistoryItem</arg>
+			<arg name="property">Attributs</arg>
+			<arg name="pointPool">Bonus Vocation</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.custom.CustomPassToNextPhaseListener">
+			<phase>Bonus Vocation</phase>
+			<arg name="method">passToPhaseCulturel</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.custom.CustomPassToNextPhaseListener">
+			<phase>Héritage culturel</phase>
+			<arg name="method">passToChoixOrigine</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.custom.CustomPassToNextPhaseListener">
+			<phase>Choix origine</phase>
+			<arg name="method">passToPhaseOrigine</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.custom.CustomPassToNextPhaseListener">
+			<phase>Origine</phase>
+			<arg name="method">passToChoixEnfance</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.custom.CustomPassToNextPhaseListener">
+			<phase>Choix enfance</phase>
+			<arg name="method">passToPhaseEnfance</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.custom.CustomPassToNextPhaseListener">
+			<phase>Enfance</phase>
+			<arg name="method">passToPhaseVocation</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.custom.CustomPassToNextPhaseListener">
+			<phase>Vocation</phase>
+			<arg name="method">passToPhaseEnVie</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.RemoveMaxListener">
+			<phase>Vocation</phase>
+			<arg name="pattern">Attributs#[^#]*#[^#]*</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.SetMinListener">
+			<phase>Vocation</phase>
+			<arg name="pattern">Attributs#[^#]*#[^#]*</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.RemoveMaxListener">
+			<phase>Vocation</phase>
+			<arg name="pattern">Attributs#[^#]*</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.SetMinListener">
+			<phase>Vocation</phase>
+			<arg name="pattern">Attributs#[^#]*</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.ToEmptyListener">
+			<phase>Vocation</phase>
+			<arg name="toEmpty">false</arg>
+			<arg name="pointPool">Magie elfique</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.ToEmptyListener">
+			<phase>Vocation</phase>
+			<arg name="toEmpty">false</arg>
+			<arg name="pointPool">Magie d'Aman</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.ToEmptyListener">
+			<phase>Vocation</phase>
+			<arg name="toEmpty">false</arg>
+			<arg name="pointPool">Magie runique</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.ToEmptyListener">
+			<phase>Vocation</phase>
+			<arg name="toEmpty">false</arg>
+			<arg name="pointPool">Haute magie</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.ToEmptyListener">
+			<phase>Vocation</phase>
+			<arg name="toEmpty">false</arg>
+			<arg name="pointPool">Sorcellerie</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.ToEmptyListener">
+			<phase>Vocation</phase>
+			<arg name="toEmpty">false</arg>
+			<arg name="pointPool">Magie naturelle</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.ToEmptyListener">
+			<phase>Vocation</phase>
+			<arg name="toEmpty">false</arg>
+			<arg name="pointPool">Dons thaumaturgiques</arg>
+		</listener>
+		<listener class="com.mrprez.gencross.listener.impl.ToEmptyListener">
+			<phase>Vocation</phase>
+			<arg name="toEmpty">false</arg>
+			<arg name="pointPool">Ténèbres</arg>
+		</listener>
+	</passToNextPhaseListeners>
+	<formulas>
+		<formula>Attributs#Carrure#Points de Vie= #Attributs#Carrure# </formula>
+		<formula>Attributs#Grâce#Initiative= #Attributs#Grâce# /2.0+2.0</formula>
+	</formulas>
+	<history>
+		<historyItem class="com.mrprez.gencross.history.FreeHistoryItem" action="2">
+			<absoluteName>Nom</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.StringValue"></Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.StringValue">Ilentar de Peldagur</Value>
+			</newValue>
+			<date>1327672930140</date>
+			<phase>Race</phase>
+			<pointPool></pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.FreeHistoryItem" action="2">
+			<absoluteName>Race</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.StringValue"></Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.StringValue">Dunadan</Value>
+			</newValue>
+			<date>1327672933921</date>
+			<phase>Race</phase>
+			<pointPool></pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.FreeHistoryItem" action="2">
+			<absoluteName>Vocation</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.StringValue"></Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.StringValue">Guerrier</Value>
+			</newValue>
+			<date>1327672938406</date>
+			<phase>Race</phase>
+			<pointPool></pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.FreeHistoryItem" action="2">
+			<absoluteName>Attributs#Carrure</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">6</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">18</Value>
+			</newValue>
+			<date>1327673468562</date>
+			<phase>Attributs</phase>
+			<pointPool></pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.FreeHistoryItem" action="2">
+			<absoluteName>Attributs#Grâce</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">6</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">12</Value>
+			</newValue>
+			<date>1327673471406</date>
+			<phase>Attributs</phase>
+			<pointPool></pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.FreeHistoryItem" action="2">
+			<absoluteName>Attributs#Erudition</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">6</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">10</Value>
+			</newValue>
+			<date>1327673531781</date>
+			<phase>Attributs</phase>
+			<pointPool></pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.FreeHistoryItem" action="2">
+			<absoluteName>Attributs#Eveil</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">6</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">8</Value>
+			</newValue>
+			<date>1327673544687</date>
+			<phase>Attributs</phase>
+			<pointPool></pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.FreeHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">6</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">16</Value>
+			</newValue>
+			<date>1327673555765</date>
+			<phase>Attributs</phase>
+			<pointPool></pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.FreeHistoryItem" action="2">
+			<absoluteName>Attributs#Prestance</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">6</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">14</Value>
+			</newValue>
+			<date>1327673558812</date>
+			<phase>Attributs</phase>
+			<pointPool></pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Grâce</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">12</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="2">14</Value>
+			</newValue>
+			<date>1327673569859</date>
+			<phase>Bonus Vocation</phase>
+			<pointPool>Bonus Vocation</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Carrure#Endurance</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327673585515</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Grâce#Equitation</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327673609484</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Grâce#Esquive</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</newValue>
+			<date>1327673629562</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Erudition#Stratégie</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327673645125</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Dons thaumaturgiques</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327673657765</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Points malice/majesté</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+			</newValue>
+			<date>1327673660609</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Résistance à la Sorcellerie</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327673668000</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Résistance aux Ténèbres</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327673672046</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Thaumaturgie royale</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327673678859</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Prestance#Commander</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327673719000</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Erudition#Stratégie</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+			</newValue>
+			<date>1327673770921</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.ConstantHistoryItem" action="1">
+			<absoluteName>Magie spontanée#Dons thaumaturgiques#Ralliement</absoluteName>
+			<date>1327673793125</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Dons thaumaturgiques</pointPool>
+			<args>
+				<arg key="cost">1</arg>
+			</args>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.ConstantHistoryItem" action="1">
+			<absoluteName>Magie spontanée#Dons thaumaturgiques#Immunité royale</absoluteName>
+			<date>1327673797406</date>
+			<phase>Héritage culturel</phase>
+			<pointPool>Dons thaumaturgiques</pointPool>
+			<args>
+				<arg key="cost">1</arg>
+			</args>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.FreeHistoryItem" action="2">
+			<absoluteName>Origine</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.StringValue"></Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.StringValue">Rhudaur</Value>
+			</newValue>
+			<date>1327673835468</date>
+			<phase>Choix origine</phase>
+			<pointPool></pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Grâce#Parade</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</newValue>
+			<date>1327678311687</date>
+			<phase>Origine</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Erudition#Stratégie</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</newValue>
+			<date>1327678324015</date>
+			<phase>Origine</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Dons thaumaturgiques</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</newValue>
+			<date>1327678335187</date>
+			<phase>Origine</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Points malice/majesté</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">6</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">8</Value>
+			</newValue>
+			<date>1327678339953</date>
+			<phase>Origine</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Résistance à la Sorcellerie</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</newValue>
+			<date>1327678347796</date>
+			<phase>Origine</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Résistance aux Ténèbres</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</newValue>
+			<date>1327678350359</date>
+			<phase>Origine</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Sens de l’honneur</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327678359328</date>
+			<phase>Origine</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Thaumaturgie royale</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+			</newValue>
+			<date>1327678364125</date>
+			<phase>Origine</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Prestance#Intimidation</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327678380609</date>
+			<phase>Origine</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.ConstantHistoryItem" action="1">
+			<absoluteName>Magie spontanée#Dons thaumaturgiques#Feu sacré</absoluteName>
+			<date>1327678419765</date>
+			<phase>Origine</phase>
+			<pointPool>Dons thaumaturgiques</pointPool>
+			<args>
+				<arg key="cost">1</arg>
+			</args>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.FreeHistoryItem" action="2">
+			<absoluteName>Enfance</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.StringValue"></Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.StringValue">Menacée</Value>
+			</newValue>
+			<date>1327678515125</date>
+			<phase>Choix enfance</phase>
+			<pointPool></pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Carrure#Armes à 2 mains</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327678590187</date>
+			<phase>Enfance</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Carrure#Endurance</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</newValue>
+			<date>1327678607734</date>
+			<phase>Enfance</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Carrure#Lutte</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">1</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327678882343</date>
+			<phase>Enfance</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Erudition#Tactique</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">0</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</newValue>
+			<date>1327679030156</date>
+			<phase>Enfance</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Dons thaumaturgiques</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+			</newValue>
+			<date>1327679047406</date>
+			<phase>Enfance</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Points malice/majesté</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">8</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">10</Value>
+			</newValue>
+			<date>1327679070937</date>
+			<phase>Enfance</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Résistance à la Sorcellerie</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+			</newValue>
+			<date>1327679077343</date>
+			<phase>Enfance</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Résistance aux Ténèbres</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+			</newValue>
+			<date>1327679079156</date>
+			<phase>Enfance</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Thaumaturgie royale</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+			</newValue>
+			<date>1327679090140</date>
+			<phase>Enfance</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Prestance#Commander</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+			</newValue>
+			<date>1327679093171</date>
+			<phase>Enfance</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Prestance#Intimidation</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</newValue>
+			<date>1327679098859</date>
+			<phase>Enfance</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.ConstantHistoryItem" action="1">
+			<absoluteName>Magie spontanée#Dons thaumaturgiques#Imposition des mains</absoluteName>
+			<date>1327679413843</date>
+			<phase>Enfance</phase>
+			<pointPool>Dons thaumaturgiques</pointPool>
+			<args>
+				<arg key="cost">1</arg>
+			</args>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Carrure#Armes à 2 mains</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+			</newValue>
+			<date>1327679470750</date>
+			<phase>Vocation</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Carrure#Endurance</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+			</newValue>
+			<date>1327679478453</date>
+			<phase>Vocation</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Carrure#Lutte</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</newValue>
+			<date>1327679486078</date>
+			<phase>Vocation</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Grâce#Equitation</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</newValue>
+			<date>1327679498031</date>
+			<phase>Vocation</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Grâce#Parade</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+			</newValue>
+			<date>1327679507281</date>
+			<phase>Vocation</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Erudition#Tactique</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+			</newValue>
+			<date>1327679520515</date>
+			<phase>Vocation</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Noblesse#Sens de l’honneur</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">2</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+			</newValue>
+			<date>1327679532250</date>
+			<phase>Vocation</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Prestance#Commander</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">4</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+			</newValue>
+			<date>1327679541046</date>
+			<phase>Vocation</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+		<historyItem class="com.mrprez.gencross.history.OneForOneHistoryItem" action="2">
+			<absoluteName>Attributs#Prestance#Intimidation</absoluteName>
+			<oldValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">3</Value>
+			</oldValue>
+			<newValue>
+				<Value class="com.mrprez.gencross.value.IntValue" offset="1">5</Value>
+			</newValue>
+			<date>1327679550000</date>
+			<phase>Vocation</phase>
+			<pointPool>Création</pointPool>
+			<args/>
+		</historyItem>
+	</history>
+</personnage>
