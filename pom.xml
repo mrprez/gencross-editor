@@ -6,14 +6,15 @@
 	<packaging>jar</packaging>
 	
 	<artifactId>gencross-editor</artifactId>
-	<version>0.8.1</version>
+	<groupId>com.mrprez.gencross</groupId>
+	<version>0.8.1-SNAPSHOT</version>
 	
 	<name>GenCrossEditor</name>
 	
 	<parent>
-		<artifactId>gencross-parent</artifactId>
-		<groupId>com.mrprez.gencross</groupId>
-		<version>1.2-SNAPSHOT</version>
+		<artifactId>mrprez</artifactId>
+		<groupId>com.mrprez</groupId>
+		<version>1.0</version>
 	</parent>
 	
 	<dependencies>
