@@ -21,12 +21,12 @@
 		<dependency>
 			<artifactId>gencross</artifactId>
 			<groupId>com.mrprez.gencross</groupId>
-			<version>${gencross.version}</version>
+			<version>1.16</version>
 		</dependency>
 		<dependency>
 			<artifactId>gencross-ui</artifactId>
 			<groupId>com.mrprez.gencross</groupId>
-			<version>${gencross-ui.version}</version>
+			<version>1.9.1</version>
 		</dependency>
 		
 		
