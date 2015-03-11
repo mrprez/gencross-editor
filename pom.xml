@@ -23,11 +23,6 @@
 			<groupId>com.mrprez.gencross</groupId>
 			<version>1.16</version>
 		</dependency>
-		<dependency>
-			<artifactId>gencross-ui</artifactId>
-			<groupId>com.mrprez.gencross</groupId>
-			<version>1.9.1</version>
-		</dependency>
 		
 
 	</dependencies>
