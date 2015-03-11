@@ -8,7 +8,6 @@ import java.awt.HeadlessException;
 import java.awt.Rectangle;
 
 import javax.swing.GroupLayout;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +20,6 @@ public class ErrorFrame extends JDialog implements Runnable {
 	private static final long serialVersionUID = 1L;
 	private Throwable exception;
 	private JLabel message = new JLabel("L'application a rencontré un problème. Contactez votre administrateur.");
-	private JButton detailButton = new JButton("Détails");
 	private JPanel errorPanel = new JPanel();
 	private JScrollPane scrollPane = new JScrollPane(errorPanel);
 	private JSeparator emptyPanel = new JSeparator();
@@ -40,7 +38,6 @@ public class ErrorFrame extends JDialog implements Runnable {
 		scrollPane.setPreferredSize(new Dimension(200,200));
 		populate();
 		scrollPane.setVisible(true);
-		// TODO detailButton.addActionListener(new SimpleEDTAction(this, "hideShowDetails"));
 		
 		layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -48,7 +45,6 @@ public class ErrorFrame extends JDialog implements Runnable {
         	.addContainerGap()
         	.addGroup(layout.createParallelGroup()
 	    		.addComponent(message)
-	    		.addComponent(detailButton, GroupLayout.Alignment.TRAILING)
 	    		.addComponent(scrollPane)
 	    	)
 	    	.addContainerGap()
@@ -56,8 +52,6 @@ public class ErrorFrame extends JDialog implements Runnable {
         layout.setVerticalGroup(layout.createSequentialGroup()
         	.addContainerGap()
         	.addComponent(message)
-	        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-	        .addComponent(detailButton)
 	        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 	        .addComponent(scrollPane)
 	        .addContainerGap()
