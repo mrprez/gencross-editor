@@ -11,7 +11,6 @@ public class Treatment extends Thread {
 	private static Treatment runningTreatment;
 	private Component component;
 	private Treatment parentTreatment;
-	private boolean pause = false;
 	
 	
 	public Treatment(Task task, Component component) {
@@ -31,7 +30,7 @@ public class Treatment extends Thread {
 	public synchronized void lauchChildTreatment(Task task, Component component) throws InterruptedException{
 		Treatment childTreatment = buildChildTreatment(task, component);
 		childTreatment.start();
-		this.wait();
+		wait();
 	}
 
 	
@@ -75,7 +74,7 @@ public class Treatment extends Thread {
 				}else if(task instanceof ComponentTask){
 					Component component = new ComponentRunnable((ComponentTask) task).getComponent();
 					SwingUtilities.invokeLater(new CursorRunnable(component, Cursor.DEFAULT_CURSOR));
-					pause();
+					wait();
 					SwingUtilities.invokeLater(new CursorRunnable(component, Cursor.WAIT_CURSOR));
 				}
 				task = task.getNextTask();
@@ -94,19 +93,6 @@ public class Treatment extends Thread {
 			}
 		}
 	}
-	
-	public synchronized void pause() throws InterruptedException{
-		pause = true;
-		wait();
-	}
-	
-	
-	public synchronized void doContinue(){
-		notify();
-		pause = false;
-	}
-	
-	
 	
 	
 	

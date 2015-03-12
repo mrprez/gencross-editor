@@ -5,6 +5,7 @@ import com.mrprez.gencross.editor.framework.BackgroundTask;
 import com.mrprez.gencross.editor.framework.Task;
 import com.mrprez.gencross.editor.framework.Treatment;
 import com.mrprez.gencross.editor.framework.TreatmentAwareTask;
+import com.mrprez.gencross.editor.login.DisplayLoginTask;
 
 public class DownloadPersonnageTask implements BackgroundTask, TreatmentAwareTask {
 	private Task nextTask;
