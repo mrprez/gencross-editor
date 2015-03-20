@@ -12,8 +12,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
 
 import com.mrprez.gencross.Personnage;
+import com.mrprez.gencross.editor.download.DownloadPersonnageTask;
 import com.mrprez.gencross.editor.framework.ActionTreatment;
-import com.mrprez.gencross.editor.task.DownloadPersonnageTask;
 
 public class GencrossEditor extends JFrame {
 	private static final long serialVersionUID = 1L;

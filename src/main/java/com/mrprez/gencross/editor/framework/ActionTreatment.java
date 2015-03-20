@@ -7,21 +7,35 @@ import java.awt.event.ActionListener;
 
 public class ActionTreatment implements ActionListener {
 	
-	private Treatment treatment;
+	private Task task;
+	private Component component;
+	private Treatment parentTreatment;
 	
-	public ActionTreatment(Treatment treatment){
-		super();
-		this.treatment = treatment;
-	}
 	
 	public ActionTreatment(Task task, Component component){
 		super();
-		this.treatment = new Treatment(task, component);
+		this.task = task;
+		this.component = component;
+	}
+	
+	public ActionTreatment(Task task, Component component, Treatment parentTreatment){
+		super();
+		this.task = task;
+		this.component = component;
+		this.parentTreatment = parentTreatment;
+		
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		treatment.start();
+		if(parentTreatment!=null){
+			parentTreatment.lauchChildTreatment(task, component);
+		}else{
+			Treatment treatment = new Treatment(task, component);
+			synchronized (treatment) {
+				treatment.start();
+			}
+		}
 	}
 
 	

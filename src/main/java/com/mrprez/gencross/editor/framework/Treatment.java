@@ -11,6 +11,7 @@ public class Treatment extends Thread {
 	private static Treatment runningTreatment;
 	private Component component;
 	private Treatment parentTreatment;
+	private boolean interrupt = false;
 	
 	
 	public Treatment(Task task, Component component) {
@@ -20,17 +21,22 @@ public class Treatment extends Thread {
 	}
 	
 	
-	public Treatment buildChildTreatment(Task task, Component component){
+	private Treatment buildChildTreatment(Task task, Component component){
 		Treatment childTreatment = new Treatment(task, component);
 		childTreatment.parentTreatment = this;
 		return childTreatment;
 	}
 	
 	
-	public synchronized void lauchChildTreatment(Task task, Component component) throws InterruptedException{
+	public synchronized void lauchChildTreatment(Task task, Component component) {
 		Treatment childTreatment = buildChildTreatment(task, component);
-		childTreatment.start();
-		wait();
+		try{
+			childTreatment.start();
+			wait();
+		}catch(InterruptedException ie){
+			interruptTreatment();
+			ErrorFrame.displayError(ie);
+		}
 	}
 
 	
@@ -47,14 +53,14 @@ public class Treatment extends Thread {
 		}
 		return parentTreatment.isParentTreatment(potentialParent);
 	}
-
+	
+	
 	
 	@Override
 	public void run() {
 		synchronized (Treatment.class) {
 			if(runningTreatment!=null && ( ! isParentTreatment(runningTreatment) )){
-				System.out.println("Another treatment is running");
-				return;
+				ErrorFrame.displayError(new Exception("Un autre traitement est en cours"));
 			}
 			runningTreatment = this;
 		}
@@ -63,7 +69,7 @@ public class Treatment extends Thread {
 			
 			Task task = firstTask;
 			
-			while(task!=null){
+			while(task!=null && interrupt==false){
 				if(task instanceof TreatmentAwareTask){
 					((TreatmentAwareTask)task).setTreatment(this);
 				}
@@ -81,16 +87,27 @@ public class Treatment extends Thread {
 			}
 			
 			if(parentTreatment!=null){
-				parentTreatment.notify();
+				synchronized (parentTreatment) {
+					parentTreatment.notify();
+					runningTreatment = parentTreatment;
+				}
+			}else{
+				runningTreatment = null;
 			}
+			SwingUtilities.invokeLater(new CursorRunnable(component, Cursor.DEFAULT_CURSOR));
 			
 		}catch(Exception e){
+			interruptTreatment();
 			ErrorFrame.displayError(e);
-		}finally{
-			synchronized (Treatment.class) {
-				runningTreatment = null;
-				SwingUtilities.invokeLater(new CursorRunnable(component, Cursor.DEFAULT_CURSOR));
-			}
+		}
+	}
+	
+	
+	private synchronized void interruptTreatment(){
+		interrupt = true;
+		notify();
+		if(parentTreatment!=null){
+			parentTreatment.interruptTreatment();
 		}
 	}
 	
