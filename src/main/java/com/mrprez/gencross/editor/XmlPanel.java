@@ -11,6 +11,7 @@ public class XmlPanel extends JPanel {
 	private JTextArea textArea;
 	
 	
+	
 	public XmlPanel(){
 		super();
 		
