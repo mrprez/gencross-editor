@@ -29,7 +29,7 @@ public class ActionTreatment implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(parentTreatment!=null){
-			parentTreatment.lauchChildTreatment(task, component);
+			parentTreatment.buildChildTreatment(task, component).start();
 		}else{
 			Treatment treatment = new Treatment(task, component);
 			synchronized (treatment) {

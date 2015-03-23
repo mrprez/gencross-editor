@@ -31,7 +31,7 @@ public class DisplayLoginTask extends JDialog implements ComponentTask {
 	
 
 	public DisplayLoginTask(){
-		super(GencrossEditor.getInstance(), "Authentification", true);
+		super(GencrossEditor.getInstance(), "Authentification", false);
 		GroupLayout layout = new GroupLayout(getRootPane());
 		getRootPane().setLayout(layout);
 		layout.setHorizontalGroup(layout.createParallelGroup()
@@ -88,6 +88,7 @@ public class DisplayLoginTask extends JDialog implements ComponentTask {
 
 	@Override
 	public Window getComponent() throws Exception {
+		setVisible(true);
 		return this;
 	}
 	

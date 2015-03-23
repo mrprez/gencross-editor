@@ -7,8 +7,11 @@ import javax.swing.SwingUtilities;
 
 
 public class Treatment extends Thread {
-	private Task firstTask;
+	private static final String THREAD_NAME = "Treatment Thread";
+	
 	private static Treatment runningTreatment;
+	
+	private Task firstTask;
 	private Component component;
 	private Treatment parentTreatment;
 	private boolean interrupt = false;
@@ -18,10 +21,11 @@ public class Treatment extends Thread {
 		super();
 		this.firstTask = task;
 		this.component = component;
+		super.setName(THREAD_NAME);
 	}
 	
 	
-	private Treatment buildChildTreatment(Task task, Component component){
+	protected Treatment buildChildTreatment(Task task, Component component){
 		Treatment childTreatment = new Treatment(task, component);
 		childTreatment.parentTreatment = this;
 		return childTreatment;
@@ -30,8 +34,12 @@ public class Treatment extends Thread {
 	
 	public synchronized void lauchChildTreatment(Task task, Component component) {
 		Treatment childTreatment = buildChildTreatment(task, component);
+		if( ! Thread.currentThread().getName().equals(THREAD_NAME)){
+			throw new RuntimeException("Child treatment cannot be lauch from no treatment thread");
+		}
 		try{
 			childTreatment.start();
+			System.out.println(this.getId()+" - wait (lauchChildTreatment)");
 			wait();
 		}catch(InterruptedException ie){
 			interruptTreatment();
@@ -63,6 +71,7 @@ public class Treatment extends Thread {
 				ErrorFrame.displayError(new Exception("Un autre traitement est en cours"));
 			}
 			runningTreatment = this;
+			System.out.println("Start treatment: "+this.getId());
 		}
 		try{
 			SwingUtilities.invokeLater(new CursorRunnable(component, Cursor.WAIT_CURSOR));
@@ -70,6 +79,7 @@ public class Treatment extends Thread {
 			Task task = firstTask;
 			
 			while(task!=null && interrupt==false){
+				System.out.println(this.getId()+" - Task: "+task.getClass().getSimpleName());
 				if(task instanceof TreatmentAwareTask){
 					((TreatmentAwareTask)task).setTreatment(this);
 				}
@@ -80,14 +90,19 @@ public class Treatment extends Thread {
 				}else if(task instanceof ComponentTask){
 					Component component = new ComponentRunnable((ComponentTask) task).getComponent();
 					SwingUtilities.invokeLater(new CursorRunnable(component, Cursor.DEFAULT_CURSOR));
-					wait();
+					synchronized (this) {
+						System.out.println(this.getId()+" - wait (run)");
+						wait();
+					}
 					SwingUtilities.invokeLater(new CursorRunnable(component, Cursor.WAIT_CURSOR));
 				}
 				task = task.getNextTask();
 			}
 			
+			System.out.println("End treatment: "+this.getId());
 			if(parentTreatment!=null){
 				synchronized (parentTreatment) {
+					System.out.println(parentTreatment.getId()+" - notify");
 					parentTreatment.notify();
 					runningTreatment = parentTreatment;
 				}

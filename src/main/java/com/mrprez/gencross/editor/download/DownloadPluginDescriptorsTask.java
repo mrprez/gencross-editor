@@ -8,15 +8,18 @@ import com.mrprez.gencross.editor.framework.TreatmentAwareTask;
 import com.mrprez.gencross.editor.login.DisplayLoginTask;
 import com.mrprez.gencross.editor.service.PersonnageService;
 
-public class DownloadPersonnageTask implements BackgroundTask, TreatmentAwareTask {
+public class DownloadPluginDescriptorsTask implements BackgroundTask, TreatmentAwareTask {
 	private Task nextTask;
 	private Treatment treatment;
 
+	
+	
 	@Override
 	public Task getNextTask() {
 		return nextTask;
 	}
 
+	
 	@Override
 	public void doInBackground() throws Exception {
 		if(GencrossEditor.getInstance().getToken()==null){
@@ -28,6 +31,7 @@ public class DownloadPersonnageTask implements BackgroundTask, TreatmentAwareTas
 			nextTask = new ChoosePluginTask(personnageService.getPluginList());
 		}
 	}
+	
 
 	@Override
 	public void setTreatment(Treatment treatment) {

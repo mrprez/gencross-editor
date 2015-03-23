@@ -10,6 +10,8 @@ import com.mrprez.gencross.editor.framework.Task;
 public class ChoosePluginTask implements EdtTask {
 	private PluginDescriptor[] pluginDescriptorList;
 	
+	private PluginDescriptor pluginDescriptor;
+	
 	
 	public ChoosePluginTask(PluginDescriptor[] pluginDescriptorList) {
 		super();
@@ -18,14 +20,12 @@ public class ChoosePluginTask implements EdtTask {
 
 	@Override
 	public Task getNextTask() {
-		// TODO Auto-generated method stub
-		return null;
+		return new DownloadPersonnageListTask(pluginDescriptor);
 	}
 
 	@Override
 	public void doInEdt() throws Exception {
-		JOptionPane.showOptionDialog(GencrossEditor.getInstance(), "Choisissez un plugin", "Choisissez un plugin", JOptionPane.OK_CANCEL_OPTION, 0, null, pluginDescriptorList, null);
-		
+		pluginDescriptor = (PluginDescriptor) JOptionPane.showInputDialog(GencrossEditor.getInstance(), "Choisissez un plugin", "Choisissez un plugin", JOptionPane.QUESTION_MESSAGE, null, pluginDescriptorList, null);
 	}
 
 }

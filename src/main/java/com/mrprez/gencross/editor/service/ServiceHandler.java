@@ -1,17 +1,14 @@
 package com.mrprez.gencross.editor.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import javax.xml.namespace.QName;
 import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPEnvelope;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPHeader;
-import javax.xml.ws.handler.Handler;
-import javax.xml.ws.handler.HandlerResolver;
 import javax.xml.ws.handler.MessageContext;
-import javax.xml.ws.handler.PortInfo;
+import javax.xml.ws.handler.soap.SOAPHandler;
 import javax.xml.ws.handler.soap.SOAPMessageContext;
 
 import org.w3c.dom.DOMException;
@@ -19,7 +16,7 @@ import org.w3c.dom.DOMException;
 import com.mrprez.gencross.editor.GencrossEditor;
 import com.mrprez.gencross.ws.api.IAuthentificationService;
 
-public class ServiceHandler implements Handler<SOAPMessageContext>, HandlerResolver {
+public class ServiceHandler implements SOAPHandler<SOAPMessageContext> {
 	
 	
 
@@ -47,13 +44,12 @@ public class ServiceHandler implements Handler<SOAPMessageContext>, HandlerResol
 	@Override
 	public void close(MessageContext context) {}
 
-	@SuppressWarnings("rawtypes")
 	@Override
-	public List<Handler> getHandlerChain(PortInfo portInfo) {
-		List<Handler> handlerChain = new ArrayList<Handler>();
-		handlerChain.add(this);
-		return handlerChain;
+	public Set<QName> getHeaders() {
+		return null;
 	}
+
+	
 
 	
 

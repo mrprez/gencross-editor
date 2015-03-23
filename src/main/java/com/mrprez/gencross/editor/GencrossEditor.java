@@ -12,7 +12,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
 
 import com.mrprez.gencross.Personnage;
-import com.mrprez.gencross.editor.download.DownloadPersonnageTask;
+import com.mrprez.gencross.editor.download.DownloadPluginDescriptorsTask;
 import com.mrprez.gencross.editor.framework.ActionTreatment;
 
 public class GencrossEditor extends JFrame {
@@ -54,7 +54,7 @@ public class GencrossEditor extends JFrame {
 		JMenu fileMenu = new JMenu("Fichier");
 		menuBar.add(fileMenu);
 		JMenuItem downloadMenuItem = new JMenuItem("Récupérartion");
-		downloadMenuItem.addActionListener(new ActionTreatment(new DownloadPersonnageTask(), this));
+		downloadMenuItem.addActionListener(new ActionTreatment(new DownloadPluginDescriptorsTask(), this));
 		fileMenu.add(downloadMenuItem);
 		return menuBar;
 	}
