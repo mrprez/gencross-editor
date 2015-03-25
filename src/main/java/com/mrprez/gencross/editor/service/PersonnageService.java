@@ -2,13 +2,13 @@ package com.mrprez.gencross.editor.service;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Map;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
 import com.mrprez.gencross.disk.PluginDescriptor;
 import com.mrprez.gencross.ws.api.IPersonnageService;
+import com.mrprez.gencross.ws.api.bo.PersonnageLabel;
 
 public class PersonnageService {
 	private IPersonnageService personnageService;
@@ -31,7 +31,7 @@ public class PersonnageService {
 	}
 	
 	
-	public Map<Integer,String> getPersonnageLabels(PluginDescriptor pluginDescriptor) throws Exception{
+	public PersonnageLabel[] getPersonnageLabels(PluginDescriptor pluginDescriptor) throws Exception{
 		return personnageService.getPersonnageLabels(pluginDescriptor);
 	}
 	

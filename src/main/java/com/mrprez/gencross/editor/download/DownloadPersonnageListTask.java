@@ -1,17 +1,16 @@
 package com.mrprez.gencross.editor.download;
 
-import java.util.Map;
-
 import com.mrprez.gencross.disk.PluginDescriptor;
 import com.mrprez.gencross.editor.framework.BackgroundTask;
 import com.mrprez.gencross.editor.framework.Task;
 import com.mrprez.gencross.editor.service.PersonnageService;
+import com.mrprez.gencross.ws.api.bo.PersonnageLabel;
 
 public class DownloadPersonnageListTask implements BackgroundTask {
 	
 	private PluginDescriptor pluginDescriptor;
 	
-	private Map<Integer,String> personnageMap;
+	private PersonnageLabel[] personnageMap;
 	
 	
 	
