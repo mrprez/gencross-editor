@@ -9,7 +9,7 @@ import com.mrprez.gencross.ws.api.bo.PersonnageLabel;
 
 public class ChoosePersonnageTask implements EdtTask {
 	private PersonnageLabel[] personnageLabels;
-	
+	private PersonnageLabel personnageLabel;
 	
 
 	public ChoosePersonnageTask(PersonnageLabel[] personnageMap) {
@@ -19,12 +19,12 @@ public class ChoosePersonnageTask implements EdtTask {
 
 	@Override
 	public Task getNextTask() {
-		return null;
+		return new DownloadPersonnageTask(personnageLabel.getId());
 	}
 
 	@Override
 	public void doInEdt() throws Exception {
-		JOptionPane.showInputDialog(GencrossEditor.getInstance(), "Choisissez un personnage", "Choisissez un personnage", JOptionPane.QUESTION_MESSAGE, null, personnageLabels, null);
+		personnageLabel = (PersonnageLabel) JOptionPane.showInputDialog(GencrossEditor.getInstance(), "Choisissez un personnage", "Choisissez un personnage", JOptionPane.QUESTION_MESSAGE, null, personnageLabels, null);
 	}
 
 }

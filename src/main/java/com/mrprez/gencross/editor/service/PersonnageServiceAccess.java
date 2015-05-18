@@ -10,11 +10,11 @@ import com.mrprez.gencross.disk.PluginDescriptor;
 import com.mrprez.gencross.ws.api.IPersonnageService;
 import com.mrprez.gencross.ws.api.bo.PersonnageLabel;
 
-public class PersonnageService {
+public class PersonnageServiceAccess {
 	private IPersonnageService personnageService;
 	
 	
-	public PersonnageService() throws MalformedURLException{
+	public PersonnageServiceAccess() throws MalformedURLException{
 		super();
 		URL wsdlUrl = new URL("http://localhost:8181/gencross-web/personnageService?wsdl");
 		QName qname = new QName("http://service.web.gencross.mrprez.com/", "PersonnageServiceService");
@@ -27,12 +27,23 @@ public class PersonnageService {
 	
 	
 	public PluginDescriptor[] getPluginList() throws Exception{
-		return personnageService.getPluginList();
+		PluginDescriptor[] pluginList = personnageService.getPluginList();
+		System.out.print("Get PLugin List: ");
+		for(PluginDescriptor pluginDescriptor : pluginList){
+			System.out.print(pluginDescriptor);
+			System.out.print(" / ");
+		}
+		System.out.println("");
+		return pluginList;
 	}
 	
 	
 	public PersonnageLabel[] getPersonnageLabels(PluginDescriptor pluginDescriptor) throws Exception{
 		return personnageService.getPersonnageLabels(pluginDescriptor);
+	}
+	
+	public String getPersonnage(int id) throws Exception{
+		return new String(personnageService.getPersonnage(id), "UTF-8");
 	}
 	
 }

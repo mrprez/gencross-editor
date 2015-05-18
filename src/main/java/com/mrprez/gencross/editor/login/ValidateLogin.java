@@ -19,9 +19,9 @@ public class ValidateLogin implements BackgroundTask {
 	@Override
 	public Task getNextTask() {
 		if(success){
-			return new HideLoginTask(displayLoginTask);
+			return null;
 		}else{
-			return new DisplayLoginFailed(displayLoginTask);
+			return new LoginFail(displayLoginTask.getLogin(), displayLoginTask.getPassword());
 		}
 	}
 

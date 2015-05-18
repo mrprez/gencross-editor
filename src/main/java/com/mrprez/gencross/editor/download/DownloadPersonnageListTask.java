@@ -3,7 +3,7 @@ package com.mrprez.gencross.editor.download;
 import com.mrprez.gencross.disk.PluginDescriptor;
 import com.mrprez.gencross.editor.framework.BackgroundTask;
 import com.mrprez.gencross.editor.framework.Task;
-import com.mrprez.gencross.editor.service.PersonnageService;
+import com.mrprez.gencross.editor.service.PersonnageServiceAccess;
 import com.mrprez.gencross.ws.api.bo.PersonnageLabel;
 
 public class DownloadPersonnageListTask implements BackgroundTask {
@@ -27,7 +27,7 @@ public class DownloadPersonnageListTask implements BackgroundTask {
 
 	@Override
 	public void doInBackground() throws Exception {
-		PersonnageService personnageService = new PersonnageService();
+		PersonnageServiceAccess personnageService = new PersonnageServiceAccess();
 		personnageMap = personnageService.getPersonnageLabels(pluginDescriptor);
 	}
 

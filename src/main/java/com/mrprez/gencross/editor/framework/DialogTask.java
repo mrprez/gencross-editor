@@ -6,21 +6,20 @@ import java.awt.Window;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public abstract class DialogTask implements ComponentTask {
-	protected Treatment treatment;
-
-	@Override
+public abstract class DialogTask implements EdtTask {
+	private UserTask userTask;
+	
+	
+	
 	public Window getComponent() throws Exception {
 		Window window = buildWindow();
 		postionWindow(window);
-		window.addWindowListener(new ContinueTreatmentListener(treatment));
 		window.setVisible(true);
 		return window;
 	}
 	
 	public void postionWindow(Window window){
 		window.pack();
-		
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		Rectangle desktop = ge.getMaximumWindowBounds();
 		window.setLocation((desktop.width-window.getWidth())/2, (desktop.height-window.getHeight())/2);
@@ -28,17 +27,33 @@ public abstract class DialogTask implements ComponentTask {
 	
 	public abstract Window buildWindow();
 
+	
 	@Override
-	public void setTreatment(Treatment treatment) {
-		this.treatment = treatment;
+	public final Task getNextTask() {
+		return userTask;
+	}
+	
+	
+	public final void setNextTask(Task nextTask) {
+		userTask.setNextTask(nextTask);
 	}
 
+	@Override
+	public void doInEdt() throws Exception {
+		Window window = buildWindow();
+		window.addWindowListener(new ContinueTreatmentListener(userTask));
+		postionWindow(window);
+		window.setVisible(true);
+		userTask = new UserTask(window);
+	}
+	
+
 	private class ContinueTreatmentListener implements WindowListener {
-		private Treatment treatment;
+		private UserTask userTask;
 		
-		public ContinueTreatmentListener(Treatment treatment) {
+		public ContinueTreatmentListener(UserTask userTask) {
 			super();
-			this.treatment = treatment;
+			this.userTask = userTask;
 		}
 
 		@Override
@@ -46,7 +61,7 @@ public abstract class DialogTask implements ComponentTask {
 
 		@Override
 		public void windowClosed(WindowEvent event) {
-			treatment.notify();
+			userTask.fire();
 		}
 
 		@Override
@@ -65,6 +80,10 @@ public abstract class DialogTask implements ComponentTask {
 		public void windowOpened(WindowEvent e) {}
 		
 	}
+
+
+
+	
 	
 
 }

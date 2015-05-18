@@ -38,7 +38,7 @@ public class ServiceHandler implements SOAPHandler<SOAPMessageContext> {
 
 	@Override
 	public boolean handleFault(SOAPMessageContext context) {
-		return false;
+		return true;
 	}
 
 	@Override

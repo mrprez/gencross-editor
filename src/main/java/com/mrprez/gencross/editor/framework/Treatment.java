@@ -39,8 +39,9 @@ public class Treatment extends Thread {
 		}
 		try{
 			childTreatment.start();
-			System.out.println(this.getId()+" - wait (lauchChildTreatment)");
+			System.out.println(this.getId()+" - wait child treatment "+childTreatment.getId());
 			wait();
+			System.out.println(this.getId()+" - restart after child treatment "+childTreatment.getId());
 		}catch(InterruptedException ie){
 			interruptTreatment();
 			ErrorFrame.displayError(ie);
@@ -79,23 +80,22 @@ public class Treatment extends Thread {
 			Task task = firstTask;
 			
 			while(task!=null && interrupt==false){
-				System.out.println(this.getId()+" - Task: "+task.getClass().getSimpleName());
+				System.out.println(this.getId()+" - Start Task: "+task.getClass().getSimpleName());
 				if(task instanceof TreatmentAwareTask){
 					((TreatmentAwareTask)task).setTreatment(this);
 				}
 				if(task instanceof EdtTask){
-					SwingUtilities.invokeAndWait(new EdtRunnable((EdtTask) task));
+					EdtRunnable edtRunnable = new EdtRunnable((EdtTask) task);
+					SwingUtilities.invokeAndWait(edtRunnable);
+					if(edtRunnable.getException() != null){
+						throw edtRunnable.getException();
+					}
 				}else if(task instanceof BackgroundTask){
 					((BackgroundTask)task).doInBackground();
-				}else if(task instanceof ComponentTask){
-					Component component = new ComponentRunnable((ComponentTask) task).getComponent();
-					SwingUtilities.invokeLater(new CursorRunnable(component, Cursor.DEFAULT_CURSOR));
-					synchronized (this) {
-						System.out.println(this.getId()+" - wait (run)");
-						wait();
-					}
-					SwingUtilities.invokeLater(new CursorRunnable(component, Cursor.WAIT_CURSOR));
+				}else if(task instanceof UserTask){
+					((UserTask) task).waitUser();
 				}
+				System.out.println(this.getId()+" - End Task: "+task.getClass().getSimpleName());
 				task = task.getNextTask();
 			}
 			
@@ -113,6 +113,7 @@ public class Treatment extends Thread {
 			
 		}catch(Exception e){
 			interruptTreatment();
+			runningTreatment = null;
 			ErrorFrame.displayError(e);
 		}
 	}
@@ -124,36 +125,9 @@ public class Treatment extends Thread {
 		if(parentTreatment!=null){
 			parentTreatment.interruptTreatment();
 		}
+		SwingUtilities.invokeLater(new CursorRunnable(component, Cursor.DEFAULT_CURSOR));
 	}
 	
-	
-	
-	private class ComponentRunnable implements Runnable{
-		private Component component;
-		private ComponentTask componentTask;
-		private Exception exception;
-		
-		public ComponentRunnable(ComponentTask componentTask) {
-			super();
-			this.componentTask = componentTask;
-		}
-		
-		@Override
-		public void run() {
-			try {
-				component = componentTask.getComponent();
-			} catch (Exception e) {
-				exception = e;
-			}
-		}
-		public Component getComponent() throws Exception{
-			SwingUtilities.invokeAndWait(this);
-			if(exception!=null){
-				throw exception;
-			}
-			return component;
-		}
-	}
 	
 
 }

@@ -20,6 +20,9 @@ public class ChoosePluginTask implements EdtTask {
 
 	@Override
 	public Task getNextTask() {
+		if(pluginDescriptor==null){
+			return null;
+		}
 		return new DownloadPersonnageListTask(pluginDescriptor);
 	}
 

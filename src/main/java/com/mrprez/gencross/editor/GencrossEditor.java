@@ -1,5 +1,6 @@
 package com.mrprez.gencross.editor;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
@@ -11,8 +12,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
 
-import com.mrprez.gencross.Personnage;
 import com.mrprez.gencross.editor.download.DownloadPluginDescriptorsTask;
+import com.mrprez.gencross.editor.download.UploadPersonnageTask;
 import com.mrprez.gencross.editor.framework.ActionTreatment;
 
 public class GencrossEditor extends JFrame {
@@ -20,7 +21,6 @@ public class GencrossEditor extends JFrame {
 
 	private static GencrossEditor instance;
 	
-	private Personnage personnage;
 	private String username;
 	private String token;
 	private XmlPanel xmlPanel;
@@ -33,6 +33,8 @@ public class GencrossEditor extends JFrame {
 		tabbedPane.addTab("XML", xmlPanel);
 		
 		this.setJMenuBar(buildMenuBar());
+		setLayout(new BorderLayout());
+		
 		this.add(tabbedPane);
 		
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -53,9 +55,15 @@ public class GencrossEditor extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		JMenu fileMenu = new JMenu("Fichier");
 		menuBar.add(fileMenu);
+		
 		JMenuItem downloadMenuItem = new JMenuItem("Récupérartion");
 		downloadMenuItem.addActionListener(new ActionTreatment(new DownloadPluginDescriptorsTask(), this));
 		fileMenu.add(downloadMenuItem);
+		
+		JMenuItem uploadMenuItem = new JMenuItem("Envoyer");
+		downloadMenuItem.addActionListener(new ActionTreatment(new UploadPersonnageTask(), this));
+		fileMenu.add(uploadMenuItem);
+		
 		return menuBar;
 	}
 	
@@ -84,5 +92,14 @@ public class GencrossEditor extends JFrame {
 	public static GencrossEditor getInstance(){
 		return instance;
 	}
+	
+	
+	public void setPersonnage(String xml){
+		xmlPanel.setPersonnageXml(xml);
+	}
 
+	
+	public String getPersonnage(){
+		return xmlPanel.getPersonnageXml();
+	}
 }

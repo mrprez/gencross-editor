@@ -6,7 +6,7 @@ import com.mrprez.gencross.editor.framework.Task;
 import com.mrprez.gencross.editor.framework.Treatment;
 import com.mrprez.gencross.editor.framework.TreatmentAwareTask;
 import com.mrprez.gencross.editor.login.DisplayLoginTask;
-import com.mrprez.gencross.editor.service.PersonnageService;
+import com.mrprez.gencross.editor.service.PersonnageServiceAccess;
 
 public class DownloadPluginDescriptorsTask implements BackgroundTask, TreatmentAwareTask {
 	private Task nextTask;
@@ -26,7 +26,7 @@ public class DownloadPluginDescriptorsTask implements BackgroundTask, TreatmentA
 			treatment.lauchChildTreatment(new DisplayLoginTask());
 		}
 		if(GencrossEditor.getInstance().getToken()!=null){
-			PersonnageService personnageService = new PersonnageService();
+			PersonnageServiceAccess personnageService = new PersonnageServiceAccess();
 			
 			nextTask = new ChoosePluginTask(personnageService.getPluginList());
 		}
