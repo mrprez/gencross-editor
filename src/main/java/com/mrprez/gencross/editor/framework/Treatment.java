@@ -69,7 +69,8 @@ public class Treatment extends Thread {
 	public void run() {
 		synchronized (Treatment.class) {
 			if(runningTreatment!=null && ( ! isParentTreatment(runningTreatment) )){
-				ErrorFrame.displayError(new Exception("Un autre traitement est en cours"));
+				ErrorFrame.displayError(new Exception(firstTask.getClass().getSimpleName()+": Un autre traitement est en cours"));
+				return;
 			}
 			runningTreatment = this;
 			System.out.println("Start treatment: "+this.getId());

@@ -10,11 +10,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTabbedPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
 import com.mrprez.gencross.editor.download.DownloadPluginDescriptorsTask;
-import com.mrprez.gencross.editor.download.UploadPersonnageTask;
 import com.mrprez.gencross.editor.framework.ActionTreatment;
+import com.mrprez.gencross.editor.upload.UploadPersonnageTask;
 
 public class GencrossEditor extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -24,6 +26,7 @@ public class GencrossEditor extends JFrame {
 	private String username;
 	private String token;
 	private XmlPanel xmlPanel;
+	private Integer personnageId;
 	
 	
 	private GencrossEditor(){
@@ -61,14 +64,14 @@ public class GencrossEditor extends JFrame {
 		fileMenu.add(downloadMenuItem);
 		
 		JMenuItem uploadMenuItem = new JMenuItem("Envoyer");
-		downloadMenuItem.addActionListener(new ActionTreatment(new UploadPersonnageTask(), this));
+		uploadMenuItem.addActionListener(new ActionTreatment(new UploadPersonnageTask(), this));
 		fileMenu.add(uploadMenuItem);
 		
 		return menuBar;
 	}
 	
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 		instance = new GencrossEditor();
 		instance.setVisible(true);
 
@@ -101,5 +104,15 @@ public class GencrossEditor extends JFrame {
 	
 	public String getPersonnage(){
 		return xmlPanel.getPersonnageXml();
+	}
+
+
+	public Integer getPersonnageId() {
+		return personnageId;
+	}
+
+
+	public void setPersonnageId(Integer personnageId) {
+		this.personnageId = personnageId;
 	}
 }

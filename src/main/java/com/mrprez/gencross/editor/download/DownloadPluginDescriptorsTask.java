@@ -27,7 +27,6 @@ public class DownloadPluginDescriptorsTask implements BackgroundTask, TreatmentA
 		}
 		if(GencrossEditor.getInstance().getToken()!=null){
 			PersonnageServiceAccess personnageService = new PersonnageServiceAccess();
-			
 			nextTask = new ChoosePluginTask(personnageService.getPluginList());
 		}
 	}

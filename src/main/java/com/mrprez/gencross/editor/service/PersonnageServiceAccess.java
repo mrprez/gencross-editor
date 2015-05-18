@@ -46,4 +46,9 @@ public class PersonnageServiceAccess {
 		return new String(personnageService.getPersonnage(id), "UTF-8");
 	}
 	
+	public void savePersonnage(int personnageId, String xml) throws Exception{
+		personnageService.savePersonnage(personnageId, xml.getBytes("UTF-8"));
+		
+	}
+	
 }

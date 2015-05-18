@@ -1,5 +1,6 @@
 package com.mrprez.gencross.editor.download;
 
+import com.mrprez.gencross.editor.GencrossEditor;
 import com.mrprez.gencross.editor.framework.BackgroundTask;
 import com.mrprez.gencross.editor.framework.Task;
 import com.mrprez.gencross.editor.service.PersonnageServiceAccess;
@@ -23,6 +24,7 @@ public class DownloadPersonnageTask implements BackgroundTask {
 	public void doInBackground() throws Exception {
 		PersonnageServiceAccess personnageService = new PersonnageServiceAccess();
 		personnageXml = personnageService.getPersonnage(personnageId);
+		GencrossEditor.getInstance().setPersonnageId(personnageId);
 	}
 
 }
