@@ -21,7 +21,7 @@
 		<dependency>
 			<artifactId>gencross</artifactId>
 			<groupId>com.mrprez.gencross</groupId>
-			<version>1.16</version>
+			<version>1.17-SNAPSHOT</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>xml-apis</artifactId>

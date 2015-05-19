@@ -42,7 +42,6 @@ public class UploadPersonnageTask implements BackgroundTask, TreatmentAwareTask 
 			treatment.lauchChildTreatment(new DisplayLoginTask());
 		}
 		
-		
 		String xml = GencrossEditor.getInstance().getPersonnage();
 		
 		try{
