@@ -10,12 +10,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTabbedPane;
-import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
 import com.mrprez.gencross.editor.download.DownloadPluginDescriptorsTask;
 import com.mrprez.gencross.editor.framework.ActionTreatment;
+import com.mrprez.gencross.editor.open.ChooseFileToOpenTask;
+import com.mrprez.gencross.editor.param.DisplayParamTask;
 import com.mrprez.gencross.editor.upload.UploadPersonnageTask;
 
 public class GencrossEditor extends JFrame {
@@ -27,6 +28,8 @@ public class GencrossEditor extends JFrame {
 	private String token;
 	private XmlPanel xmlPanel;
 	private Integer personnageId;
+	private String gencrossWebUrl = "http://localhost:8181/gencross-web";
+	
 	
 	
 	private GencrossEditor(){
@@ -57,15 +60,26 @@ public class GencrossEditor extends JFrame {
 	private JMenuBar buildMenuBar(){
 		JMenuBar menuBar = new JMenuBar();
 		JMenu fileMenu = new JMenu("Fichier");
+		JMenu optionMenu = new JMenu("Options");
 		menuBar.add(fileMenu);
+		menuBar.add(optionMenu);
 		
-		JMenuItem downloadMenuItem = new JMenuItem("Récupérartion");
+		JMenuItem openMenuItem = new JMenuItem("Ouvrir");
+		openMenuItem.addActionListener(new ActionTreatment(new ChooseFileToOpenTask(), this));
+		fileMenu.add(openMenuItem);
+		
+		JMenuItem downloadMenuItem = new JMenuItem("Récupérer");
 		downloadMenuItem.addActionListener(new ActionTreatment(new DownloadPluginDescriptorsTask(), this));
 		fileMenu.add(downloadMenuItem);
 		
 		JMenuItem uploadMenuItem = new JMenuItem("Envoyer");
 		uploadMenuItem.addActionListener(new ActionTreatment(new UploadPersonnageTask(), this));
 		fileMenu.add(uploadMenuItem);
+		
+		
+		JMenuItem paramMenuItem = new JMenuItem("Paramètres");
+		paramMenuItem.addActionListener(new ActionTreatment(new DisplayParamTask(), this));
+		optionMenu.add(paramMenuItem);
 		
 		return menuBar;
 	}
@@ -114,5 +128,13 @@ public class GencrossEditor extends JFrame {
 
 	public void setPersonnageId(Integer personnageId) {
 		this.personnageId = personnageId;
+	}
+	
+	public synchronized String getGencrossWebUrl() {
+		return gencrossWebUrl;
+	}
+
+	public synchronized void setGencrossWebUrl(String gencrossWebUrl) {
+		this.gencrossWebUrl = gencrossWebUrl;
 	}
 }
