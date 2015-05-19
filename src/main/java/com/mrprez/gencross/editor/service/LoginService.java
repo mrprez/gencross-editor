@@ -14,7 +14,7 @@ public class LoginService {
 	
 	
 	public boolean authenticate(String username, String password) throws NoSuchAlgorithmException, Exception{
-		URL wsdlUrl = new URL("http://localhost:8181/gencross-web/authentificationService?wsdl");
+		URL wsdlUrl = new URL(GencrossEditor.getInstance().getGencrossWebUrl()+"/authentificationService?wsdl");
 		QName qname = new QName("http://service.web.gencross.mrprez.com/", "AuthentificationServiceService");
 		Service service = Service.create(wsdlUrl, qname);
 		QName qnamePort = new QName("http://service.web.gencross.mrprez.com/", "AuthentificationServicePort");

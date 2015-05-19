@@ -1,9 +1,5 @@
 package com.mrprez.gencross.editor.login;
 
-import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JDialog;
@@ -78,14 +74,6 @@ public class DisplayLoginTask extends StandardDialog {
 			.addContainerGap()
 		);
 		
-		loginField.addKeyListener(new EnterListener());
-		passwordField.addKeyListener(new EnterListener());
-		
-		dialog.pack();
-		
-		Rectangle editorBounds = GencrossEditor.getInstance().getBounds();
-		dialog.setLocation(editorBounds.x + (editorBounds.width-dialog.getWidth()) / 2, editorBounds.y + (editorBounds.height - dialog.getHeight())/2);
-		
 		return dialog;
 	}
 	
@@ -109,19 +97,6 @@ public class DisplayLoginTask extends StandardDialog {
 		return null;
 	}
 
-	
-	private class EnterListener implements KeyListener{
-		@Override
-		public void keyTyped(KeyEvent e) {}
-		@Override
-		public void keyPressed(KeyEvent e) {
-			if(e.getKeyCode()==KeyEvent.VK_ENTER){
-				okButton.doClick();
-			}
-		}
-		@Override
-		public void keyReleased(KeyEvent e) {}
-	}
 	
 
 }

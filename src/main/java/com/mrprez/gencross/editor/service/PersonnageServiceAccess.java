@@ -7,6 +7,7 @@ import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
 import com.mrprez.gencross.disk.PluginDescriptor;
+import com.mrprez.gencross.editor.GencrossEditor;
 import com.mrprez.gencross.ws.api.IPersonnageService;
 import com.mrprez.gencross.ws.api.bo.PersonnageLabel;
 
@@ -14,9 +15,10 @@ public class PersonnageServiceAccess {
 	private IPersonnageService personnageService;
 	
 	
+	
 	public PersonnageServiceAccess() throws MalformedURLException{
 		super();
-		URL wsdlUrl = new URL("http://localhost:8181/gencross-web/personnageService?wsdl");
+		URL wsdlUrl = new URL(GencrossEditor.getInstance().getGencrossWebUrl()+"/personnageService?wsdl");
 		QName qname = new QName("http://service.web.gencross.mrprez.com/", "PersonnageServiceService");
 		Service service = Service.create(wsdlUrl, qname);
 		service.setHandlerResolver(new ServiceHandlerResolver());
@@ -50,5 +52,11 @@ public class PersonnageServiceAccess {
 		personnageService.savePersonnage(personnageId, xml.getBytes("UTF-8"));
 		
 	}
+
+
+
+	
+	
+	
 	
 }
