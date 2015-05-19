@@ -2,6 +2,7 @@ package com.mrprez.gencross.editor.save;
 
 import java.io.File;
 
+import com.mrprez.gencross.disk.PersonnageSaver;
 import com.mrprez.gencross.editor.framework.BackgroundTask;
 import com.mrprez.gencross.editor.framework.Task;
 
@@ -21,7 +22,7 @@ public class SavePersonnageTask implements BackgroundTask {
 
 	@Override
 	public void doInBackground() throws Exception {
-		
+		PersonnageSaver.savePersonnage(personnage, file);
 	}
 
 }
