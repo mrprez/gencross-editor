@@ -18,7 +18,6 @@ public class GencrossFileFilter extends FileFilter {
 		}
 		String name = f.getName();
 		if(name.contains(".")){
-			System.out.println(name+" => "+name.substring(name.lastIndexOf(".")));
 			return name.substring(name.lastIndexOf(".")).equalsIgnoreCase(".GCR");
 		}
 		return false;

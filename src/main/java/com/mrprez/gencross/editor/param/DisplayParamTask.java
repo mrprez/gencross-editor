@@ -88,8 +88,6 @@ public class DisplayParamTask extends StandardDialog {
 			}
 		}
 		
-		System.out.println(UIManager.getLookAndFeel().getClass().getName());
-		
 		combo.setSelectedItem(UIManager.getLookAndFeel());
 		
 		return combo;
