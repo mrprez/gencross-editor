@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import org.dom4j.Document;
 
 import com.mrprez.gencross.disk.PersonnageFactory;
+import com.mrprez.gencross.editor.GencrossEditor;
 import com.mrprez.gencross.editor.framework.BackgroundTask;
 import com.mrprez.gencross.editor.framework.Task;
 
@@ -39,6 +40,8 @@ public class OpenFileTask implements BackgroundTask {
 			document = PersonnageFactory.loadGcr(new FileInputStream(personnageFile));
 		}
 		personnageXml = document.asXML();
+		GencrossEditor.getInstance().setPersonnageId(null);
+		GencrossEditor.getInstance().setTextModified(false);
 	}
 
 }

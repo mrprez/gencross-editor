@@ -18,6 +18,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 import com.mrprez.gencross.editor.GencrossEditor;
+import com.mrprez.gencross.editor.commons.SetTextModifiedTask;
 import com.mrprez.gencross.editor.framework.BackgroundTask;
 import com.mrprez.gencross.editor.framework.Task;
 import com.mrprez.gencross.editor.framework.Treatment;
@@ -60,11 +61,11 @@ public class UploadPersonnageTask implements BackgroundTask, TreatmentAwareTask 
 			return;
 		}
 		
-		
 		new PersonnageServiceAccess().savePersonnage(GencrossEditor.getInstance().getPersonnageId(), xml);
 
 		nextTask = new ShowMessageTask(GencrossEditor.getInstance(), "Personnage sauvegardé sur le serveur.");
 		nextTask.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+		nextTask.setNextTask(new SetTextModifiedTask(false));
 	}
 	
 	private void validateXml(String xml) throws ParserConfigurationException, SAXException, IOException{
