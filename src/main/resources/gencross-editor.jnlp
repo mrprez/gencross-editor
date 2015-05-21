@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0+" codebase="http://localhost/" href="MonApplication.jnlp">
+	<information>
+		<title>Gencross-Editor</title>
+		<vendor>MrPrez</vendor>
+		<homepage href="http://www.mrprez.fr/gencross" />
+		<description>Application to edit Gencross personnage files</description>
+		<offline-allowed />
+	</information>
+	<security>
+	</security>
+	<resources>
+		<j2se version="1.6" />
+		<jar href="gencross-editor.jar" />
+	</resources>
+	<application-desc main-class="com.jmdoudoux.dej.jnlp.MonApplication" />
+</jnlp>
