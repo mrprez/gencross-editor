@@ -6,7 +6,7 @@
 	
 	<artifactId>gencross-editor</artifactId>
 	<groupId>com.mrprez.gencross</groupId>
-	<version>1.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	
 	<name>GenCrossEditor</name>
 	
@@ -19,7 +19,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/mrprez/gencross-editor.git</connection>
 		<developerConnection>scm:git:git@github.com:mrprez/gencross-editor.git</developerConnection>
-		<tag>gencross-editor-1.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 	
 	<dependencies>
