@@ -30,7 +30,7 @@ public class GencrossEditor extends JFrame {
 	private String token;
 	private XmlPanel xmlPanel;
 	private Integer personnageId;
-	private String gencrossWebUrl = "http://localhost:8181/gencross-web";
+	private String gencrossWebUrl = "http://localhost:8181/gencross-web/ws";
 	private boolean textModified = false;
 	
 	private JMenuBar menuBar = new JMenuBar();
