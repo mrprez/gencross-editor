@@ -41,7 +41,7 @@ public class OpenFileTask implements BackgroundTask {
 		}
 		personnageXml = document.asXML();
 		GencrossEditor.getInstance().setPersonnageId(null);
-		GencrossEditor.getInstance().setTextModified(false);
+		GencrossEditor.getInstance().setOpenedFile(personnageFile);
 	}
 
 }

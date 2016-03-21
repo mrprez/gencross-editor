@@ -1,7 +1,6 @@
 package com.mrprez.gencross.editor.download;
 
 import com.mrprez.gencross.editor.GencrossEditor;
-import com.mrprez.gencross.editor.commons.SetTextModifiedTask;
 import com.mrprez.gencross.editor.framework.EdtTask;
 import com.mrprez.gencross.editor.framework.Task;
 
@@ -16,7 +15,7 @@ public class DisplayPersonnageTask implements EdtTask {
 
 	@Override
 	public Task getNextTask() {
-		return new SetTextModifiedTask(false);
+		return null;
 	}
 
 	@Override

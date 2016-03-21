@@ -25,6 +25,7 @@ public class DownloadPersonnageTask implements BackgroundTask {
 		PersonnageServiceAccess personnageService = new PersonnageServiceAccess();
 		personnageXml = personnageService.getPersonnage(personnageId);
 		GencrossEditor.getInstance().setPersonnageId(personnageId);
+		GencrossEditor.getInstance().setOpenedFile(null);
 	}
 
 }

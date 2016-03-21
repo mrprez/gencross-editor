@@ -8,8 +8,6 @@ import javax.swing.JOptionPane;
 import com.mrprez.gencross.editor.GencrossEditor;
 import com.mrprez.gencross.editor.framework.EdtTask;
 import com.mrprez.gencross.editor.framework.Task;
-import com.mrprez.gencross.editor.framework.Treatment;
-import com.mrprez.gencross.editor.framework.TreatmentAwareTask;
 import com.mrprez.gencross.utils.GencrossFileFilter;
 
 public class ChooseFileToOpenTask implements EdtTask {

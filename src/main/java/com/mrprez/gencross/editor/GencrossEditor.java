@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -11,13 +12,17 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
 
+import com.mrprez.gencross.editor.commons.ValidateXmlTask;
 import com.mrprez.gencross.editor.download.DownloadPluginDescriptorsTask;
 import com.mrprez.gencross.editor.framework.ActionTreatment;
+import com.mrprez.gencross.editor.framework.task.ShowMessageTask;
 import com.mrprez.gencross.editor.open.ChooseFileToOpenTask;
 import com.mrprez.gencross.editor.param.DisplayParamTask;
+import com.mrprez.gencross.editor.run.RunPersonnageTask;
 import com.mrprez.gencross.editor.save.ChooseFileToSaveTask;
 import com.mrprez.gencross.editor.upload.UploadPersonnageTask;
 
@@ -32,14 +37,18 @@ public class GencrossEditor extends JFrame {
 	private Integer personnageId;
 	private String gencrossWebUrl = "http://localhost:8181/gencross-web/ws";
 	private boolean textModified = false;
+	private File openedFile;
 	
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu fileMenu = new JMenu("Fichier");
+	private JMenu runMenu = new JMenu("Exécution");
 	private JMenu optionMenu = new JMenu("Options");
 	private JMenuItem openMenuItem = new JMenuItem("Ouvrir");
 	private JMenuItem saveAsMenuItem = new JMenuItem("Sauvegarder sous...");
 	private JMenuItem downloadMenuItem = new JMenuItem("Récupérer");
 	private JMenuItem uploadMenuItem = new JMenuItem("Envoyer");
+	private JMenuItem validateMenuItem = new JMenuItem("Valider XML");
+	private JMenuItem tryMenuItem = new JMenuItem("Essayer");
 	private JMenuItem paramMenuItem = new JMenuItem("Paramètres");
 	
 	
@@ -72,21 +81,35 @@ public class GencrossEditor extends JFrame {
 	
 	private JMenuBar buildMenuBar(){
 		menuBar.add(fileMenu);
+		menuBar.add(runMenu);
 		menuBar.add(optionMenu);
 		
 		openMenuItem.addActionListener(new ActionTreatment(new ChooseFileToOpenTask(), this));
 		fileMenu.add(openMenuItem);
 		
-		saveAsMenuItem.addActionListener(new ActionTreatment(new ChooseFileToSaveTask(), this));
+		ValidateXmlTask validateXmlTask = new ValidateXmlTask();
+		validateXmlTask.setValideXmlTask(new ChooseFileToSaveTask());
+		saveAsMenuItem.addActionListener(new ActionTreatment(validateXmlTask, this));
 		saveAsMenuItem.setEnabled(false);
 		fileMenu.add(saveAsMenuItem);
 		
 		downloadMenuItem.addActionListener(new ActionTreatment(new DownloadPluginDescriptorsTask(), this));
 		fileMenu.add(downloadMenuItem);
 		
-		uploadMenuItem.addActionListener(new ActionTreatment(new UploadPersonnageTask(), this));
+		validateXmlTask = new ValidateXmlTask();
+		validateXmlTask.setValideXmlTask(new UploadPersonnageTask());
+		uploadMenuItem.addActionListener(new ActionTreatment(validateXmlTask, this));
 		uploadMenuItem.setEnabled(false);
 		fileMenu.add(uploadMenuItem);
+		
+		
+		validateXmlTask = new ValidateXmlTask();
+		validateXmlTask.setValideXmlTask(new ShowMessageTask(this, "Aucune erreur détectée", "XML Valide", JOptionPane.INFORMATION_MESSAGE));
+		validateMenuItem.addActionListener(new ActionTreatment(validateXmlTask, this));
+		runMenu.add(validateMenuItem);
+		
+		tryMenuItem.addActionListener(new ActionTreatment(new RunPersonnageTask(), this));
+		runMenu.add(tryMenuItem);
 		
 		
 		paramMenuItem.addActionListener(new ActionTreatment(new DisplayParamTask(), this));
@@ -165,6 +188,16 @@ public class GencrossEditor extends JFrame {
 		this.textModified = textModified;
 		saveAsMenuItem.setEnabled(textModified);
 		uploadMenuItem.setEnabled(textModified);
+	}
+
+
+	public File getOpenedFile() {
+		return openedFile;
+	}
+
+
+	public void setOpenedFile(File openedFile) {
+		this.openedFile = openedFile;
 	}
 
 	

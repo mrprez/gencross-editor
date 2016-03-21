@@ -25,6 +25,15 @@ public class ShowMessageTask implements EdtTask {
 		this.message = message;
 	}
 	
+	
+	public ShowMessageTask(Component parentComponent, String message, String title, int messageType) {
+		super();
+		this.parentComponent = parentComponent;
+		this.message = message;
+		this.title = title;
+		this.messageType = messageType;
+	}
+	
 
 	@Override
 	public Task getNextTask() {

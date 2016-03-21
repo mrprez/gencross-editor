@@ -1,4 +1,4 @@
-package com.mrprez.gencross.editor.commons;
+package com.mrprez.gencross.editor.upload;
 
 import com.mrprez.gencross.editor.GencrossEditor;
 import com.mrprez.gencross.editor.framework.EdtTask;
