@@ -13,16 +13,13 @@ public class RunPersonnageTask implements BackgroundTask {
 
 	@Override
 	public Task getNextTask() {
-		return null;
+		return new GencrossUiTask(personnage);
 	}
 
 	@Override
 	public void doInBackground() throws Exception {
 		PersonnageFactory personnageFactory = new PersonnageFactory();
-		
 		personnage = personnageFactory.loadPersonnage(DocumentHelper.parseText(GencrossEditor.getInstance().getPersonnage()));
-//		GenCrossUI genCrossUI = new GenCrossUI(GenCrossUI.getExecutionDirectory());
-//		genCrossUI.setPersonnage(personnage);
 	}
 	
 	
